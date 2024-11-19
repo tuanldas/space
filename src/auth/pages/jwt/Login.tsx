@@ -7,23 +7,6 @@ import { Alert, KeenIcon } from '@/components';
 import { useAuthContext } from '@/auth';
 import { FormattedMessage } from 'react-intl';
 
-const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  password: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Password is required')
-});
-
-const initialValues = {
-  email: '',
-  password: ''
-};
-
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const { login } = useAuthContext();
@@ -31,6 +14,23 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
   const [showPassword, setShowPassword] = useState(false);
+
+  const initialValues = {
+    email: '',
+    password: ''
+  };
+
+  const loginSchema = Yup.object().shape({
+    email: Yup.string()
+      .email('Wrong email format')
+      .min(3, 'Minimum 3 symbols')
+      .max(50, 'Maximum 50 symbols')
+      .required('Email is required'),
+    password: Yup.string()
+      .min(3, 'Minimum 3 symbols')
+      .max(50, 'Maximum 50 symbols')
+      .required('Password is required')
+  });
 
   const formik = useFormik({
     initialValues,
@@ -68,8 +68,9 @@ const Login = () => {
 
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Email</label>
+          <FormattedMessage id="USER.MENU.DARK_MODE" />
+
           <label className="input">
-            <FormattedMessage id="USER.MENU.DARK_MODE" />
             <input
               placeholder="Enter username"
               autoComplete="off"

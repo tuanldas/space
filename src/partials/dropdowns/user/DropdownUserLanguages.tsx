@@ -21,7 +21,7 @@ const DropdownUserLanguages = ({ menuItemRef }: IDropdownUserLanguagesProps) => 
   };
 
   const buildItems = () => {
-    return I18N_LANGUAGES.map((item, index) => (
+    return I18N_LANGUAGES.map((item: any, index: any) => (
       <MenuItem
         key={index}
         className={clsx(item.code === currentLanguage.code && 'active')}
@@ -67,7 +67,8 @@ const DropdownUserLanguages = ({ menuItemRef }: IDropdownUserLanguagesProps) => 
         <MenuTitle>
           <FormattedMessage id="USER.MENU.LANGUAGE" />
         </MenuTitle>
-        <div className="flex items-center gap-1.5 rounded-md border border-gray-300 text-gray-600 p-1.5 text-2xs font-medium shrink-0">
+        <div
+          className="flex items-center gap-1.5 rounded-md border border-gray-300 text-gray-600 p-1.5 text-2xs font-medium shrink-0">
           {currentLanguage.label}
           <img
             src={currentLanguage.flag}
