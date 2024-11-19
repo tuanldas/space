@@ -84,7 +84,7 @@ const DropdownUser = ({ menuItemRef }: IDropdownUserProps) => {
                 <KeenIcon icon="profile-circle" />
               </MenuIcon>
               <MenuTitle>
-                <FormattedMessage id="USER.MENU.MY_PROFILE" />
+                <FormattedMessage id="USER.MENU." />
               </MenuTitle>
             </MenuLink>
           </MenuItem>
