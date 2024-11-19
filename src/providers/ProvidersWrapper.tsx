@@ -29,7 +29,6 @@ const queryClient = new QueryClient({
     }
   }
 });
-console.log(import.meta.env.MODE);
 
 const ProvidersWrapper = ({ children }: PropsWithChildren) => {
   return (

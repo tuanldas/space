@@ -1,16 +1,20 @@
 {
-  "USER.MENU.PUBLIC_PROFILE": "Hồ sơ",
-  "USER.MENU.MY_PROFILE": "Hồ sơ của tôi",
-  "USER.MENU.MY_ACCOUNT": "Tài khoản của tôi",
-  "USER.MENU.GET_STARTED": "Bắt đầu",
-  "USER.MENU.BILLING": "Billing",
-  "USER.MENU.SECURITY": "Security",
-  "USER.MENU.MEMBERS_&_ROLES": "Members & Roles",
-  "USER.MENU.INTEGRATIONS": "Integrations",
-  "USER.MENU.NOTIFICATIONS": "Notifications",
-  "USER.MENU.DEV_FORUM": "Dev Forum",
-  "USER.MENU.PAYMENT_&_SUBSCRIPTION_INFO": "Payment & subscription info",
-  "USER.MENU.DARK_MODE": "Dark Mode",
-  "USER.MENU.LOGOUT": "Logout",
-  "USER.MENU.LANGUAGE": "Language"
+  "USER": {
+    "MENU": {
+      "PUBLIC_PROFILE": "Public Profile",
+      "MY_PROFILE": "My Profile",
+      "MY_ACCOUNT": "My Account",
+      "GET_STARTED": "Get Started",
+      "BILLING": "Billing",
+      "SECURITY": "Security",
+      "MEMBERS_&_ROLES": "Members & Roles",
+      "INTEGRATIONS": "Integrations",
+      "NOTIFICATIONS": "Notifications",
+      "DEV_FORUM": "Dev Forum",
+      "PAYMENT_&_SUBSCRIPTION_INFO": "Payment & subscription info",
+      "DARK_MODE": "Dark Mode",
+      "LOGOUT": "Logout",
+      "LANGUAGE": "Language"
+    }
+  }
 }

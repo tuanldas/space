@@ -10,7 +10,7 @@ const I18N_MESSAGES = {
 
 const I18N_CONFIG_KEY = 'i18nConfig';
 
-const I18N_LANGUAGES: readonly TLanguage[] = [
+const I18N_LANGUAGES: any = [
   {
     label: 'English',
     code: 'en',
@@ -23,7 +23,7 @@ const I18N_LANGUAGES: readonly TLanguage[] = [
     code: 'vi',
     direction: 'ltr',
     flag: toAbsoluteUrl('/media/flags/vietnam.svg'),
-    messages: I18N_MESSAGES.en
+    messages: I18N_MESSAGES.vi
   }
 ];
 

@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { Alert, KeenIcon } from '@/components';
 import { useAuthContext } from '@/auth';
+import { FormattedMessage } from 'react-intl';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -68,6 +69,7 @@ const Login = () => {
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Email</label>
           <label className="input">
+            <FormattedMessage id="USER.MENU.DARK_MODE" />
             <input
               placeholder="Enter username"
               autoComplete="off"
