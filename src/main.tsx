@@ -6,14 +6,17 @@ import './css/styles.css';
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
 import { setupAxios } from '@/auth/_helpers.ts';
 import axios from 'axios';
+import { ProvidersWrapper } from '@/providers';
+import { App } from '@/App.tsx';
 
 setupAxios(axios);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <ProvidersWrapper>
+      <App />
+    </ProvidersWrapper>
   </StrictMode>
 );
