@@ -12,7 +12,22 @@ import {
 } from '@/providers';
 import { HelmetProvider } from 'react-helmet-async';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 300000,
+      cacheTime: 900000,
+      refetchOnMount: false,
+      refetchOnWindowFocus: true,
+      refetchInterval: false,
+      retry: 3,
+      retryDelay: attempt => Math.min(1000 * 2 ** attempt, 30000)
+    },
+    mutations: {
+      retry: 1
+    }
+  }
+});
 
 const ProvidersWrapper = ({ children }: PropsWithChildren) => {
   return (

@@ -11,7 +11,7 @@ const AppRoutingSetup = (): ReactElement => {
     <Routes>
       <Route element={<RequireAuth />}>
         <Route element={<Demo1Layout />}>
-
+          <Route path="/" element={<></>} />
         </Route>
       </Route>
       <Route path="error/*" element={<ErrorsRouting />} />

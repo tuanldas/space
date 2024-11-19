@@ -14,7 +14,6 @@ export default defineConfig({
       plugins: [tailwindcss()]
     }
   },
-  base: '/metronic/tailwind/react',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
