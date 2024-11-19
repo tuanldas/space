@@ -11,6 +11,7 @@ import {
   TranslationProvider
 } from '@/providers';
 import { HelmetProvider } from 'react-helmet-async';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,6 +29,7 @@ const queryClient = new QueryClient({
     }
   }
 });
+console.log(import.meta.env.MODE);
 
 const ProvidersWrapper = ({ children }: PropsWithChildren) => {
   return (
@@ -47,6 +49,7 @@ const ProvidersWrapper = ({ children }: PropsWithChildren) => {
           </SettingsProvider>
         </AuthProvider>
       </SnackbarProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 };
