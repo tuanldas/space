@@ -10,14 +10,6 @@ import {
   DialogHeader,
   DialogTitle
 } from '@/components/ui/dialog';
-import {
-  About,
-  CommunityBadges,
-  Connections,
-  Contributions,
-  Projects,
-  WorkExperience
-} from '@/pages/public-profile/profiles/default';
 
 interface IModalProfileProps {
   open: boolean;
@@ -40,10 +32,12 @@ const ModalProfile = ({ open, onOpenChange }: IModalProfileProps) => {
 
       <Dialog open={open} onOpenChange={onOpenChange}>
         <DialogContent className="container-fixed max-w-[auto] p-0 [&>button]:hidden">
-          <DialogHeader className="modal-rounded-t p-0 border-0 relative min-h-80 flex flex-col items-stretch justify-end bg-center bg-cover bg-no-repeat mb-7 modal-bg">
+          <DialogHeader
+            className="modal-rounded-t p-0 border-0 relative min-h-80 flex flex-col items-stretch justify-end bg-center bg-cover bg-no-repeat mb-7 modal-bg">
             <DialogTitle></DialogTitle>
             <DialogDescription></DialogDescription>
-            <div className="flex flex-col justify-end border-b-0 grow px-9 bg-gradient-to-t from-light from-3% to-transparent">
+            <div
+              className="flex flex-col justify-end border-b-0 grow px-9 bg-gradient-to-t from-light from-3% to-transparent">
               <div className="flex justify-center mb-5">
                 <img
                   src={toAbsoluteUrl('/media/avatars/300-1.png')}
@@ -119,26 +113,7 @@ const ModalProfile = ({ open, onOpenChange }: IModalProfileProps) => {
               <KeenIcon icon="cross" />
             </button>
           </DialogHeader>
-          <DialogBody className="scrollable-y py-0 mb-5 ps-6 pe-3 me-3">
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
-              <div className="col-span-1">
-                <div className="grid gap-5 lg:gap-7.5">
-                  <CommunityBadges title="Community Badges" />
-                  <About />
-                  <WorkExperience />
-                </div>
-              </div>
-              <div className="col-span-2">
-                <div className="flex flex-col gap-5 lg:gap-7.5">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-                    <Connections title="Contributors" />
-                    <Contributions title="Assistance" />
-                  </div>
-                  <Projects />
-                </div>
-              </div>
-            </div>
-          </DialogBody>
+          <DialogBody className="scrollable-y py-0 mb-5 ps-6 pe-3 me-3"></DialogBody>
         </DialogContent>
       </Dialog>
     </Fragment>

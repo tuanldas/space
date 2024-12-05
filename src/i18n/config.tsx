@@ -1,6 +1,14 @@
 import { toAbsoluteUrl } from '@/utils';
 import viMessages from './messages/vi.json';
-import { type TLanguage } from './types.d';
+import { TLanguageCode, TLanguageDirection } from './types.d';
+
+interface TLanguage {
+  label: string;
+  code: TLanguageCode;
+  direction: TLanguageDirection;
+  flag: string;
+  messages: any;
+}
 
 const I18N_MESSAGES = {
   vi: viMessages
