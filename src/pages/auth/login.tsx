@@ -2,29 +2,15 @@ import { useState } from 'react';
 import { useAuthContext } from '@/auth';
 import { useNavigate } from 'react-router';
 import { useLocation } from 'react-router-dom';
-import { useLayout } from '@/providers';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Alert, KeenIcon } from '@/components';
 import { clsx } from 'clsx';
-
-const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  password: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Password is required'),
-  remember: Yup.boolean()
-});
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const initialValues = {
-  email: 'demo@keenthemes.com',
-  password: 'demo1234',
-  remember: false
+  email: '',
+  password: ''
 };
 
 const Login = () => {
@@ -34,7 +20,35 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
   const [showPassword, setShowPassword] = useState(false);
-  const { currentLayout } = useLayout();
+  const intl = useIntl();
+
+  const loginSchema = Yup.object().shape({
+    email: Yup.string()
+      .email(intl.formatMessage({ id: 'VALIDATE.EMAIL' }, { name: 'Email' }))
+      .min(3, intl.formatMessage({ id: 'VALIDATE.MIN' }, { name: 'Email', min: 3 }))
+      .required(intl.formatMessage({ id: 'VALIDATE.REQUIRED' }, { name: 'Email' })),
+    password: Yup.string()
+      .min(
+        3,
+        intl.formatMessage(
+          { id: 'VALIDATE.MIN' },
+          { name: intl.formatMessage({ id: 'AUTH.PASSWORD' }), min: 3 }
+        )
+      )
+      .max(
+        50,
+        intl.formatMessage(
+          { id: 'VALIDATE.MAX' },
+          { name: intl.formatMessage({ id: 'AUTH.PASSWORD' }), max: 50 }
+        )
+      )
+      .required(
+        intl.formatMessage(
+          { id: 'VALIDATE.REQUIRED' },
+          { name: intl.formatMessage({ id: 'AUTH.PASSWORD' }) }
+        )
+      )
+  });
 
   const formik = useFormik({
     initialValues,
@@ -43,17 +57,7 @@ const Login = () => {
       setLoading(true);
 
       try {
-        if (!login) {
-          throw new Error('JWTProvider is required for this form.');
-        }
-
         await login(values.email, values.password);
-
-        if (values.remember) {
-          localStorage.setItem('email', values.email);
-        } else {
-          localStorage.removeItem('email');
-        }
 
         navigate(from, { replace: true });
       } catch {
@@ -77,7 +81,9 @@ const Login = () => {
         noValidate
       >
         <div className="text-center mb-2.5">
-          <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2.5">Sign in</h3>
+          <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2.5">
+            <FormattedMessage id="AUTH.SIGN_IN" />
+          </h3>
         </div>
 
         <div className="flex items-center gap-2">
@@ -89,7 +95,10 @@ const Login = () => {
           <label className="form-label text-gray-900">Email</label>
           <label className="input">
             <input
-              placeholder="Enter username"
+              placeholder={intl.formatMessage(
+                { id: 'AUTH.ENTER' },
+                { name: intl.formatMessage({ id: 'AUTH.EMAIL' }) }
+              )}
               autoComplete="off"
               {...formik.getFieldProps('email')}
               className={clsx('form-control', {
@@ -106,12 +115,17 @@ const Login = () => {
 
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between gap-1">
-            <label className="form-label text-gray-900">Password</label>
+            <label className="form-label text-gray-900">
+              <FormattedMessage id="AUTH.SIGN_IN" />
+            </label>
           </div>
           <label className="input">
             <input
               type={showPassword ? 'text' : 'password'}
-              placeholder="Enter Password"
+              placeholder={intl.formatMessage(
+                { id: 'AUTH.ENTER' },
+                { name: intl.formatMessage({ id: 'AUTH.PASSWORD' }) }
+              )}
               autoComplete="off"
               {...formik.getFieldProps('password')}
               className={clsx('form-control', {
@@ -138,7 +152,7 @@ const Login = () => {
           className="btn btn-primary flex justify-center grow"
           disabled={loading || formik.isSubmitting}
         >
-          {loading ? 'Please wait...' : 'Sign In'}
+          {loading ? 'Please wait...' : <FormattedMessage id="AUTH.SIGN_IN" />}
         </button>
       </form>
     </div>

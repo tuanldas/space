@@ -37,10 +37,26 @@ const getInitialLanguage = () => {
   return currentLanguage ?? I18N_DEFAULT_LANGUAGE;
 };
 
+export const flattenMessages = (nestedMessages: any, prefix = '') => {
+  if (nestedMessages === null) {
+    return {};
+  }
+  return Object.keys(nestedMessages).reduce((messages, key) => {
+    const value = nestedMessages[key];
+    const prefixedKey = prefix ? `${prefix}.${key}` : key;
+
+    if (typeof value === 'string') {
+      Object.assign(messages, { [prefixedKey]: value });
+    } else {
+      Object.assign(messages, flattenMessages(value, prefixedKey));
+    }
+    return messages;
+  }, {});
+};
+
 const initialProps: ITranslationProviderProps = {
   currentLanguage: getInitialLanguage(),
-  changeLanguage: (_: TLanguage) => {
-  },
+  changeLanguage: (_: TLanguage) => {},
   isRTL: () => false
 };
 
@@ -52,7 +68,7 @@ const I18NProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <IntlProvider
-      messages={currentLanguage.messages}
+      messages={flattenMessages(currentLanguage.messages)}
       locale={currentLanguage.code}
       defaultLocale={getInitialLanguage().code}
     >
