@@ -1,5 +1,10 @@
-import { Modal, ModalContent, ModalBody, ModalHeader, ModalTitle } from '@/components/modal';
-import { KeenIcon } from '@/components';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle
+} from '@/components/ui/dialog';
 import {
   ModalShareProfileViaLink,
   ModalShareProfileViaEmail,
@@ -9,23 +14,20 @@ import {
 
 interface ModalGiveAwardProps {
   open: boolean;
-  onClose: () => void;
+  onOpenChange: () => void;
 }
 
-const ModalGiveAward = ({ open, onClose }: ModalGiveAwardProps) => {
+const ModalGiveAward = ({ open, onOpenChange }: ModalGiveAwardProps) => {
   const scrollableHeight = 300;
 
   return (
-    <Modal open={open} onClose={onClose}>
-      <ModalContent className="max-w-[600px] top-[15%]">
-        <ModalHeader className="py-4 px-5">
-          <ModalTitle>Give Award</ModalTitle>
-
-          <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={onClose}>
-            <KeenIcon icon="black-left" />
-          </button>
-        </ModalHeader>
-        <ModalBody className="grid gap-5 px-0 py-5">
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-[600px]">
+        <DialogHeader className="py-4 px-5">
+          <DialogTitle>Give Award</DialogTitle>
+          <DialogDescription></DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-5 px-0 py-5">
           <ModalShareProfileViaLink />
           <div className="border-b border-b-gray-200"></div>
 
@@ -38,9 +40,9 @@ const ModalGiveAward = ({ open, onClose }: ModalGiveAwardProps) => {
 
           <div className="border-b border-b-gray-200"></div>
           <ModalShareProfileSettings />
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 

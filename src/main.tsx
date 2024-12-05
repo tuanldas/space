@@ -1,22 +1,26 @@
-import '@/components/keenicons/assets/duotone/style.css';
-import '@/components/keenicons/assets/outline/style.css';
-import '@/components/keenicons/assets/filled/style.css';
-import '@/components/keenicons/assets/solid/style.css';
-import './css/styles.css';
+import '@/components/keenicons/assets/styles.css';
+import './styles/globals.css';
 
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { setupAxios } from '@/auth/_helpers.ts';
 import axios from 'axios';
-import { ProvidersWrapper } from '@/providers';
-import { App } from '@/App.tsx';
+import ReactDOM from 'react-dom/client';
 
+import { App } from './App';
+import { setupAxios } from './auth';
+import { ProvidersWrapper } from './providers';
+import React from 'react';
+
+/**
+ * Inject interceptors for axios.
+ *
+ * @see https://github.com/axios/axios#interceptors
+ */
 setupAxios(axios);
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+  <React.StrictMode>
     <ProvidersWrapper>
       <App />
     </ProvidersWrapper>
-  </StrictMode>
+  </React.StrictMode>
 );

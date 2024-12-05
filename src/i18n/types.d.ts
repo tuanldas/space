@@ -1,6 +1,6 @@
 import { type MessageFormatElement } from 'react-intl';
 
-export type TLanguageCode = 'en' | 'vi';
+export type TLanguageCode = 'en' | 'fr' | 'ar' | 'zh';
 
 export type TLanguageDirection = 'ltr' | 'rtl';
 
@@ -15,6 +15,5 @@ export interface TLanguage {
 export interface ITranslationProviderProps {
   currentLanguage: TLanguage;
   isRTL: () => boolean;
-  // eslint-disable-next-line no-unused-vars
   changeLanguage: (lang: TLanguage) => void;
 }

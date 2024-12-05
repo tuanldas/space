@@ -24,12 +24,7 @@ const DropdownNotificationsItem1 = ({
   specialist,
   text
 }: IDropdownNotificationsItemProps) => {
-  const [, setInputValue] = useState('');
-
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
+  const [emailInput, setEmailInput] = useState('');
   return (
     <div className="flex grow gap-2.5 px-5">
       <div className="relative shrink-0 mt-0.5">
@@ -69,7 +64,12 @@ const DropdownNotificationsItem1 = ({
           </div>
 
           <label className="input input-sm">
-            <input placeholder="Reply" type="text" value="" onChange={handleInputChange} />
+            <input
+              type="text"
+              onChange={(e) => setEmailInput(e.target.value)}
+              placeholder="Reply"
+              value={emailInput}
+            />
             <button className="btn btn-icon">
               <KeenIcon icon="picture" />
             </button>

@@ -1,23 +1,28 @@
-import { Modal, ModalContent, ModalBody, ModalHeader } from '@/components/modal'; // Import your custom Modal component
-import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle
+} from '@/components/ui/dialog';
 
 interface IModalAccountDeactivatedProps {
   open: boolean;
-  onClose: () => void;
+  onOpenChange: () => void;
 }
 
-const ModalAccountDeactivated = ({ open, onClose }: IModalAccountDeactivatedProps) => {
+const ModalAccountDeactivated = ({ open, onOpenChange }: IModalAccountDeactivatedProps) => {
   return (
-    <Modal open={open} onClose={onClose}>
-      <ModalContent className="modal-center w-full max-w-[500px] max-h-[95%] scrollable-y-auto">
-        <ModalHeader className="justify-end border-0 pt-5">
-          <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={onClose}>
-            <KeenIcon icon="cross" />
-          </button>
-        </ModalHeader>
-        <ModalBody className="flex flex-col items-center pt-0 pb-10">
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="w-full max-w-[500px] max-h-[95%] scrollable-y-auto">
+        <DialogHeader className="justify-end border-0 pt-5">
+          <DialogTitle></DialogTitle>
+          <DialogDescription></DialogDescription>
+        </DialogHeader>
+        <DialogBody className="flex flex-col items-center pt-0 pb-10">
           <div className="mb-9">
             <img
               src={toAbsoluteUrl('/media/illustrations/23.svg')}
@@ -41,9 +46,9 @@ const ModalAccountDeactivated = ({ open, onClose }: IModalAccountDeactivatedProp
           <Link to="/" className="btn btn-primary flex justify-center">
             Go to Home
           </Link>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+        </DialogBody>
+      </DialogContent>
+    </Dialog>
   );
 };
 

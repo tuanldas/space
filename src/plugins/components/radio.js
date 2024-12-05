@@ -24,6 +24,10 @@ export default plugin(({ addComponents, theme }) => {
         'border': '1px solid var(--tw-primary)',
         'background-image': `url("${svgToDataUri('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="10.9995" cy="11" r="5.86667" fill="white"/></svg>')}")`,
       },
+      '&:focus-visible': {
+        'outline': 'none',
+        'box-shadow': 'none'
+      },
       '&:focus': {
         'border-color': 'var(--tw-primary)',
         'box-shadow': 'var(--tw-input-focus-box-shadow)',

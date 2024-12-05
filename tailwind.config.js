@@ -199,6 +199,48 @@ module.exports = {
         sans: ['Inter', 'system-ui', 'sans-serif']
       },
       colors: {
+        //begin: Shadcn UI Colors
+        background: 'hsl(var(--background))',
+  			foreground: 'hsl(var(--foreground))',
+  			card: {
+  				DEFAULT: 'hsl(var(--card))',
+  				foreground: 'hsl(var(--card-foreground))'
+  			},
+  			popover: {
+  				DEFAULT: 'hsl(var(--popover))',
+  				foreground: 'hsl(var(--popover-foreground))'
+  			},
+  			primary: {
+  				DEFAULT: 'hsl(var(--primary))',
+  				foreground: 'hsl(var(--primary-foreground))'
+  			},
+  			secondary: {
+  				DEFAULT: 'hsl(var(--secondary))',
+  				foreground: 'hsl(var(--secondary-foreground))'
+  			},
+  			muted: {
+  				DEFAULT: 'hsl(var(--muted))',
+  				foreground: 'hsl(var(--muted-foreground))'
+  			},
+  			accent: {
+  				DEFAULT: 'hsl(var(--accent))',
+  				foreground: 'hsl(var(--accent-foreground))'
+  			},
+  			destructive: {
+  				DEFAULT: 'hsl(var(--destructive))',
+  				foreground: 'hsl(var(--destructive-foreground))'
+  			},
+  			border: 'hsl(var(--border))',
+  			input: 'hsl(var(--input))',
+  			ring: 'hsl(var(--ring))',
+  			chart: {
+  				'1': 'hsl(var(--chart-1))',
+  				'2': 'hsl(var(--chart-2))',
+  				'3': 'hsl(var(--chart-3))',
+  				'4': 'hsl(var(--chart-4))',
+  				'5': 'hsl(var(--chart-5))'
+  			},
+        //end
         gray: {
           100: 'var(--tw-gray-100)',
           200: 'var(--tw-gray-200)',
@@ -215,7 +257,8 @@ module.exports = {
           active: 'var(--tw-primary-active)',
           light: 'var(--tw-primary-light)',
           clarity: 'var(--tw-primary-clarity)',
-          inverse: 'var(--tw-primary-inverse)'
+          inverse: 'var(--tw-primary-inverse)',
+          foreground: 'hsl(var(--primary-foreground))'
         },
         success: {
           DEFAULT: 'var(--tw-success)',
@@ -257,7 +300,8 @@ module.exports = {
           active: 'var(--tw-secondary-active)',
           light: 'var(--tw-secondary-light)',
           clarity: 'var(--tw-secondary-clarity)',
-          inverse: 'var(--tw-secondary-inverse)'
+          inverse: 'var(--tw-secondary-inverse)',
+          foreground: 'hsl(var(--secondary-foreground))'
         },
         light: {
           DEFAULT: 'var(--tw-light)',
@@ -282,7 +326,7 @@ module.exports = {
           600: '#0B0C10',
           black: '#000000',
           clarity: 'rgba(24, 25, 31, 0.50)'
-        }
+        },        
       },
       boxShadow: {
         card: 'var(--tw-card-box-shadow)',
@@ -370,7 +414,33 @@ module.exports = {
         lg: '1024px',
         xl: '1280px',
         '2xl': '1536px'
+      },
+      //begin: Shadcn UI Animations
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' }
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' }
+        },
+        'collapsible-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-collapsible-content-height)' }
+        },
+        'collapsible-up': {
+          from: { height: 'var(--radix-collapsible-content-height)' },
+          to: { height: 'o' }
+        }
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'collapsible-down': 'collapsible-down 0.2s ease-out',
+        'collapsible-up': 'collapsible-up 0.2s ease-out'
       }
+      //end
     },
     custom: ({ theme }) => ({
       components: {
@@ -613,6 +683,7 @@ module.exports = {
     })
   },
   plugins: [
+    require('tailwindcss-animate'), 
     require('./src/plugins/plugin'),
     require('./src/plugins/components/theme'),
     require('./src/plugins/components/breakpoints'),

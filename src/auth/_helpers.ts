@@ -1,3 +1,5 @@
+import { User as Auth0UserModel } from '@auth0/auth0-spa-js';
+
 import { getData, setData } from '@/utils';
 import { type AuthModel } from './_models';
 
@@ -19,7 +21,7 @@ const getAuth = (): AuthModel | undefined => {
   }
 };
 
-const setAuth = (auth: AuthModel) => {
+const setAuth = (auth: AuthModel | Auth0UserModel) => {
   setData(AUTH_LOCAL_STORAGE_KEY, auth);
 };
 

@@ -20,7 +20,8 @@ export const RESET_PASSWORD_URL = `${API_URL}/reset-password`;
 export const GET_USER_URL = `${API_URL}/user`;
 
 interface AuthContextProps {
-  isLoading: boolean;
+  loading: boolean;
+  setLoading: Dispatch<SetStateAction<boolean>>;
   auth: AuthModel | undefined;
   saveAuth: (auth: AuthModel | undefined) => void;
   currentUser: UserModel | undefined;
@@ -60,12 +61,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       }
     }
   };
-
-  useEffect(() => {
-    verify().finally(() => {
-      setLoading(false);
-    });
-  }, []);
 
   const saveAuth = (auth: AuthModel | undefined) => {
     setAuth(auth);
@@ -139,7 +134,8 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   return (
     <AuthContext.Provider
       value={{
-        isLoading: loading,
+        loading,
+        setLoading,
         auth,
         saveAuth,
         currentUser,

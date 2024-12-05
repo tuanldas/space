@@ -7,7 +7,7 @@ import tsParser from '@typescript-eslint/parser';
 import prettierPlugin from 'eslint-plugin-prettier';
 
 const cleanedGlobals = Object.fromEntries(
-    Object.entries(globals.browser).map(([key, value]) => [key.trim(), value])
+  Object.entries(globals.browser).map(([key, value]) => [key.trim(), value])
 );
 
 export default [

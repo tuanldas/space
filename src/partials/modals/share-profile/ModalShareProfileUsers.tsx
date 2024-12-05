@@ -2,6 +2,14 @@ import { toAbsoluteUrl } from '@/utils';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
+
 const ModalShareProfileUsers = () => {
   const items = [
     {
@@ -14,7 +22,7 @@ const ModalShareProfileUsers = () => {
       avatar: '300-1.png',
       userName: 'Esther Howard',
       email: 'esther.howard@gmail.com',
-      role: 'edit'
+      role: 'editor'
     },
     {
       avatar: '300-11.png',
@@ -47,11 +55,16 @@ const ModalShareProfileUsers = () => {
             </div>
           </div>
 
-          <select className="select select-sm max-w-24" value={item.role}>
-            <option value="owner">Owner</option>
-            <option value="edit">Editor</option>
-            <option value="viewer">Viewer</option>
-          </select>
+          <Select defaultValue={item.role}>
+            <SelectTrigger className="w-24" size="sm">
+              <SelectValue placeholder="Role" />
+            </SelectTrigger>
+            <SelectContent className="w-32">
+              <SelectItem value="owner">Owner</SelectItem>
+              <SelectItem value="editor">Editor</SelectItem>
+              <SelectItem value="viewer">Viewer</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       ))}
     </div>

@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+ 
 import plugin from 'tailwindcss/plugin';
 import svgToDataUri from 'mini-svg-data-uri';
 
@@ -30,6 +30,10 @@ export default plugin(({addComponents, theme}) => {
 				'border': '1px solid var(--tw-primary)',
 				'background-image': `url("${svgToDataUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 10h8"/></svg>')}")`
 			},
+			'&:focus-visible': {
+        'outline': 'none',
+        'box-shadow': 'none',
+      },
 			'&:focus': {
 				'border-color': 'var(--tw-primary)',
 				'box-shadow': 'var(--tw-input-focus-box-shadow)',

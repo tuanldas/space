@@ -316,6 +316,7 @@ const DropdownChat = ({ menuTtemRef }: IDropdownChatProps) => {
   };
 
   const buildForm = () => {
+    const [emailInput, setEmailInput] = useState('');
     return (
       <div className="relative grow mx-5 mb-2.5">
         <img
@@ -327,9 +328,9 @@ const DropdownChat = ({ menuTtemRef }: IDropdownChatProps) => {
         <input
           type="text"
           className="input h-auto py-4 ps-12 bg-transparent"
-          onChange={handleFormInput}
+          onChange={(e) => setEmailInput(e.target.value)}
           placeholder="Write a message..."
-          value=""
+          value={emailInput}
         />
 
         <div className="flex items-center gap-2.5 absolute end-3 top-1/2 -translate-y-1/2">

@@ -15,25 +15,25 @@ import React, {
   useState
 } from 'react';
 import useResponsiveProp from '@/hooks/useResponsiveProp';
-import { useMatchPath } from '../../hooks/useMatchPath';
 import {
-  IMenuItemRef,
   IMenuItemProps,
+  IMenuItemRef,
   IMenuLabelProps,
   IMenuLinkProps,
   IMenuSubProps,
+  IMenuToggleProps,
   MenuHeading,
   MenuLabel,
   MenuLink,
   MenuSub,
+  MenuToggle,
   TMenuToggle,
   TMenuTrigger,
-  IMenuToggleProps,
-  MenuToggle,
   useMenu
 } from './';
 import { usePathname } from '@/providers';
 import { getMenuLinkPath, hasMenuActiveChild } from './utils';
+import { useMatchPath } from '@/hooks/useMatchPath.ts';
 
 const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
   function MenuItem(props, ref) {
@@ -52,8 +52,8 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       containerProps: ContainerPropsProp = {},
       children,
       open = false,
-      level = 0,
-      index = 0
+      parentId,
+      id
     } = props;
 
     const { ...containerProps } = ContainerPropsProp;
@@ -70,6 +70,8 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       isOpenAccordion,
       dropdownTimeout
     } = useMenu();
+    const finalParentId = parentId !== undefined ? parentId : '';
+    const finalId = id !== undefined ? id : '';
 
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
 
@@ -90,7 +92,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const [here, setHere] = useState(open);
 
-    const accordionShow = isOpenAccordion(level, index);
+    const accordionShow = isOpenAccordion(finalParentId, finalId);
 
     const [show, setShow] = useState(open);
 
@@ -108,7 +110,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       }
 
       if (hasSub && propToggle === 'accordion' && multipleExpand === false) {
-        setOpenAccordion(level, -1);
+        setOpenAccordion(finalParentId, '');
       }
 
       if (handleParentHide) {
@@ -122,7 +124,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       }
 
       if (hasSub && propToggle === 'accordion' && multipleExpand === false) {
-        setOpenAccordion(level, index);
+        setOpenAccordion(finalParentId, finalId);
       }
     };
 
@@ -242,7 +244,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const renderSubDropdown = (child: ReactElement) => {
       // Add some props to each child
       const modifiedProps: IMenuSubProps = {
-        level: level + 1,
+        parentId: `${parentId}-${finalId}`,
         toggle: propToggle,
         handleParentHide: handleHide,
         tabIndex,
@@ -291,7 +293,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
       // Add some props to each child
       const modifiedProps: IMenuSubProps = {
-        level: level + 1,
+        parentId: `${parentId}-${finalId}`,
         tabIndex,
         show,
         enter: accordionEnter,

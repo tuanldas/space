@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { throttle } from '@/utils';
 import * as React from 'react';
-import { MutableRefObject, ReactNode, useEffect, useRef, useCallback } from 'react';
+import { MutableRefObject, ReactNode, useCallback, useEffect, useRef } from 'react';
 
 type IScrollSpyProps = {
   children: ReactNode;
@@ -17,17 +17,17 @@ type IScrollSpyProps = {
 };
 
 const Scrollspy = ({
-  children,
-  targetRef,
-  onUpdate,
-  className,
-  offset = 0,
-  smooth = true,
-  dataAttribute = 'scrollspy',
-  activeClass = 'active',
-  history = true,
-  throttleTime = 200
-}: IScrollSpyProps) => {
+                     children,
+                     targetRef,
+                     onUpdate,
+                     className,
+                     offset = 0,
+                     smooth = true,
+                     dataAttribute = 'scrollspy',
+                     activeClass = 'active',
+                     history = true,
+                     throttleTime = 200
+                   }: IScrollSpyProps) => {
   const selfRef = useRef<HTMLDivElement | null>(null);
   const anchorElementsRef = useRef<Element[] | null>(null);
   const prevIdTracker = useRef<string | null>(null);

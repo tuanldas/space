@@ -4,10 +4,10 @@ const ActivitiesProjectStatus = () => {
   return (
     <TimelinesWrapper icon="rocket" line={false}>
       <div className="flex flex-col">
-        <div className="text-sm font-medium text-gray-800">
+        <div className="text-sm text-gray-900">
           Completed phase one of client project ahead of schedule.
         </div>
-        <span className="text-xs font-medium text-gray-500">6 days ago, 10:45 AM</span>
+        <span className="text-xs text-gray-600">6 days ago, 10:45 AM</span>
       </div>
     </TimelinesWrapper>
   );

@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+ 
 import plugin from 'tailwindcss/plugin';
 import svgToDataUri from 'mini-svg-data-uri';
 
