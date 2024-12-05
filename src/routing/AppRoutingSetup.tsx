@@ -2,7 +2,6 @@ import { ReactElement } from 'react';
 import { Navigate, Route, Routes } from 'react-router';
 import { RequireAuth } from '@/auth';
 import { Demo1Layout } from '@/layouts/demo1';
-import { DefaultPage } from '@/pages/dashboards';
 import { ErrorsRouting } from '@/errors';
 
 
@@ -11,7 +10,6 @@ const AppRoutingSetup = (): ReactElement => {
     <Routes>
       <Route element={<RequireAuth />}>
         <Route element={<Demo1Layout />}>
-          <Route path="/" element={<DefaultPage />} />
 
         </Route>
       </Route>
