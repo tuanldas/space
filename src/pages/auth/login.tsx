@@ -59,9 +59,9 @@ const Login = () => {
       try {
         await login(values.email, values.password);
 
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
       } catch {
-        setStatus('The login details are incorrect');
+        setStatus(intl.formatMessage({ id: 'AUTH.THE_LOGIN_DETAILS_ARE_INCORRECT' }));
         setSubmitting(false);
       }
       setLoading(false);

@@ -21,7 +21,8 @@
     "SIGN_IN": "Đăng nhập",
     "ENTER": "Nhập {name}",
     "EMAIL": "Email",
-    "PASSWORD": "Mật khẩu"
+    "PASSWORD": "Mật khẩu",
+    "THE_LOGIN_DETAILS_ARE_INCORRECT": "Thông tin đăng nhập không chính xác"
   },
   "VALIDATE": {
     "REQUIRED": "{name} không được để trống",

@@ -8,11 +8,6 @@ import { AuthPage } from '@/auth/AuthPage.tsx';
 const AppRoutingSetup = (): ReactElement => {
   return (
     <Routes>
-      <Route element={<RequireAuth />}>
-        <Route element={<Demo1Layout />}>
-
-        </Route>
-      </Route>
       <Route path="error/*" element={<ErrorsRouting />} />
       <Route path="auth/*" element={<AuthPage />} />
       <Route path="*" element={<Navigate to="/error/404" />} />
