@@ -22,7 +22,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   const [loading, setLoading] = useState(true);
   const [auth, setAuth] = useState<AuthModel | undefined>(authHelper.getAuth());
   const [currentUser, setCurrentUser] = useState<UserModel | undefined>();
-
   const saveAuth = (auth: AuthModel | undefined) => {
     setAuth(auth);
     if (auth) {

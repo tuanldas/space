@@ -59,7 +59,7 @@ const Login = () => {
       try {
         await login(values.email, values.password);
 
-        // navigate(from, { replace: true });
+        navigate(from, { replace: true });
       } catch {
         setStatus(intl.formatMessage({ id: 'AUTH.THE_LOGIN_DETAILS_ARE_INCORRECT' }));
         setSubmitting(false);
@@ -132,7 +132,7 @@ const Login = () => {
                 'is-invalid': formik.touched.password && formik.errors.password
               })}
             />
-            <button className="btn btn-icon" onClick={togglePassword}>
+            <button className="btn btn-icon" type={'button'} onClick={togglePassword}>
               <KeenIcon icon="eye" className={clsx('text-gray-500', { hidden: showPassword })} />
               <KeenIcon
                 icon="eye-slash"
