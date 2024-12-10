@@ -1,5 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { createContext, type Dispatch, type PropsWithChildren, type SetStateAction, useState } from 'react';
+import {
+  createContext,
+  type Dispatch,
+  type PropsWithChildren,
+  type SetStateAction,
+  useState
+} from 'react';
 
 import * as authHelper from '../_helpers';
 import { type AuthModel, type UserModel } from '@/auth';

@@ -69,7 +69,8 @@ export default class ApiCaller {
       }
     }
 
-    return await axios.put(this.backendUrl + this.endpoint, options?.data, this.requestOptions)
+    return await axios
+      .put(this.backendUrl + this.endpoint, options?.data, this.requestOptions)
       .catch((error) => {
         if (error.response.status === 401) {
           localStorage.clear();
@@ -88,7 +89,8 @@ export default class ApiCaller {
       }
     }
 
-    return await axios.delete(this.backendUrl + this.endpoint, this.requestOptions)
+    return await axios
+      .delete(this.backendUrl + this.endpoint, this.requestOptions)
       .catch((error) => {
         if (error.response.status === 401) {
           localStorage.clear();

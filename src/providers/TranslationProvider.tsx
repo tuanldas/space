@@ -56,8 +56,7 @@ export const flattenMessages = (nestedMessages: any, prefix = '') => {
 
 const initialProps: ITranslationProviderProps = {
   currentLanguage: getInitialLanguage(),
-  changeLanguage: (_: TLanguage) => {
-  },
+  changeLanguage: (_: TLanguage) => {},
   isRTL: () => false
 };
 
