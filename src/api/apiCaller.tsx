@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { getData } from '@/utils';
 
 interface ApiCallMethodGet {
   endpoint: string | null;
@@ -14,13 +15,18 @@ export default class ApiCaller {
   private endpoint = '';
   private requestOptions = {};
 
+  constructor() {
+    // @ts-ignore
+    axios.defaults.headers.common['Accept-Language'] = getData('lang');
+  }
+
   setUrl(endpoint: string) {
     this.endpoint += endpoint;
     return this;
   }
 
   setHeaders(options: AxiosRequestConfig) {
-    this.requestOptions = options;
+    this.requestOptions = { ...this.requestOptions, ...options };
     return this;
   }
 

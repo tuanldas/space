@@ -56,7 +56,8 @@ export const flattenMessages = (nestedMessages: any, prefix = '') => {
 
 const initialProps: ITranslationProviderProps = {
   currentLanguage: getInitialLanguage(),
-  changeLanguage: (_: TLanguage) => {},
+  changeLanguage: (_: TLanguage) => {
+  },
   isRTL: () => false
 };
 
@@ -91,6 +92,7 @@ const TranslationProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     document.documentElement.setAttribute('dir', currentLanguage.direction);
+    setData('lang', currentLanguage.code);
   }, [currentLanguage]);
 
   return (
