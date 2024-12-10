@@ -2,10 +2,7 @@ import { matchPath } from 'react-router';
 
 import { TMenuBreadcrumbs, TMenuConfig } from '../types';
 
-const useMenuBreadcrumbs = (
-  pathname: string,
-  items: TMenuConfig | null
-): TMenuBreadcrumbs => {
+const useMenuBreadcrumbs = (pathname: string, items: TMenuConfig | null): TMenuBreadcrumbs => {
   pathname = pathname.trim();
 
   const findParents = (items: TMenuConfig | null): TMenuBreadcrumbs => {

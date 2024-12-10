@@ -1,7 +1,8 @@
 import { KeenIcon } from '@/components';
-import React from 'react';
+import React, { useState } from 'react';
 
 const ModalShareProfileViaEmail = () => {
+  const [emailInput, setEmailInput] = useState('');
   return (
     <div className="flex flex-col px-5 gap-2.5">
       <div className="flex flex-center gap-1">
@@ -11,7 +12,13 @@ const ModalShareProfileViaEmail = () => {
 
       <div className="flex flex-center gap-2.5">
         <label className="input">
-          <input type="text" value="miles.turner@gmail.com" />
+          <input
+            type="text"
+            name="query"
+            value={emailInput}
+            onChange={(e) => setEmailInput(e.target.value)}
+            placeholder="miles.turner@gmail.com"
+          />
         </label>
 
         <button className="btn btn-primary">Share</button>

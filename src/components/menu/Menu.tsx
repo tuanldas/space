@@ -17,12 +17,12 @@ const initalProps: IMenuContextProps = {
   multipleExpand: false,
   dropdownTimeout: 0,
   // Default function for opening an accordion (to be overridden)
-  setOpenAccordion: (level: number, id: number) => {
-    console.log(`Accordion at level ${level}, with ID ${id} is now open`);
+  setOpenAccordion: (parentId: string, id: string) => {
+    console.log(`Accordion at level ${parentId}, with ID ${id} is now open`);
   },
   // Default function for checking if an accordion is open (to be overridden)
-  isOpenAccordion: (level: number, id: number) => {
-    console.log(`Checking if accordion at level ${level}, with ID ${id} is open`);
+  isOpenAccordion: (parentId: string, id: string) => {
+    console.log(`Checking if accordion at level ${parentId}, with ID ${id} is open`);
     return false; // By default, no accordion is open
   }
 };
@@ -41,26 +41,26 @@ const MenuComponent = ({
   dropdownTimeout = 150,
   multipleExpand = false
 }: IMenuProps) => {
-  const [openAccordions, setOpenAccordions] = useState<{ [key: number]: number | null }>({});
+  const [openAccordions, setOpenAccordions] = useState<{ [key: string]: string | null }>({});
 
   // Function to handle the accordion toggle
-  const setOpenAccordion = (level: number, id: number) => {
+  const setOpenAccordion = (parentId: string, id: string) => {
     setOpenAccordions((prevState) => ({
       ...prevState,
-      [level]: prevState[level] === id ? null : id // Toggle the current item and collapse others at the same level
+      [parentId]: prevState[parentId] === id ? null : id // Toggle the current item and collapse others at the same level
     }));
   };
 
-  const isOpenAccordion = (level: number, id: number) => {
-    return openAccordions[level] === id;
+  const isOpenAccordion = (parentId: string, id: string) => {
+    return openAccordions[parentId] === id;
   };
 
   const modifiedChildren = Children.map(children, (child, index) => {
     if (isValidElement(child)) {
       if (child.type === MenuItem) {
         const modifiedProps: IMenuItemProps = {
-          level: 1,
-          index
+          parentId: 'root',
+          id: `root-${index}`
         };
 
         return cloneElement(child, modifiedProps);

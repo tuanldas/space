@@ -1,16 +1,22 @@
 import { Fragment } from 'react';
-import { Modal, ModalContent, ModalBody, ModalHeader } from '@/components/modal'; // Import your custom Modal component
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 import { NavbarDropdown } from '@/partials/navbar';
-
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle
+} from '@/components/ui/dialog';
 
 interface IModalProfileProps {
   open: boolean;
-  onClose: () => void;
+  onOpenChange: () => void;
 }
 
-const ModalProfile = ({ open, onClose }: IModalProfileProps) => {
+const ModalProfile = ({ open, onOpenChange }: IModalProfileProps) => {
   return (
     <Fragment>
       <style>
@@ -24,17 +30,14 @@ const ModalProfile = ({ open, onClose }: IModalProfileProps) => {
         `}
       </style>
 
-      <Modal open={open} onClose={onClose} className="!flex py-[5%]">
-        <ModalContent className="container-fixed p-0">
-          <ModalHeader className="modal-rounded-t p-0 border-0 relative min-h-80 flex flex-col items-stretch justify-end bg-center bg-cover bg-no-repeat mb-7 modal-bg">
-            <div className="flex flex-col justify-end border-b-0 grow px-9 bg-gradient-to-t from-light from-3% to-transparent">
-              <button
-                className="btn btn-sm btn-icon btn-light btn-outline absolute top-0 right-0 me-5 mt-5 lg:mr-10 shadow-default"
-                onClick={onClose}
-              >
-                <KeenIcon icon="cross" />
-              </button>
-
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="container-fixed max-w-[auto] p-0 [&>button]:hidden">
+          <DialogHeader
+            className="modal-rounded-t p-0 border-0 relative min-h-80 flex flex-col items-stretch justify-end bg-center bg-cover bg-no-repeat mb-7 modal-bg">
+            <DialogTitle></DialogTitle>
+            <DialogDescription></DialogDescription>
+            <div
+              className="flex flex-col justify-end border-b-0 grow px-9 bg-gradient-to-t from-light from-3% to-transparent">
               <div className="flex justify-center mb-5">
                 <img
                   src={toAbsoluteUrl('/media/avatars/300-1.png')}
@@ -101,14 +104,18 @@ const ModalProfile = ({ open, onClose }: IModalProfileProps) => {
                 </div>
               </div>
             </div>
-          </ModalHeader>
-          <ModalBody className="scrollable-y py-0 mb-5 ps-6 pe-3 me-3">
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
 
-            </div>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+            <button
+              className="btn btn-sm btn-icon btn-light btn-outline absolute top-0 end-0 me-5 mt-5 lg:me-10 shadow-default"
+              data-modal-dismiss="true"
+              onClick={onOpenChange}
+            >
+              <KeenIcon icon="cross" />
+            </button>
+          </DialogHeader>
+          <DialogBody className="scrollable-y py-0 mb-5 ps-6 pe-3 me-3"></DialogBody>
+        </DialogContent>
+      </Dialog>
     </Fragment>
   );
 };

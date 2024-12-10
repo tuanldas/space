@@ -34,7 +34,7 @@ const HeaderTopbar = () => {
       >
         <KeenIcon icon="magnifier" />
       </button>
-      <ModalSearch open={searchModalOpen} onClose={handleClose} />
+      <ModalSearch open={searchModalOpen} onOpenChange={handleClose} />
 
       <Menu>
         <MenuItem
@@ -73,7 +73,7 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: isRTL() ? [10, 10] : [-10, 10]
+                  offset: isRTL() ? [-10, 10] : [10, 10]
                 }
               }
             ]
@@ -98,7 +98,7 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: isRTL() ? [70, 10] : [-70, 10] // [skid, distance]
+                  offset: isRTL() ? [-70, 10] : [70, 10] // [skid, distance]
                 }
               }
             ]

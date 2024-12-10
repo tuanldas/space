@@ -14,8 +14,10 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
       handleEntered,
       handleExited,
       children,
-      level
+      parentId
     } = props;
+
+    const finalParentId = parentId !== undefined ? parentId : 'root';
 
     const modifiedChildren = Children.map(children, (child, index) => {
       if (isValidElement(child)) {
@@ -23,8 +25,8 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
           // Add some props to each child
           const modifiedProps: IMenuItemProps = {
             handleParentHide,
-            level,
-            index
+            parentId: finalParentId,
+            id: `${finalParentId}-${index}`
           };
 
           // Return the child with modified props

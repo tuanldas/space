@@ -4,7 +4,7 @@ import { useSettings } from '@/providers';
 import { IKeenIconsProps } from './types';
 
 // KeenIcon using forwardRef to pass the ref and spread props
-const KeenIcon = forwardRef<HTMLElement, IKeenIconsProps>(
+export const KeenIcon = forwardRef<HTMLElement, IKeenIconsProps>(
   ({ icon, style, className = '', ...props }, ref) => {
     const { settings } = useSettings();
 
@@ -16,5 +16,3 @@ const KeenIcon = forwardRef<HTMLElement, IKeenIconsProps>(
     return <i ref={ref} {...props} className={clsx(`ki-${style}`, `ki-${icon}`, className)} />;
   }
 );
-
-export { KeenIcon };

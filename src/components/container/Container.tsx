@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { type ReactNode } from 'react';
 
-import { useSettings } from '../../providers/SettingsProvider';
 import { TSettingsContainer } from '@/config';
+import { useSettings } from '@/providers';
 
 export interface TPageContainerProps {
   children?: ReactNode;

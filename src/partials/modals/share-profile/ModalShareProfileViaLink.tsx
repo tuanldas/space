@@ -1,7 +1,8 @@
 import { KeenIcon } from '@/components';
-import React from 'react';
+import React, { useState } from 'react';
 
 const ModalShareProfileViaLink = () => {
+  const [linkInput, setLinkInput] = useState('');
   return (
     <div className="flex flex-col px-5 gap-2.5">
       <div className="flex flex-center gap-1">
@@ -10,7 +11,13 @@ const ModalShareProfileViaLink = () => {
       </div>
 
       <label className="input">
-        <input type="text" value="https://metronic.com/profiles/x7g2vA3kZ5" />
+        <input
+          type="text"
+          name="query"
+          value={linkInput}
+          onChange={(e) => setLinkInput(e.target.value)}
+          placeholder="https://metronic.com/profiles/x7g2vA3kZ5"
+        />
         <button className="btn btn-icon">
           <KeenIcon icon="copy" />
         </button>

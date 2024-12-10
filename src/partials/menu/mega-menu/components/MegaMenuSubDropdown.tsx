@@ -44,7 +44,7 @@ const MegaMenuSubDropdown = (items: TMenuConfig) => {
                 <KeenIcon icon="right" className="text-3xs rtl:transform rtl:rotate-180" />
               </MenuArrow>
             </MenuLink>
-            <MenuSub className="menu-default w-full max-w-[175px] lg:max-w-[220px]">
+            <MenuSub className="menu-default" rootClassName="max-w-[175px] lg:max-w-[220px]">
               {buildItems(item.children)}
             </MenuSub>
           </MenuItem>
@@ -58,7 +58,7 @@ const MegaMenuSubDropdown = (items: TMenuConfig) => {
                   <KeenIcon icon={item.icon} />
                 </MenuIcon>
               )}
-              <MenuTitle className={clsx('grow-0')}>{item.title}</MenuTitle>
+              <MenuTitle>{item.title}</MenuTitle>
 
               {item.disabled && (
                 <MenuBadge>

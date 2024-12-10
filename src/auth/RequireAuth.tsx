@@ -5,10 +5,10 @@ import { ScreenLoader } from '@/components/loaders';
 import { useAuthContext } from './useAuthContext';
 
 const RequireAuth = () => {
-  const { auth, isLoading } = useAuthContext();
+  const { auth, loading } = useAuthContext();
   const location = useLocation();
 
-  if (isLoading) {
+  if (loading) {
     return <ScreenLoader />;
   }
 

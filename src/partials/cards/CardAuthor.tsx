@@ -105,7 +105,7 @@ const CardAuthor = ({ avatar, bgImage, name, location, works }: IAuthorProps) =>
           </div>
         </div>
 
-        <div className="flex gap-5 scrollable-x -mt-8 ml-7.5">
+        <div className="flex gap-5 scrollable-x mt-8 ms-7.5">
           {works.map((work, index) => {
             return renderItem(work, index);
           })}

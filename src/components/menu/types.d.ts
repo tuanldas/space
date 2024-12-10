@@ -37,8 +37,8 @@ export interface IMenuContextProps {
   disabled?: boolean;
   dropdownTimeout?: number;
   multipleExpand?: boolean;
-  setOpenAccordion: (id: number, level: number) => void;
-  isOpenAccordion: (id: number, level: number) => boolean;
+  setOpenAccordion: (parentId: string, id: string) => void;
+  isOpenAccordion: (parentId: string, id: string) => boolean;
 }
 
 export interface IMenuItemRef {
@@ -49,8 +49,8 @@ export interface IMenuItemRef {
 
 export interface IMenuItemProps {
   path?: string;
-  level?: number;
-  index?: number;
+  id?: string;
+  parentId?: string;
   open?: boolean;
   toggle?: TMenuItemToggle;
   trigger?: TMenuItemTrigger;
@@ -105,7 +105,7 @@ export interface IMenuToggleProps {
 }
 
 export interface IMenuSubProps {
-  level?: number;
+  parentId?: string;
   show?: TMenuShow;
   enter?: boolean;
   toggle?: TMenuToggle;

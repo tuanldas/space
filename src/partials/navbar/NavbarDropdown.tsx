@@ -13,6 +13,7 @@ import { useLanguage } from '@/i18n';
 import { ModalShareProfile } from '../modals/share-profile';
 import { ModalGiveAward } from '../modals/give-award';
 import { ModalReportUser } from '../modals/report-user';
+import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 
 const NavbarDropdown = () => {
   const itemRef = useRef<any>(null);
@@ -106,9 +107,10 @@ const NavbarDropdown = () => {
           </MenuSub>
         </MenuItem>
       </Menu>
-      <ModalShareProfile open={ShareProfileModalOpen} onClose={handleShareProfileModalClose} />
-      <ModalGiveAward open={giveAwardModalOpen} onClose={handleGiveAwardModalClose} />
-      <ModalReportUser open={reportUserModalOpen} onClose={handleReportUserModalClose} />
+
+      <ModalShareProfile open={ShareProfileModalOpen} onOpenChange={handleShareProfileModalClose} />
+      <ModalGiveAward open={giveAwardModalOpen} onOpenChange={handleGiveAwardModalClose} />
+      <ModalReportUser open={reportUserModalOpen} onOpenChange={handleReportUserModalClose} />
     </Fragment>
   );
 };

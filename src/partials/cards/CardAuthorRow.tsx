@@ -23,7 +23,7 @@ const CardAuthorRow = ({ avatar, name, location, works }: IAuthorProps) => {
             {work.title}
           </a>
           <div className="text-2sm text-gray-700">
-            Token ID:
+            Token ID:&nbsp;
             <span className="text-2sm font-medium text-gray-800">{work.id}</span>
           </div>
         </div>

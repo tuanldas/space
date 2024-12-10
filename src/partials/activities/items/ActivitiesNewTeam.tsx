@@ -8,14 +8,14 @@ const ActivitiesNewTeam = () => {
     <TimelinesWrapper icon="code" line={true}>
       <div className="grow">
         <div className="flex flex-col pb-2.5">
-          <div className="text-sm font-medium text-gray-700">
+          <div className="text-sm text-gray-800">
             A new team
-            <a href="#" className="text-sm font-semibold text-gray-900 hover:text-primary-active">
+            <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary-active">
               &nbsp;Market Mavericks&nbsp;
             </a>
             joined community
           </div>
-          <span className="text-xs font-medium text-gray-500">1 month ago, 11:45 AM</span>
+          <span className="text-xs text-gray-600">1 month ago, 11:45 AM</span>
         </div>
 
         <div className="card shadow-none p-4">
@@ -50,10 +50,10 @@ const ActivitiesNewTeam = () => {
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <a href="#" className="text-base font-semibold hover:text-primary text-gray-800">
+                <a href="#" className="text-base font-medium hover:text-primary text-gray-900">
                   Market Mavericks
                 </a>
-                <p className="text-2sm font-medium text-gray-600">
+                <p className="text-2sm text-gray-700">
                   Navigating markets with strategic solutions
                 </p>
               </div>
@@ -61,12 +61,12 @@ const ActivitiesNewTeam = () => {
 
             <div className="flex flex-wrap items-center gap-6 lg:gap-12">
               <div className="flex flex-col items-end gap-5">
-                <span className="text-2xs font-normal text-gray-500 uppercase">rating</span>
+                <span className="text-2xs text-gray-600 uppercase">rating</span>
                 <CommonRating rating={4} round={0.5} />
               </div>
 
               <div className="flex flex-col items-end gap-3 lg:min-w-24 shrink-0 max-w-auto">
-                <span className="text-2xs font-normal text-gray-500 uppercase">memebers</span>
+                <span className="text-2xs text-gray-600 uppercase">members</span>
                 <CommonAvatars
                   size="size-7"
                   group={[

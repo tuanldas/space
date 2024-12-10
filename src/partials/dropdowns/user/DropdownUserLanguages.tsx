@@ -1,6 +1,6 @@
 import { FormattedMessage } from 'react-intl';
 import { KeenIcon } from '@/components';
-import { MenuItem, MenuLink, MenuTitle, MenuIcon, MenuBadge, MenuSub } from '@/components/menu';
+import { MenuBadge, MenuIcon, MenuItem, MenuLink, MenuSub, MenuTitle } from '@/components/menu';
 import clsx from 'clsx';
 import { I18N_LANGUAGES, TLanguage, useLanguage } from '@/i18n';
 
@@ -67,7 +67,8 @@ const DropdownUserLanguages = ({ menuItemRef }: IDropdownUserLanguagesProps) => 
         <MenuTitle>
           <FormattedMessage id="USER.MENU.LANGUAGE" />
         </MenuTitle>
-        <div className="flex items-center gap-1.5 rounded-md border border-gray-300 text-gray-600 p-1.5 text-2xs font-medium shrink-0">
+        <div
+          className="flex items-center gap-1.5 rounded-md border border-gray-300 text-gray-600 p-1.5 text-2xs font-medium shrink-0">
           {currentLanguage.label}
           <img
             src={currentLanguage.flag}

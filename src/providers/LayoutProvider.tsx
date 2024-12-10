@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
+import { getData, setData } from '@/utils';
 
-import { getData, setData } from '../utils';
 
 export interface ILayoutConfig {
   name: string;
@@ -33,9 +33,11 @@ const initialProps: ILayoutProps = {
     return {};
   },
   hasLayout: (name: string): boolean => false,
-  updateLayout: (name: string, config: Partial<ILayoutConfig>) => {},
+  updateLayout: (name: string, config: Partial<ILayoutConfig>) => {
+  },
   currentLayout: null,
-  setCurrentLayout: (layoutProvider: any) => {}
+  setCurrentLayout: (layoutProvider: any) => {
+  }
 };
 
 const LayoutContext = createContext<ILayoutProps>(initialProps);
