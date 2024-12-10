@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { getData } from '@/utils';
 
 interface ApiCallMethodGet {
   endpoint: string | null;
@@ -14,11 +13,6 @@ export default class ApiCaller {
   private backendUrl = import.meta.env.VITE_APP_BACKEND_URL + '/api';
   private endpoint = '';
   private requestOptions = {};
-
-  constructor() {
-    // @ts-ignore
-    axios.defaults.headers.common['Accept-Language'] = getData('lang');
-  }
 
   setUrl(endpoint: string) {
     this.endpoint += endpoint;

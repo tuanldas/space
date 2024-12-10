@@ -9,11 +9,6 @@ import { setupAxios } from './auth';
 import { ProvidersWrapper } from './providers';
 import React from 'react';
 
-/**
- * Inject interceptors for axios.
- *
- * @see https://github.com/axios/axios#interceptors
- */
 setupAxios(axios);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
