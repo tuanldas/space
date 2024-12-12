@@ -1,20 +1,8 @@
 {
   "USER": {
     "MENU": {
-      "PUBLIC_PROFILE": "Public Profile",
-      "MY_PROFILE": "My Profile",
-      "MY_ACCOUNT": "My Account",
-      "GET_STARTED": "Get Started",
-      "BILLING": "Billing",
-      "SECURITY": "Security",
-      "MEMBERS_&_ROLES": "Members & Roles",
-      "INTEGRATIONS": "Integrations",
-      "NOTIFICATIONS": "Notifications",
-      "DEV_FORUM": "Dev Forum",
-      "PAYMENT_&_SUBSCRIPTION_INFO": "Payment & subscription info",
-      "DARK_MODE": "Dark Mode",
-      "LOGOUT": "Logout",
-      "LANGUAGE": "Language"
+      "DARK_MODE": "Tối",
+      "LOGOUT": "Đăng xuất"
     }
   },
   "AUTH": {

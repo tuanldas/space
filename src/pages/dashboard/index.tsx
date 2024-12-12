@@ -9,7 +9,7 @@ const Dashboard = () => {
         <Container>
           <Toolbar>
             <ToolbarHeading>
-              <ToolbarPageTitle text={'NFT'} />
+              <ToolbarPageTitle text={'Tổng quan'} />
             </ToolbarHeading>
           </Toolbar>
         </Container>
