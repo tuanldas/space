@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router';
 
 import { AuthPage } from '@/auth';
 import { RequireAuth } from '@/auth/RequireAuth';
-import { Demo5Layout } from '@/layouts/demo5';
+import { Demo2Layout as Layout } from '@/layouts/demo2';
 import { ErrorsRouting } from '@/errors';
 import Dashboard from '@/pages/dashboard';
 import Wallets from '@/pages/wallets';
@@ -12,7 +12,7 @@ const AppRoutingSetup = (): ReactElement => {
   return (
     <Routes>
       <Route element={<RequireAuth />}>
-        <Route element={<Demo5Layout />}>
+        <Route element={<Layout />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="wallets" element={<Wallets />} />
         </Route>
