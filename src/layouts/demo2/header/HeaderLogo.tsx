@@ -1,16 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { KeenIcon } from '@/components/keenicons';
 import { toAbsoluteUrl } from '@/utils';
-import {
-  Menu,
-  MenuArrow,
-  MenuIcon,
-  MenuItem,
-  MenuLink,
-  MenuSub,
-  MenuTitle,
-  MenuToggle
-} from '@/components/menu';
+import { Menu, MenuArrow, MenuIcon, MenuItem, MenuLink, MenuSub, MenuTitle, MenuToggle } from '@/components/menu';
 import { MENU_ROOT } from '@/config';
 import { useEffect, useState } from 'react';
 import { useLanguage } from '@/i18n';
@@ -18,7 +9,7 @@ import { useLanguage } from '@/i18n';
 const HeaderLogo = () => {
   const { pathname } = useLocation();
   const { isRTL } = useLanguage();
-  const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[1]);
+  const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[0]);
 
   useEffect(() => {
     MENU_ROOT.forEach((item) => {
