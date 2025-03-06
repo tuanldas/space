@@ -3,7 +3,7 @@ import { type TLanguageCode } from '@/i18n';
 export interface AuthModel {
   access_token: string;
   refreshToken?: string;
-  api_token: string;
+  expires_in: number;
 }
 
 export interface UserModel {
@@ -20,5 +20,4 @@ export interface UserModel {
   roles?: number[];
   pic?: string;
   language?: TLanguageCode;
-  auth?: AuthModel;
 }

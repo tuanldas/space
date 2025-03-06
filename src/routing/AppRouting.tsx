@@ -1,12 +1,12 @@
 import { ReactElement, useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
+import { AppRoutingSetup } from '.';
 import { useAuthContext } from '@/auth';
 import { useLoaders } from '@/providers';
-import { AppRoutingSetup } from '.';
+import { useLocation } from 'react-router-dom';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
-  const { verify, setLoading } = useAuthContext();
+  const { setLoading, isAuthenticated } = useAuthContext();
   const [previousLocation, setPreviousLocation] = useState('');
   const [firstLoad, setFirstLoad] = useState(true);
   const location = useLocation();
@@ -14,27 +14,19 @@ const AppRouting = (): ReactElement => {
 
   useEffect(() => {
     if (firstLoad) {
-      verify().finally(() => {
-        setLoading(false);
-        setFirstLoad(false);
-      });
+      setLoading(false);
+      setFirstLoad(false);
     }
-  });
+  }, [firstLoad, setLoading]);
 
   useEffect(() => {
     if (!firstLoad) {
       setProgressBarLoader(true);
-      verify()
-        .catch(() => {
-          throw new Error('User verify request failed!');
-        })
-        .finally(() => {
-          setPreviousLocation(path);
-          setProgressBarLoader(false);
-          if (path === previousLocation) {
-            setPreviousLocation('');
-          }
-        });
+      setPreviousLocation(path);
+      setProgressBarLoader(false);
+      if (path === previousLocation) {
+        setPreviousLocation('');
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
