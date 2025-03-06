@@ -4,7 +4,6 @@ import { Outlet, useLocation } from 'react-router';
 import { useMenuCurrentItem } from '@/components/menu';
 import { useMenus } from '@/providers';
 import { Footer, Header, Navbar } from '../';
-import { Toolbar, ToolbarHeading } from '../toolbar';
 
 const Main = () => {
   const { pathname } = useLocation();
@@ -23,11 +22,7 @@ const Main = () => {
         <Navbar />
 
         <main className="grow" role="content">
-          {!pathname.includes('/public-profile/') && (
-            <Toolbar>
-              <ToolbarHeading />
-            </Toolbar>
-          )}
+          {!pathname.includes('/public-profile/') && (<></>)}
           <Outlet />
         </main>
         <Footer />

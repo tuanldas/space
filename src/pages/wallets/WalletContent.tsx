@@ -73,7 +73,6 @@ const WalletContent = () => {
     }
   }, [error]);
 
-  console.log(items);
   const renderItem = (data: ICampaignsContentItem, index: number) => {
     return (
       <WalletRow

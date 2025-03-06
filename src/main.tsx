@@ -8,19 +8,21 @@ import { App } from './App';
 import { setupAxios } from './auth';
 import { ProvidersWrapper } from './providers';
 import React from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-/**
- * Inject interceptors for axios.
- *
- * @see https://github.com/axios/axios#interceptors
- */
 setupAxios(axios);
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <ProvidersWrapper>
-      <App />
-    </ProvidersWrapper>
+    <QueryClientProvider client={queryClient}>
+      <ProvidersWrapper>
+        <App />
+      </ProvidersWrapper>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   </React.StrictMode>
 );
