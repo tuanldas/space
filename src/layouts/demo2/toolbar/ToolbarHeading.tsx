@@ -1,20 +1,7 @@
-import { ReactNode } from 'react';
-import { useMenus } from '@/providers';
-import { useMenuCurrentItem } from '@/components';
-import { useLocation } from 'react-router';
-
-export interface IToolbarHeadingProps {
-  title?: string | ReactNode;
-}
-
-const ToolbarHeading = ({ title = '' }: IToolbarHeadingProps) => {
-  const { getMenuConfig } = useMenus();
-  const { pathname } = useLocation();
-  const currentMenuItem = useMenuCurrentItem(pathname, getMenuConfig('primary'));
-
+const ToolbarHeading = () => {
   return (
     <div className="flex items-center flex-wrap gap-1 lg:gap-5">
-      <h1 className="font-medium text-lg text-gray-900">{title || currentMenuItem?.title}</h1>
+      <h1 className="font-medium text-lg text-gray-900"></h1>
     </div>
   );
 };

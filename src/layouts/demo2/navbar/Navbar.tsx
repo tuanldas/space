@@ -1,5 +1,5 @@
 import { Container } from '@/components/container';
-import { NavbarMenu, NavbarLinks } from '../';
+import { NavbarLinks, NavbarMenu } from '../';
 
 const Navbar = () => {
   return (
