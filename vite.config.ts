@@ -5,12 +5,15 @@ import tailwindcss from 'tailwindcss';
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    port: 3000,
+    host: true
+  },
   css: {
     postcss: {
       plugins: [tailwindcss()]
     }
   },
-  base: '/metronic/tailwind/react',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
