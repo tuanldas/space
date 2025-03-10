@@ -1,4 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { getData } from '@/utils';
+import { I18N_DEFAULT_LANGUAGE } from '@/i18n';
 
 interface ApiCallMethodGet {
   endpoint: string | null;
@@ -13,6 +15,11 @@ export default class ApiCaller {
   private backendUrl = import.meta.env.VITE_APP_BACKEND_URL + '/api';
   private endpoint = '';
   private requestOptions = {};
+
+  constructor() {
+    const lang = getData('lang');
+    axios.defaults.headers.common['Accept-Language'] = typeof lang === 'string' ? lang : I18N_DEFAULT_LANGUAGE.code;
+  }
 
   setUrl(endpoint: string) {
     this.endpoint += endpoint;
