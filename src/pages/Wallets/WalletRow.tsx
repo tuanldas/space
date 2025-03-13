@@ -4,7 +4,6 @@ import { toAbsoluteUrl } from '@/utils';
 const WalletRow = ({
   logo,
   logoSize,
-  logoDark,
   title,
   description,
   status,
@@ -32,12 +31,20 @@ const WalletRow = ({
       <div className="flex items-center flex-wrap justify-between gap-5">
         <div className="flex items-center gap-3.5">
           <div className="flex items-center justify-center w-[50px]">
-            <img
-              src={logo}
-              className={`size-[${logoSize}] shrink-0`}
-              alt=""
-              onError={addDefaultImg}
-            />
+            {logo !== null ? (
+              <img
+                src={logo}
+                className={`size-[${logoSize}] shrink-0`}
+                alt=""
+                onError={addDefaultImg}
+              />
+            ) : (
+              <img
+                src={toAbsoluteUrl('/media/image.png')}
+                className={`size-[${logoSize}] shrink-0`}
+                alt=""
+              />
+            )}
           </div>
 
           <div className="">

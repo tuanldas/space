@@ -4,9 +4,10 @@ import CardCampaignRowLoading from '@/partials/loading/CardCampaignRowLoading.ts
 import { useEffect, useState } from 'react';
 import { renderCurrency } from '@/utils';
 import { FormattedMessage } from 'react-intl';
-import { WalletRow } from '@/pages/wallets/WalletRow.tsx';
+import { WalletRow } from '@/pages/Wallets/WalletRow.tsx';
 
 interface ICampaignsContentItem {
+  id: string;
   logo: string;
   logoSize?: string;
   logoDark?: string;
@@ -23,12 +24,13 @@ interface ICampaignsContentItem {
   };
 }
 
-interface ICampaignsContentItems extends Array<ICampaignsContentItem> {}
+interface ICampaignsContentItems extends Array<ICampaignsContentItem> {
+}
 
 const WalletContent = () => {
   const [items, setItems] = useState<ICampaignsContentItems>([]);
   const { data, isLoading, error, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['wallets'],
+    queryKey: ['Wallets'],
     queryFn: callApiGetWallets,
     initialPageParam: 1,
     getNextPageParam: (data) => {
@@ -50,7 +52,8 @@ const WalletContent = () => {
         const pageData = page.data;
         const convertData2 = pageData.map((item: any) => {
           return {
-            logo: 'twitch-purple.svg',
+            id: item.id,
+            logo: item.icon,
             logoSize: '50px',
             title: item.name,
             description: renderCurrency(item.balance, item.currency),
@@ -82,7 +85,7 @@ const WalletContent = () => {
         description={data.description}
         status={data.status}
         statistics={[]}
-        url="#"
+        url={`/wallets/${data.id}`}
         key={index}
       />
     );
@@ -103,7 +106,6 @@ const WalletContent = () => {
       </div>
     );
   }
-
   return (
     <div className="flex flex-col items-stretch gap-5 lg:gap-7.5">
       <div className="flex flex-wrap items-center gap-5 justify-between"></div>

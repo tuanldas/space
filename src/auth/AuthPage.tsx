@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router';
 import { AuthLayout } from '@/layouts/auth';
-import Login from '@/pages/auth/login.tsx';
+import Login from '@/pages/Auth/login.tsx';
 import { useAuthContext } from '@/auth/useAuthContext.ts';
 
 const AuthPage = () => {

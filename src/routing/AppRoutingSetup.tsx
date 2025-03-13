@@ -5,8 +5,9 @@ import { AuthPage } from '@/auth';
 import { RequireAuth } from '@/auth/RequireAuth';
 import { Demo2Layout as Layout } from '@/layouts/demo2';
 import { ErrorsRouting } from '@/errors';
-import Dashboard from '@/pages/dashboard';
-import Wallets from '@/pages/wallets';
+import WalletDetail from '@/pages/WalletDetail';
+import Dashboard from '@/pages/Dashboard';
+import Wallets from '@/pages/Wallets';
 
 const AppRoutingSetup = (): ReactElement => {
   return (
@@ -15,6 +16,7 @@ const AppRoutingSetup = (): ReactElement => {
         <Route element={<Layout />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="wallets" element={<Wallets />} />
+          <Route path="wallets/:walletId" element={<WalletDetail />} />
         </Route>
       </Route>
       <Route path="error/*" element={<ErrorsRouting />} />

@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Container } from '@/components';
-import { WalletContent } from '@/pages/wallets/WalletContent.tsx';
+import { WalletContent } from '@/pages/Wallets/WalletContent.tsx';
 
 const Wallets = () => {
   return (

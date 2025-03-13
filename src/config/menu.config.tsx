@@ -13,7 +13,7 @@ export const MENU_SIDEBAR: TMenuConfig = [
       {
         title: 'Wallets.Wallets',
         icon: 'wallet',
-        path: '/wallets'
+        path: '/Wallets'
       }
     ]
   }
@@ -328,28 +328,28 @@ export const MENU_MEGA: TMenuConfig = [
           {
             title: 'Classic Layout',
             children: [
-              { title: 'Sign In', path: '/auth/classic/login' },
-              { title: 'Sign Up', path: '/auth/classic/signup' },
-              { title: '2FA', path: '/auth/classic/2fa' },
-              { title: 'Check Email', path: '/auth/classic/check-email' },
+              { title: 'Sign In', path: '/Auth/classic/login' },
+              { title: 'Sign Up', path: '/Auth/classic/signup' },
+              { title: '2FA', path: '/Auth/classic/2fa' },
+              { title: 'Check Email', path: '/Auth/classic/check-email' },
               {
                 title: 'Reset Password',
                 children: [
                   {
                     title: 'Enter Email',
-                    path: '/auth/classic/reset-password/enter-email'
+                    path: '/Auth/classic/reset-password/enter-email'
                   },
                   {
                     title: 'Check Email',
-                    path: '/auth/classic/reset-password/check-email'
+                    path: '/Auth/classic/reset-password/check-email'
                   },
                   {
                     title: 'Change Password',
-                    path: '/auth/classic/reset-password/change'
+                    path: '/Auth/classic/reset-password/change'
                   },
                   {
                     title: 'Password is Changed',
-                    path: '/auth/classic/reset-password/changed'
+                    path: '/Auth/classic/reset-password/changed'
                   }
                 ]
               }
@@ -358,28 +358,28 @@ export const MENU_MEGA: TMenuConfig = [
           {
             title: 'Branded Layout',
             children: [
-              { title: 'Sign In', path: '/auth/login' },
-              { title: 'Sign Up', path: '/auth/signup' },
-              { title: '2FA', path: '/auth/2fa' },
-              { title: 'Check Email', path: '/auth/check-email' },
+              { title: 'Sign In', path: '/Auth/login' },
+              { title: 'Sign Up', path: '/Auth/signup' },
+              { title: '2FA', path: '/Auth/2fa' },
+              { title: 'Check Email', path: '/Auth/check-email' },
               {
                 title: 'Reset Password',
                 children: [
                   {
                     title: 'Enter Email',
-                    path: '/auth/reset-password/enter-email'
+                    path: '/Auth/reset-password/enter-email'
                   },
                   {
                     title: 'Check Email',
-                    path: '/auth/reset-password/check-email'
+                    path: '/Auth/reset-password/check-email'
                   },
                   {
                     title: 'Change Password',
-                    path: '/auth/reset-password/change'
+                    path: '/Auth/reset-password/change'
                   },
                   {
                     title: 'Password is Changed',
-                    path: '/auth/reset-password/changed'
+                    path: '/Auth/reset-password/changed'
                   }
                 ]
               }
@@ -390,11 +390,11 @@ export const MENU_MEGA: TMenuConfig = [
       {
         title: 'Other Pages',
         children: [
-          { title: 'Welcome Message', icon: 'like-2', path: '/auth/welcome-message' },
+          { title: 'Welcome Message', icon: 'like-2', path: '/Auth/welcome-message' },
           {
             title: 'Account Deactivated',
             icon: 'shield-cross',
-            path: '/auth/account-deactivated'
+            path: '/Auth/account-deactivated'
           },
           { title: 'Error 404', icon: 'message-question', path: '/error/404' },
           { title: 'Error 500', icon: 'information', path: '/error/500' }

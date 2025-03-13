@@ -1,7 +1,7 @@
 import { type ILayoutConfig } from '@/providers/LayoutProvider';
 
 const authLayoutConfig: ILayoutConfig = {
-  // Setting the layout name to 'auth'
+  // Setting the layout name to 'Auth'
   name: 'auth',
 
   // Options object is currently empty but can be extended with layout-specific configurations

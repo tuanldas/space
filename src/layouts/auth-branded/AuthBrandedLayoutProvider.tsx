@@ -23,7 +23,7 @@ const useAuthBrandedLayout = () => useContext(LayoutContext);
 const AuthBrandedLayoutProvider = ({ children }: PropsWithChildren) => {
   const { getLayout, setCurrentLayout } = useLayout(); // Access layout-related functions
 
-  // Function to merge the current layout with the branded auth layout configuration
+  // Function to merge the current layout with the branded Auth layout configuration
   const getLayoutConfig = () => {
     return deepMerge(authLayoutBrandedConfig, getLayout(authLayoutBrandedConfig.name));
   };
