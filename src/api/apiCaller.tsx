@@ -1,4 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { getData } from '@/utils';
+import { I18N_DEFAULT_LANGUAGE } from '@/i18n';
 
 interface ApiCallMethodGet {
   endpoint: string | null;
