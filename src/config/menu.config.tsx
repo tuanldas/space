@@ -13,7 +13,7 @@ export const MENU_SIDEBAR: TMenuConfig = [
       {
         title: 'Wallets.Wallets',
         icon: 'wallet',
-        path: '/Wallets'
+        path: '/wallets'
       }
     ]
   }

@@ -4,7 +4,6 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import prettierPlugin from 'eslint-plugin-prettier';
 
 const cleanedGlobals = Object.fromEntries(
     Object.entries(globals.browser).map(([key, value]) => [key.trim(), value])
@@ -29,7 +28,6 @@ export default [
             '@typescript-eslint': tsPlugin,
             'react-hooks': reactHooks,
             'react-refresh': reactRefresh,
-            prettier: prettierPlugin,
         },
         rules: {
             ...reactHooks.configs.recommended.rules,
@@ -38,7 +36,6 @@ export default [
                 { allowConstantExport: true },
             ],
             '@typescript-eslint/no-unused-vars': ['error'],
-            'prettier/prettier': 'warn'
         },
     },
     {
@@ -60,7 +57,6 @@ export default [
             '@typescript-eslint/naming-convention': 'off',
             '@typescript-eslint/restrict-template-expressions': 'off',
             '@typescript-eslint/restrict-plus-operands': 'off',
-            'prettier/prettier': 'warn',
         },
     },
 ];

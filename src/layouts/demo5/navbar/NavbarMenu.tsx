@@ -18,7 +18,7 @@ const NavbarMenu = () => {
     },
     {
       title: 'Wallets.Wallets',
-      path: '/Wallets'
+      path: '/wallets'
     }
   ];
 
