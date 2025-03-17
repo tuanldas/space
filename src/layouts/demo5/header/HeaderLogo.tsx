@@ -1,20 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { toAbsoluteUrl } from '@/utils';
 import { useResponsive } from '@/hooks';
-import {
-  Menu,
-  MenuArrow,
-  MenuIcon,
-  MenuItem,
-  MenuLink,
-  MenuSub,
-  MenuTitle,
-  MenuToggle,
-  KeenIcon
-} from '@/components';
+import { KeenIcon, Menu, MenuArrow, MenuIcon, MenuItem, MenuLink, MenuSub, MenuTitle, MenuToggle } from '@/components';
 
 import { useDemo5Layout } from '..';
 import { useLanguage } from '@/i18n';
+import { useEffect, useState } from 'react';
 
 interface IHeaderLogoTeam {
   title: string;
@@ -22,24 +13,41 @@ interface IHeaderLogoTeam {
   urlPartial: string;
   path: string;
 }
-interface IHeaderLogoTeams extends Array<IHeaderLogoTeam> {}
+
+interface IHeaderLogoTeams extends Array<IHeaderLogoTeam> {
+}
 
 interface IHeaderLogoItem {
   title: string;
   icon: string;
+  path: string;
 }
-interface IHeaderLogoItems extends Array<IHeaderLogoItem> {}
 
-interface IHeaderLogoStaging {
-  title: string;
-  icon: string;
+interface IHeaderLogoItems extends Array<IHeaderLogoItem> {
 }
-interface IHeaderLogoStagings extends Array<IHeaderLogoStaging> {}
+
+const items: IHeaderLogoItems = [
+  {
+    title: 'Account',
+    icon: 'setting-2',
+    path: '/'
+  }
+];
 
 const HeaderLogo = () => {
   const desktopMode = useResponsive('up', 'lg');
   const { setMobileSidebarOpen } = useDemo5Layout();
   const { isRTL } = useLanguage();
+  const { pathname } = useLocation();
+  const [selectedMenuItem, setSelectedMenuItem] = useState(items[0]);
+
+  useEffect(() => {
+    items.forEach((item) => {
+      if (item.path && pathname.includes(item.path)) {
+        setSelectedMenuItem(item);
+      }
+    });
+  }, [pathname]);
 
   const handleSidebarOpen = () => {
     setMobileSidebarOpen(true);
@@ -51,42 +59,6 @@ const HeaderLogo = () => {
       icon: 'profile-circle',
       urlPartial: '/public-profile/',
       path: '/public-profile/profiles/default'
-    },
-    {
-      title: 'KeenTeam',
-      icon: 'setting-2',
-      urlPartial: '/account/',
-      path: '/'
-    }
-  ];
-
-  const items: IHeaderLogoItems = [
-    {
-      title: 'Fall ‘24 Campaign',
-      icon: 'profile-circle'
-    },
-    {
-      title: 'Fall Winter 2024 ',
-      icon: 'setting-2'
-    },
-    {
-      title: 'Barberry Autmn 24',
-      icon: 'users'
-    },
-    {
-      title: 'PF24 Advertising',
-      icon: 'security-user'
-    }
-  ];
-
-  const stagings: IHeaderLogoStagings = [
-    {
-      title: 'Staging',
-      icon: 'profile-circle'
-    },
-    {
-      title: 'Account',
-      icon: 'setting-2'
     }
   ];
 
@@ -173,7 +145,7 @@ const HeaderLogo = () => {
               }}
             >
               <MenuToggle className="text-gray-900 text-sm font-medium">
-                Fall 24 Campaign
+                {selectedMenuItem.title}
                 <MenuArrow>
                   <KeenIcon icon="down" />
                 </MenuArrow>
@@ -181,54 +153,13 @@ const HeaderLogo = () => {
               <MenuSub className="menu-default w-48 py-2">
                 {items.map((item, index) => (
                   <MenuItem key={index}>
-                    <MenuLink path="/">
+                    <MenuLink path={item.path}>
                       {item.icon && (
                         <MenuIcon>
                           <KeenIcon icon={item.icon} />
                         </MenuIcon>
                       )}
                       <MenuTitle>{item.title}</MenuTitle>
-                    </MenuLink>
-                  </MenuItem>
-                ))}
-              </MenuSub>
-            </MenuItem>
-          </Menu>
-
-          <span className="text-sm text-gray-400 font-medium px-2.5">/</span>
-
-          <Menu className="menu-default">
-            <MenuItem
-              toggle="dropdown"
-              trigger="hover"
-              dropdownProps={{
-                placement: isRTL() ? 'bottom-end' : 'bottom-start',
-                modifiers: [
-                  {
-                    name: 'offset',
-                    options: {
-                      offset: [0, 10] // [skid, distance]
-                    }
-                  }
-                ]
-              }}
-            >
-              <MenuToggle className="text-gray-900 text-sm font-medium">
-                Staging
-                <MenuArrow>
-                  <KeenIcon icon="down" />
-                </MenuArrow>
-              </MenuToggle>
-              <MenuSub className="menu-default w-48 py-2">
-                {stagings.map((staging, index) => (
-                  <MenuItem key={index}>
-                    <MenuLink path="/">
-                      {staging.icon && (
-                        <MenuIcon>
-                          <KeenIcon icon={staging.icon} />
-                        </MenuIcon>
-                      )}
-                      <MenuTitle>{staging.title}</MenuTitle>
                     </MenuLink>
                   </MenuItem>
                 ))}
