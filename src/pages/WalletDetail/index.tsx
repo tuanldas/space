@@ -1,14 +1,19 @@
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Fragment } from 'react';
+import { Container } from '@/components/container';
+import { WalletDetailContent } from '@/pages/WalletDetail/WalletDetailContent.tsx';
 
 const WalletDetail = () => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
+  const { walletId } = useParams();
+  console.log(walletId);
 
-  // Lấy giá trị của một query param cụ thể
-  const paramValue = queryParams.get('walletId');
-  console.log(paramValue);
   return (
     <>
+      <Fragment>
+        <Container>
+          <WalletDetailContent />
+        </Container>
+      </Fragment>
     </>
   );
 };
