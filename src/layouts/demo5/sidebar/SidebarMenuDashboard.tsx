@@ -78,51 +78,6 @@ const SidebarMenuDashboard = () => {
           path: ''
         }
       ]
-    },
-    {
-      title: 'Security',
-      children: [
-        {
-          title: 'Data Encryption',
-          icon: 'chart-line-star',
-          path: ''
-        },
-        {
-          title: 'Rate Limiting',
-          icon: 'percentage',
-          path: ''
-        },
-        {
-          title: 'Access Control',
-          icon: 'safe-home',
-          path: ''
-        },
-        {
-          title: 'Incident Response',
-          icon: 'status',
-          path: ''
-        }
-      ]
-    },
-    {
-      title: 'Analytics',
-      children: [
-        {
-          title: 'Fetching Data',
-          icon: 'calendar-8',
-          path: ''
-        },
-        {
-          title: 'Custom Reports',
-          icon: 'office-bag',
-          path: ''
-        },
-        {
-          title: 'Real Time Analytics',
-          icon: 'safe-home',
-          path: ''
-        }
-      ]
     }
   ];
 

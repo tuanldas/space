@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router';
 
 import { AuthPage } from '@/auth';
 import { RequireAuth } from '@/auth/RequireAuth';
-import { Demo2Layout as Layout } from '@/layouts/demo2';
+import { Demo5Layout as Layout } from '@/layouts/demo5';
 import { ErrorsRouting } from '@/errors';
 import WalletDetail from '@/pages/WalletDetail';
 import Dashboard from '@/pages/Dashboard';
