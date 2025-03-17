@@ -39,43 +39,17 @@ const SidebarMenuDashboard = () => {
       path: '',
       icon: 'calendar',
       active: true
-    },
-    {
-      title: 'Client API',
-      path: '',
-      icon: 'setting'
     }
   ];
 
   const menuItems: IDashboardMenuItems = [
     {
-      title: 'Configuration',
+      title: '',
       children: [
         {
           title: 'API Setup',
           icon: 'setting',
-          path: ''
-        },
-        {
-          title: 'Team Settings',
-          icon: 'users',
-          path: '',
-          active: true
-        },
-        {
-          title: 'Authentication',
-          icon: 'password-check',
-          path: ''
-        },
-        {
-          title: 'Endpoints Configs',
-          icon: 'technology-4',
-          path: ''
-        },
-        {
-          title: 'Rate Limiting',
-          icon: 'chart-line-star',
-          path: ''
+          path: '/'
         }
       ]
     }

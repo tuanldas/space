@@ -5,13 +5,14 @@ import {
   IMenuItemConfig,
   Menu,
   MenuArrow,
-  TMenuConfig,
   MenuItem,
   MenuLink,
   MenuSub,
-  MenuTitle
+  MenuTitle,
+  TMenuConfig
 } from '@/components/menu';
 import { useMenus } from '@/providers';
+import { FormattedMessage } from 'react-intl';
 
 const SidebarMenuDefault = () => {
   const { getMenuConfig } = useMenus();
@@ -44,8 +45,9 @@ const SidebarMenuDefault = () => {
                 <span className="flex menu-item-show:hidden">{item.expandTitle}</span>
               </MenuTitle>
             ) : (
-              <MenuTitle className="text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-primary menu-link-hover:text-primary">
-                {item.title}
+              <MenuTitle
+                className="text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-primary menu-link-hover:text-primary">
+                <FormattedMessage id={item.title} />
               </MenuTitle>
             )}
             {buildMenuArrow()}
@@ -65,8 +67,9 @@ const SidebarMenuDefault = () => {
               indention[level]
             )}
           >
-            <MenuTitle className="text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-primary menu-link-hover:text-primary">
-              {item.title}
+            <MenuTitle
+              className="text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-primary menu-link-hover:text-primary">
+              <FormattedMessage id={item.title} />
             </MenuTitle>
           </MenuLink>
         </MenuItem>

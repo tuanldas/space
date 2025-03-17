@@ -4,14 +4,8 @@ import clsx from 'clsx';
 import { useResponsive, useScrollPosition, useViewport } from '@/hooks';
 import { usePathname } from '@/providers';
 import { useDemo5Layout } from '../';
-import { SidebarMenuDashboard, SidebarMenuDefault } from '.';
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle
-} from '@/components/ui/sheet';
+import { SidebarMenuDashboard } from '.';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 const Sidebar = () => {
   const { pathname, prevPathname } = usePathname();
@@ -56,7 +50,7 @@ const Sidebar = () => {
               ...(desktopMode && scrollableHeight > 0 && { height: `${scrollableHeight}px` })
             }}
           >
-            {pathname === '/' ? <SidebarMenuDashboard /> : <SidebarMenuDefault />}
+            <SidebarMenuDashboard />
           </div>
         </div>
       </div>
