@@ -30,17 +30,17 @@ interface ICampaignsContentItems extends Array<ICampaignsContentItem> {
 const WalletContent = () => {
   const [items, setItems] = useState<ICampaignsContentItems>([]);
   const { data, isLoading, error, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['Wallets'],
+    queryKey: ['wallets'],
     queryFn: callApiGetWallets,
     initialPageParam: 1,
     getNextPageParam: (data) => {
-      if (data.meta.current_page < data.meta.last_page) {
-        return data.meta.current_page + 1;
+      if (data.current_page < data.last_page) {
+        return data.current_page + 1;
       }
     },
     getPreviousPageParam: (data) => {
-      if (data.meta.current_page > 1) {
-        return data.meta.current_page - 1;
+      if (data.current_page > 1) {
+        return data.current_page - 1;
       }
     }
   });
