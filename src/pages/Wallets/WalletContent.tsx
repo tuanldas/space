@@ -8,7 +8,9 @@ import { WalletRow } from '@/pages/Wallets/WalletRow.tsx';
 
 interface ICampaignsContentItem {
   id: string;
-  icon: string;
+  icon: {
+    id: string
+  };
   iconSize?: string;
   logoDark?: string;
   title: string;
