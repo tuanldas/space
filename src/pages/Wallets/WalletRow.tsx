@@ -1,15 +1,30 @@
-import { ICampaignItem, ICampaignProps } from '@/partials/cards';
-import { toAbsoluteUrl } from '@/utils';
+import { ICampaignItem } from '@/partials/cards';
+import { toAbsoluteUrl, toBackendImageUrl } from '@/utils';
+
+interface IWalletProps {
+  icon: {
+    id: string
+  };
+  iconSize?: string;
+  logoDark?: string;
+  title: string;
+  description: string;
+  statistics: ICampaignItem[];
+  progress?: {
+    variant: string;
+    value: number;
+  };
+  url: string;
+}
 
 const WalletRow = ({
-  logo,
-  logoSize,
-  title,
-  description,
-  status,
-  statistics,
-  url
-}: ICampaignProps) => {
+                     icon,
+                     iconSize,
+                     title,
+                     description,
+                     statistics,
+                     url
+                   }: IWalletProps) => {
   const renderItem = (statistic: ICampaignItem, index: number) => {
     return (
       <div
@@ -25,23 +40,22 @@ const WalletRow = ({
   const addDefaultImg = (ev: any) => {
     ev.target.src = toAbsoluteUrl('/media/image.png');
   };
-
   return (
     <div className="card p-5 lg:p-7.5">
       <div className="flex items-center flex-wrap justify-between gap-5">
         <div className="flex items-center gap-3.5">
           <div className="flex items-center justify-center w-[50px]">
-            {logo !== null ? (
+            {icon !== null ? (
               <img
-                src={logo}
-                className={`size-[${logoSize}] shrink-0`}
+                src={toBackendImageUrl(icon?.id)}
+                className={`size-[${iconSize}] shrink-0`}
                 alt=""
                 onError={addDefaultImg}
               />
             ) : (
               <img
                 src={toAbsoluteUrl('/media/image.png')}
-                className={`size-[${logoSize}] shrink-0`}
+                className={`size-[${iconSize}] shrink-0`}
                 alt=""
               />
             )}
@@ -61,10 +75,6 @@ const WalletRow = ({
             {statistics.map((statistic, index) => {
               return renderItem(statistic, index);
             })}
-          </div>
-
-          <div className="flex justify-center w-20">
-            <span className={`badge ${status.variant} badge-outline`}>{status.label}</span>
           </div>
         </div>
       </div>

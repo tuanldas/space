@@ -15,31 +15,31 @@ const DropdownApps = () => {
 
   const items: IDropdownAppsItem[] = [
     {
-      logo: 'jira.svg',
+      icon: 'jira.svg',
       title: 'Jira',
       description: 'Project management',
       checkbox: false
     },
     {
-      logo: 'inferno.svg',
+      icon: 'inferno.svg',
       title: 'Inferno',
       description: 'Ensures healthcare app',
       checkbox: true
     },
     {
-      logo: 'evernote.svg',
+      icon: 'evernote.svg',
       title: 'Evernote',
       description: 'Notes management app',
       checkbox: true
     },
     {
-      logo: 'gitlab.svg',
+      icon: 'gitlab.svg',
       title: 'Gitlab',
       description: 'DevOps platform',
       checkbox: false
     },
     {
-      logo: 'google-webdev.svg',
+      icon: 'google-webdev.svg',
       title: 'Google webdev',
       description: 'Building web experiences',
       checkbox: true

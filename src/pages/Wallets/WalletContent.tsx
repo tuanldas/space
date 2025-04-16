@@ -8,8 +8,8 @@ import { WalletRow } from '@/pages/Wallets/WalletRow.tsx';
 
 interface ICampaignsContentItem {
   id: string;
-  logo: string;
-  logoSize?: string;
+  icon: string;
+  iconSize?: string;
   logoDark?: string;
   title: string;
   description: string;
@@ -53,14 +53,10 @@ const WalletContent = () => {
         const convertData2 = pageData.map((item: any) => {
           return {
             id: item.id,
-            logo: item.icon,
+            icon: item.icon,
             logoSize: '50px',
             title: item.name,
             description: renderCurrency(item.balance, item.currency),
-            status: {
-              variant: 'badge-success',
-              label: item.type
-            },
             statistics: []
           };
         });
@@ -79,11 +75,10 @@ const WalletContent = () => {
   const renderItem = (data: ICampaignsContentItem, index: number) => {
     return (
       <WalletRow
-        logo={data.logo}
-        logoSize={data.logoSize}
+        icon={data.icon}
+        iconSize={data.iconSize}
         title={data.title}
         description={data.description}
-        status={data.status}
         statistics={[]}
         url={`/wallets/${data.id}`}
         key={index}

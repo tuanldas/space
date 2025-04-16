@@ -11,4 +11,14 @@ const toAbsoluteUrl = (pathname: string): string => {
   }
 };
 
-export { toAbsoluteUrl };
+const toBackendImageUrl = (iamgeId: string): string => {
+  const backendUrl = import.meta.env.VITE_APP_BACKEND_URL;
+
+  if (backendUrl && backendUrl !== '/') {
+    return import.meta.env.VITE_APP_BACKEND_URL + '/api/images/' + iamgeId;
+  } else {
+    return iamgeId;
+  }
+};
+
+export { toAbsoluteUrl, toBackendImageUrl };

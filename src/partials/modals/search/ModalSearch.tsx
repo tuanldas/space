@@ -66,7 +66,7 @@ const ModalSearch = forwardRef<HTMLDivElement, IModalSearchProps>(({ open, onOpe
 
   const mixedIntegrationsItems: IModalSearchIntegrationsItem[] = [
     {
-      logo: 'jira.svg',
+      icon: 'jira.svg',
       name: 'Jira',
       description: 'Project management',
       team: [
@@ -77,7 +77,7 @@ const ModalSearch = forwardRef<HTMLDivElement, IModalSearchProps>(({ open, onOpe
       ]
     },
     {
-      logo: 'inferno.svg',
+      icon: 'inferno.svg',
       name: 'Inferno',
       description: 'Real-time photo sharing app',
       team: [
