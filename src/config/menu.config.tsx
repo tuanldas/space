@@ -2,7 +2,7 @@ import { type MenuConfig } from './types';
 
 export const MENU_SIDEBAR: MenuConfig = [
   {
-    title: 'Dashboards',
+    title: 'Dashboards.Dashboards',
     // icon: 'element-11',
     children: [
       {
