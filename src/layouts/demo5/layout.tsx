@@ -1,6 +1,6 @@
 import {ReactNode, useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
-import {Outlet, useLocation} from 'react-router';
+import {Outlet, useLocation, useOutletContext} from 'react-router';
 import {MENU_SIDEBAR} from '@/config/menu.config';
 import {useBodyClass} from '@/hooks/use-body-class';
 import {useMenu} from '@/hooks/use-menu';
@@ -66,5 +66,11 @@ const Demo5Layout = () => {
         </>
     );
 };
+
+
+export function useToolbar() {
+    return useOutletContext<ToolbarContextType>();
+}
+
 
 export {Demo5Layout};
