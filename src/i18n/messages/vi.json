@@ -1,0 +1,34 @@
+{
+  "SHOW_MORE": "Xem thêm",
+  "Dashboards": {
+    "Dashboards": "Bảng điều khiển",
+    "Default": "Mặc định",
+    "Analytics": "Phân tích",
+    "Saas": "Saas",
+    "Crypto": "Tiền điện tử",
+    "Blog": "Blog"
+  },
+  "USER": {
+    "MENU": {
+      "DARK_MODE": "Tối",
+      "LOGOUT": "Đăng xuất"
+    }
+  },
+  "AUTH": {
+    "SIGN_IN": "Đăng nhập",
+    "ENTER": "Nhập {name}",
+    "EMAIL": "Email",
+    "PASSWORD": "Mật khẩu",
+    "THE_LOGIN_DETAILS_ARE_INCORRECT": "Thông tin đăng nhập không chính xác"
+  },
+  "VALIDATE": {
+    "REQUIRED": "{name} không được để trống",
+    "EMAIL": "{name} không đúng định dạng email",
+    "MAX": "{name} không được lớn hơn {max} ký tự",
+    "MIN": "{name} không được nhỏ hơn {min} ký tự"
+  },
+  "Wallets": {
+    "Wallets": "Ví",
+    "Create": "Tạo ví"
+  }
+}
