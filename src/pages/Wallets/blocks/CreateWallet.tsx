@@ -13,7 +13,7 @@ import {
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from '@/components/ui/select';
-import {FormattedMessage, IntlShape, useIntl} from 'react-intl';
+import {FormattedMessage, useIntl} from 'react-intl';
 import {Avatar, AvatarFallback, AvatarImage} from '@/components/ui/avatar';
 
 
@@ -50,7 +50,7 @@ const MOCK_ICONS: IconType[] = [
     {id: 'icon-004', name: 'Briefcase', url: '/icons/briefcase.svg'},
 ];
 
-const createValidationSchema = (intl: IntlShape) => Yup.object({
+const createValidationSchema = () => Yup.object({
     name: Yup.string()
         .trim()
         .required(''),
