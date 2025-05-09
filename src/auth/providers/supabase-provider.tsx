@@ -1,17 +1,18 @@
-import { PropsWithChildren, useState } from 'react';
-import { AuthContext } from '@/auth/context/auth-context';
-import { UserModel } from '@/auth/lib/models';
-import { callApiLogin } from '@/api/auth.tsx';
+import {PropsWithChildren, useState} from 'react';
+import {AuthContext} from '@/auth/context/auth-context';
+import {UserModel} from '@/auth/lib/models';
+import {callApiLogin, callApiLogout} from '@/api/auth.tsx';
 import {isAuthenticated as checkAuthenticated} from '@/auth/_helpers.ts';
+import {removeAllCookies} from '@/utils/cookies.ts';
 
-export function AuthProvider({ children }: PropsWithChildren) {
+export function AuthProvider({children}: PropsWithChildren) {
     const [loading, setLoading] = useState(true);
     const [currentUser, setCurrentUser] = useState<UserModel | undefined>();
     const [isAuthenticated, setIsAuthenticated] = useState(checkAuthenticated());
 
     const login = async (email: string, password: string) => {
         try {
-            await callApiLogin({ email, password });
+            await callApiLogin({email, password});
             setIsAuthenticated(true);
         } catch (error) {
             setIsAuthenticated(false);
@@ -19,9 +20,10 @@ export function AuthProvider({ children }: PropsWithChildren) {
         }
     };
 
-    const logout = () => {
-        setIsAuthenticated(false);
-        setCurrentUser(undefined);
+    const logout = async () => {
+        await callApiLogout();
+        removeAllCookies();
+        window.location.reload();
     };
 
     return (

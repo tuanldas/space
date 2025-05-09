@@ -37,10 +37,9 @@ const ToolbarHeading = ({title = ''}: ToolbarHeadingProps) => {
     return (
         <div className="flex flex-col md:flex-row md:items-center flex-wrap gap-1 lg:gap-5">
             <h1 className="font-medium text-lg text-mono">
-                <h1 className="font-medium text-lg text-mono">
-                    {title ? title
-                        : <FormattedMessage id={item?.title}/>
-                    }</h1>
+                {title ? title
+                    : <FormattedMessage id={item?.title}/>
+                }
             </h1>
         </div>
     );
