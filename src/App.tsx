@@ -12,6 +12,7 @@ import { TooltipsProvider } from './providers/tooltips-provider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const { BASE_URL } = import.meta.env;
+const helmetContext = {};
 
 export function App() {
   const queryClient = new QueryClient();
@@ -22,7 +23,7 @@ export function App() {
         <SettingsProvider>
           <ThemeProvider>
             <I18nProvider>
-              <HelmetProvider>
+              <HelmetProvider context={helmetContext}>
                 <TooltipsProvider>
                   <QueryProvider>
                     <LoadingBarContainer>

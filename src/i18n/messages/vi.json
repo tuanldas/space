@@ -2,6 +2,11 @@
   "Menu": "Menu",
   "SHOW_MORE": "Xem thêm",
   "LOADING": "Đang tải",
+  "DEFAULT": {
+    "PAGE": {
+      "TITLE": "Space"
+    }
+  },
   "Dashboards": {
     "Dashboards": "Bảng điều khiển",
     "Default": "Mặc định",

@@ -55,7 +55,11 @@ const WalletRow = ({
     };
 
     const addDefaultImg = (ev: any) => {
-        ev.target.src = toAbsoluteUrl('/media/image.png');
+        if (!ev.target.dataset.defaultLoaded && ev.target.src !== toAbsoluteUrl('/media/image.png')) {
+            ev.target.src = toAbsoluteUrl('/media/image.png');
+            ev.target.dataset.defaultLoaded = 'true';
+            ev.target.style.display = 'none';
+        }
     };
     return (
         <Card className="p-5 lg:p-7.5">
