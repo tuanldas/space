@@ -82,7 +82,7 @@ const CreateWallet = ({
     const intl = useIntl();
     const [apiError, setApiError] = useState<string | null>(null);
 
-    const validationSchema = useMemo(() => createValidationSchema(intl), [intl]);
+    const validationSchema = createValidationSchema();
 
     const formik = useFormik<FormValues>({
         initialValues: {
