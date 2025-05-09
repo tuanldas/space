@@ -1,6 +1,6 @@
 import {RequireAuth} from '@/auth/require-auth';
 import {Navigate, Route, Routes} from 'react-router';
-import {Demo5Layout as Layout} from '@/layouts/demo5/layout';
+import {Demo6Layout as Layout} from '@/layouts/demo6/layout';
 import {ErrorRouting} from '@/errors/error-routing.tsx';
 import {AuthRouting} from '@/auth/auth-routing';
 import Dashboard from '@/pages/Dashboard';

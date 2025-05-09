@@ -12,8 +12,8 @@ export interface ToolbarHeadingProps {
 
 function Toolbar({children}: { children?: ReactNode }) {
     return (
-        <div className="mb-5 lg:mb-7.5">
-            <Container className="flex items-center justify-between flex-wrap gap-5">
+        <div className="pb-5">
+            <Container className="flex items-center justify-between flex-wrap gap-3">
                 {children}
             </Container>
         </div>
@@ -21,8 +21,13 @@ function Toolbar({children}: { children?: ReactNode }) {
 }
 
 function ToolbarActions({children}: { children?: ReactNode }) {
-    return <div className="flex items-center gap-2.5">{children}</div>;
+    return (
+        <div className="flex items-center flex-wrap gap-1.5 lg:gap-3.5">
+            {children}
+        </div>
+    );
 }
+
 
 const ToolbarHeading = ({title = ''}: ToolbarHeadingProps) => {
     const {pathname} = useLocation();
@@ -34,7 +39,8 @@ const ToolbarHeading = ({title = ''}: ToolbarHeadingProps) => {
             <h1 className="font-medium text-lg text-mono">
                 {title ? title
                     : <FormattedMessage id={item?.title}/>
-                }</h1>
+                }
+            </h1>
         </div>
     );
 };

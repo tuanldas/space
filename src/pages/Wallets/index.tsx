@@ -2,8 +2,8 @@ import {Fragment, useEffect, useState} from 'react';
 import {WalletContent} from '@/pages/Wallets/WalletContent.tsx';
 import {Button} from '@/components/ui/button.tsx';
 import {Container} from '@/components/common/container';
-import {useToolbar} from '@/layouts/demo5/layout';
 import {CreateWallet} from './blocks/CreateWallet';
+import {useToolbar} from '@/layouts/demo6/layout.tsx';
 
 const Wallets = () => {
     const {setToolbarActionContent} = useToolbar();
