@@ -37,5 +37,9 @@
   "Wallets": {
     "Wallets": "Ví",
     "Create": "Tạo ví"
+  },
+  "Icons": {
+    "Icons": "Icons",
+    "Wallet": "Icons Ví"
   }
 }

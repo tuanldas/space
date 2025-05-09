@@ -6,6 +6,7 @@ import {AuthRouting} from '@/auth/auth-routing';
 import Dashboard from '@/pages/Dashboard';
 import Wallets from '@/pages/Wallets';
 import WalletDetail from '@/pages/WalletDetail';
+import {WalletIcons} from '@/pages/WalletIcons';
 
 export function AppRoutingSetup() {
     return (
@@ -15,6 +16,7 @@ export function AppRoutingSetup() {
                     <Route path={'/'} element={<Dashboard/>}/>
                     <Route path="wallets" element={<Wallets />} />
                     <Route path="wallets/:walletId" element={<WalletDetail />} />
+                    <Route path="icons/wallets" element={<WalletIcons />} />
                 </Route>
             </Route>
             <Route path="error/*" element={<ErrorRouting/>}/>

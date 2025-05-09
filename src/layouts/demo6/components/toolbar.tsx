@@ -1,6 +1,6 @@
 import {ReactNode} from 'react';
 import {useLocation} from 'react-router-dom';
-import {MENU_SIDEBAR} from '@/config/menu.config';
+import {MENU_SIDEBAR_COMPACT} from '@/config/menu.config';
 import {useMenu} from '@/hooks/use-menu';
 import {Container} from '@/components/common/container';
 import {FormattedMessage} from 'react-intl';
@@ -32,7 +32,7 @@ function ToolbarActions({children}: { children?: ReactNode }) {
 const ToolbarHeading = ({title = ''}: ToolbarHeadingProps) => {
     const {pathname} = useLocation();
     const {getCurrentItem} = useMenu(pathname);
-    const item = getCurrentItem(MENU_SIDEBAR);
+    const item = getCurrentItem(MENU_SIDEBAR_COMPACT);
 
     return (
         <div className="flex flex-col md:flex-row md:items-center flex-wrap gap-1 lg:gap-5">

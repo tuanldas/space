@@ -1,6 +1,6 @@
 import {ReactNode, useEffect, useState} from 'react';
 import {Outlet, useLocation} from 'react-router-dom';
-import {MENU_SIDEBAR} from '@/config/menu.config';
+import {MENU_SIDEBAR_COMPACT} from '@/config/menu.config';
 import {useBodyClass} from '@/hooks/use-body-class';
 import {useMenu} from '@/hooks/use-menu';
 import {useIsMobile} from '@/hooks/use-mobile';
@@ -21,7 +21,7 @@ const Demo6Layout = () => {
     const {setOption} = useSettings();
     const {pathname} = useLocation();
     const {getCurrentItem} = useMenu(pathname);
-    const item = getCurrentItem(MENU_SIDEBAR);
+    const item = getCurrentItem(MENU_SIDEBAR_COMPACT);
     const [toolbarActionContent, setToolbarActionContent] = useState<ReactNode | null>(null);
 
     useBodyClass(`

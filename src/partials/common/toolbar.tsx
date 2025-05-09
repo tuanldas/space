@@ -1,6 +1,6 @@
 import {ReactNode} from 'react';
 import {useLocation} from 'react-router';
-import {MENU_SIDEBAR} from '@/config/menu.config';
+import {MENU_SIDEBAR_COMPACT} from '@/config/menu.config';
 import {useMenu} from '@/hooks/use-menu';
 
 const Toolbar = ({children}: { children: ReactNode }) => {
@@ -18,7 +18,7 @@ const ToolbarActions = ({children}: { children: ReactNode }) => {
 const ToolbarPageTitle = ({text}: { text?: string }) => {
     const {pathname} = useLocation();
     const {getCurrentItem} = useMenu(pathname);
-    const item = getCurrentItem(MENU_SIDEBAR);
+    const item = getCurrentItem(MENU_SIDEBAR_COMPACT);
 
     return (
         <h1 className="text-xl font-medium leading-none text-mono">
