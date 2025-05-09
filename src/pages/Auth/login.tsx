@@ -8,7 +8,7 @@ import {Button} from '@/components/ui/button';
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from '@/components/ui/form';
 import {Input} from '@/components/ui/input';
 import {Spinner} from '@/components/ui/spinners';
-import {IntlShape, useIntl} from 'react-intl';
+import {FormattedMessage, IntlShape, useIntl} from 'react-intl';
 import {z} from 'zod';
 import {Alert, AlertIcon, AlertTitle} from '@/components/ui/alert.tsx';
 
@@ -101,10 +101,9 @@ const Login = () => {
                 className="block w-full space-y-5"
             >
                 <div className="text-center space-y-1 pb-3">
-                    <h1 className="text-2xl font-semibold tracking-tight">Sign In</h1>
-                    <p className="text-sm text-muted-foreground">
-                        Welcome back! Log in with your credentials.
-                    </p>
+                    <h1 className="text-2xl font-semibold tracking-tight">
+                        <FormattedMessage id="AUTH.SIGN_IN"/>
+                    </h1>
                 </div>
 
 
@@ -125,9 +124,14 @@ const Login = () => {
                     name="email"
                     render={({field}) => (
                         <FormItem>
-                            <FormLabel>Email</FormLabel>
+                            <FormLabel>{intl.formatMessage({id: 'AUTH.EMAIL'})}</FormLabel>
                             <FormControl>
-                                <Input placeholder="Your email" {...field} />
+                                <Input
+                                    placeholder={intl.formatMessage(
+                                        {id: 'AUTH.ENTER'},
+                                        {name: intl.formatMessage({id: 'AUTH.EMAIL'})}
+                                    )}
+                                    {...field} />
                             </FormControl>
                             <FormMessage/>
                         </FormItem>
@@ -140,11 +144,14 @@ const Login = () => {
                     render={({field}) => (
                         <FormItem>
                             <div className="flex justify-between items-center gap-2.5">
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel>{intl.formatMessage({id: 'AUTH.PASSWORD'})}</FormLabel>
                             </div>
                             <div className="relative">
                                 <Input
-                                    placeholder="Your password"
+                                    placeholder={intl.formatMessage(
+                                        {id: 'AUTH.ENTER'},
+                                        {name: intl.formatMessage({id: 'AUTH.PASSWORD'})}
+                                    )}
                                     type={passwordVisible ? 'text' : 'password'}
                                     {...field}
                                 />
@@ -169,9 +176,10 @@ const Login = () => {
 
                 <Button type="submit" className="w-full" disabled={isProcessing}>
                     {isProcessing ? (
-                        <span className="flex items-center gap-2"><Spinner className="h-4 w-4 animate-spin"/> Loading...</span>
+                        <span className="flex items-center gap-2"><Spinner
+                            className="h-4 w-4 animate-spin"/> <FormattedMessage id={'LOADING'}/>...</span>
                     ) : (
-                        'Sign In'
+                        <FormattedMessage id="AUTH.SIGN_IN"/>
                     )}
                 </Button>
             </form>
