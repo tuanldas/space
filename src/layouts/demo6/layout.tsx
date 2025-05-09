@@ -1,5 +1,4 @@
 import {ReactNode, useEffect, useState} from 'react';
-import {Helmet} from 'react-helmet-async';
 import {Outlet, useLocation} from 'react-router-dom';
 import {MENU_SIDEBAR} from '@/config/menu.config';
 import {useBodyClass} from '@/hooks/use-body-class';
@@ -11,6 +10,7 @@ import {Header} from './components/header';
 import {Sidebar} from './components/sidebar';
 import {Toolbar, ToolbarActions, ToolbarHeading} from './components/toolbar';
 import {useOutletContext} from 'react-router';
+import {useIntl} from 'react-intl';
 
 interface ToolbarContextType {
     setToolbarActionContent: (content: ReactNode | null) => void;
@@ -35,12 +35,17 @@ const Demo6Layout = () => {
         setOption('layout', 'demo6');
     }, [setOption]);
 
+    const intl = useIntl();
+
+    let pageTitle = intl.formatMessage({id: 'DEFAULT.PAGE.TITLE'}); // Tiêu đề mặc định
+
+    if (item?.title) {
+        pageTitle = intl.formatMessage({id: item.title});
+    }
+
     return (
         <>
-            <Helmet>
-                <title>{item?.title}</title>
-            </Helmet>
-
+            <title>{pageTitle}</title>
             <div className="flex grow">
                 {!isMobile && <Sidebar/>}
 
