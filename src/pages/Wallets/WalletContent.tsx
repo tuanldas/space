@@ -4,7 +4,7 @@ import {callApiGetWallets} from '@/api/wallet';
 import {WalletRow} from './WalletRow';
 import {FormattedMessage} from 'react-intl';
 import {renderCurrency} from '@/utils/data.ts';
-import { Button } from '@/components/ui/button';
+import {Button} from '@/components/ui/button';
 
 interface ICampaignsContentItem {
     id: string;

@@ -1,4 +1,4 @@
-import {toAbsoluteUrl} from '@/lib/helpers';
+import {toBackendImageUrl} from '@/lib/helpers';
 import {Button} from '@/components/ui/button';
 import {Card, CardContent} from '@/components/ui/card';
 import {ScrollArea} from '@/components/ui/scroll-area';
@@ -7,11 +7,13 @@ import {FormattedMessage} from 'react-intl';
 
 interface IProps {
     open: boolean;
+    walletIconId: string | null;
     onOpenChange: () => void;
 }
 
 export function StoreClientProductDetailsSheet({
                                                    open,
+                                                   walletIconId,
                                                    onOpenChange,
                                                }: IProps) {
     return (
@@ -24,12 +26,16 @@ export function StoreClientProductDetailsSheet({
                 <SheetBody className="px-5 py-0">
                     <ScrollArea className="h-[calc(100dvh-11.75rem)] pe-3 -me-3">
                         <CardContent className="flex flex-col space-y-3 p-5 p-0">
-                            <Card className="relative items-center justify-center bg-accent/50 mb-6.5 h-[280px]">
-                                <img
-                                    src={toAbsoluteUrl('/media/store/client/600x600/1.png')}
-                                    className="size-80"
-                                    alt="image"
-                                />
+                            <Card className="relative items-center justify-center bg-accent/50 mb-6.5 p-2">
+                                {
+                                    walletIconId
+                                        ? <img
+                                            src={toBackendImageUrl(walletIconId)}
+                                            className="size-80"
+                                            alt="image"
+                                        />
+                                        : null
+                                }
                             </Card>
                         </CardContent>
                     </ScrollArea>

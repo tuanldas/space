@@ -1,7 +1,7 @@
 import {IconCard} from '@/pages/WalletIcons/common/icon-card.tsx';
 import {Container} from '@/components/common/container.tsx';
 import {FormattedMessage} from 'react-intl';
-import {StoreClientProductDetailsSheet} from '@/pages/WalletIcons/sheets/product-details-sheet.tsx';
+import {StoreClientProductDetailsSheet} from '@/pages/WalletIcons/sheets/wallet-icon-details.tsx';
 import {useEffect, useState} from 'react';
 import {useInfiniteQuery} from '@tanstack/react-query';
 import {callApiGetWalletIcons} from '@/api/icon.tsx';
@@ -15,7 +15,8 @@ type IContentItems = Array<IContentItem>;
 
 const WalletIcons = () => {
     const [items, setItems] = useState<IContentItems>([]);
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
+    const [walletIconId, setWalletIconId] = useState<string | null>(null);
     const {data, isLoading, error, fetchNextPage, hasNextPage} = useInfiniteQuery({
         queryKey: ['wallets'],
         queryFn: callApiGetWalletIcons,
@@ -29,11 +30,12 @@ const WalletIcons = () => {
 
     useEffect(() => {
         if (!isLoading && data) {
-            let convertData = [...items];
+            let convertData: any[] = [];
             data.pages.forEach((page) => {
-                convertData = [...convertData, ...page.data.map((item: any) => {
+                const contentData2 = page.data.map((item: any) => {
                     return {iconId: item.id};
-                })];
+                });
+                convertData = [...convertData, ...contentData2];
             });
             setItems(convertData);
         }
@@ -46,8 +48,13 @@ const WalletIcons = () => {
     }, [error]);
 
     const renderItem = (item: IContentItem, index: number) => {
-        return <IconCard key={index}
-                         iconId={item.iconId}/>;
+        return <div onClick={() => {
+            setOpen(true);
+            setWalletIconId(item.iconId);
+        }}>
+            <IconCard key={index}
+                      iconId={item.iconId}/>
+        </div>;
     };
 
     return (
@@ -74,10 +81,15 @@ const WalletIcons = () => {
                     })}
                 </div>
             </div>
-            <StoreClientProductDetailsSheet
-                open={open}
-                onOpenChange={() => setOpen(false)}
-            />
+            {
+                walletIconId
+                    ? <StoreClientProductDetailsSheet
+                        open={open}
+                        walletIconId={walletIconId}
+                        onOpenChange={() => setOpen(!open)}
+                    />
+                    : null
+            }
 
             {hasNextPage ? (
                 <div className="flex grow justify-center pt-5 lg:pt-7.5">
