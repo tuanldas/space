@@ -4,6 +4,7 @@ import {callApiGetWallets} from '@/api/wallet';
 import {WalletRow} from './WalletRow';
 import {FormattedMessage} from 'react-intl';
 import {renderCurrency} from '@/utils/data.ts';
+import { Button } from '@/components/ui/button';
 
 interface ICampaignsContentItem {
     id: string;
@@ -108,14 +109,14 @@ const WalletContent = () => {
                 </div>
                 {hasNextPage ? (
                     <div className="flex grow justify-center pt-5 lg:pt-7.5">
-                        <button
+                        <Button
                             onClick={() => {
                                 fetchNextPage();
                             }}
-                            className="btn btn-link"
+                            mode="link" underlined="dashed"
                         >
                             <FormattedMessage id={'SHOW_MORE'}/>
-                        </button>
+                        </Button>
                     </div>
                 ) : null}
             </div>

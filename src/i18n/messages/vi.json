@@ -2,6 +2,10 @@
   "Menu": "Menu",
   "SHOW_MORE": "Xem thêm",
   "LOADING": "Đang tải",
+  "DELETE": "Xóa",
+  "pagination": {
+    "summary": "{start} - {end} trên {total}"
+  },
   "DEFAULT": {
     "PAGE": {
       "TITLE": "Space"
