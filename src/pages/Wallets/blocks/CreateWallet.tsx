@@ -150,12 +150,11 @@ const CreateWallet = ({
             onOpenChange(open);
         }}>
             <DialogContent className="max-w-[500px] sm:max-w-md">
-                {/* Sử dụng formik.handleSubmit cho sự kiện onSubmit của form */}
                 <form onSubmit={formik.handleSubmit} noValidate>
                     <DialogHeader>
-                        <DialogTitle><FormattedMessage id="Wallets.Create"/></DialogTitle>
+                        <DialogTitle><FormattedMessage id="wallets.create"/></DialogTitle>
                         <DialogDescription>
-                            <FormattedMessage id="Wallets.CreateDescription"
+                            <FormattedMessage id="wallets.createDescription"
                                               defaultMessage="Enter the details for your new wallet."/>
                         </DialogDescription>
                     </DialogHeader>

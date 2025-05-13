@@ -9,12 +9,14 @@ interface IProps {
     open: boolean;
     walletIconId: string | null;
     onOpenChange: () => void;
+    onDeleteWalletIcon: () => void;
 }
 
 export function StoreClientProductDetailsSheet({
                                                    open,
                                                    walletIconId,
                                                    onOpenChange,
+                                                   onDeleteWalletIcon,
                                                }: IProps) {
     return (
         <Sheet open={open} onOpenChange={onOpenChange}>
@@ -44,8 +46,9 @@ export function StoreClientProductDetailsSheet({
                     <Button
                         className="grow"
                         variant="destructive"
+                        onClick={onDeleteWalletIcon}
                     >
-                        <FormattedMessage id={'DELETE'}/>
+                        <FormattedMessage id={'common.delete'}/>
                     </Button>
                 </SheetFooter>
             </SheetContent>

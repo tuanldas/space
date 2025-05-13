@@ -115,7 +115,7 @@ const WalletContent = () => {
                             }}
                             mode="link" underlined="dashed"
                         >
-                            <FormattedMessage id={'SHOW_MORE'}/>
+                            <FormattedMessage id={'common.showMore'}/>
                         </Button>
                     </div>
                 ) : null}

@@ -137,7 +137,7 @@ export function UserDropdownMenu({trigger}: { trigger: ReactNode }) {
                 >
                     <Moon/>
                     <div className="flex items-center gap-2 justify-between grow">
-                        Dark Mode
+                        <FormattedMessage id={'common.dark_mode'} />
                         <Switch
                             size="sm"
                             checked={theme === 'dark'}
@@ -152,7 +152,7 @@ export function UserDropdownMenu({trigger}: { trigger: ReactNode }) {
                         className="w-full"
                         onClick={logout}
                     >
-                        <FormattedMessage id="USER.MENU.LOGOUT"/>
+                        <FormattedMessage id="user.menu.logout"/>
                     </Button>
                 </div>
             </DropdownMenuContent>

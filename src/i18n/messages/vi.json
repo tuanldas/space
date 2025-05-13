@@ -1,49 +1,46 @@
 {
-  "Menu": "Menu",
-  "SHOW_MORE": "Xem thêm",
-  "LOADING": "Đang tải",
-  "DELETE": "Xóa",
+  "common": {
+    "showMore": "Xem thêm",
+    "loading": "Đang tải",
+    "delete": "Xóa",
+    "deleteSuccess": "Xoá {item} thành công",
+    "dark_mode": "Tối"
+  },
   "pagination": {
     "summary": "{start} - {end} trên {total}"
   },
-  "DEFAULT": {
-    "PAGE": {
-      "TITLE": "Space"
+  "default": {
+    "page": {
+      "title": "Space"
     }
   },
-  "Dashboards": {
-    "Dashboards": "Bảng điều khiển",
-    "Default": "Mặc định",
-    "Analytics": "Phân tích",
-    "Saas": "Saas",
-    "Crypto": "Tiền điện tử",
-    "Blog": "Blog"
+  "dashboards": {
+    "dashboards": "Bảng điều khiển"
   },
-  "USER": {
-    "MENU": {
-      "DARK_MODE": "Tối",
-      "LOGOUT": "Đăng xuất"
+  "user": {
+    "menu": {
+      "logout": "Đăng xuất"
     }
   },
-  "AUTH": {
-    "SIGN_IN": "Đăng nhập",
-    "ENTER": "Nhập {name}",
-    "EMAIL": "Email",
-    "PASSWORD": "Mật khẩu",
-    "THE_LOGIN_DETAILS_ARE_INCORRECT": "Thông tin đăng nhập không chính xác"
+  "auth": {
+    "sign_in": "Đăng nhập",
+    "enter": "Nhập {name}",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "the_login_details_are_incorrect": "Thông tin đăng nhập không chính xác"
   },
-  "VALIDATE": {
-    "REQUIRED": "{name} không được để trống",
-    "EMAIL": "{name} không đúng định dạng email",
-    "MAX": "{name} không được lớn hơn {max} ký tự",
-    "MIN": "{name} không được nhỏ hơn {min} ký tự"
+  "validate": {
+    "required": "{name} không được để trống",
+    "email": "{name} không đúng định dạng email",
+    "max": "{name} không được lớn hơn {max} ký tự",
+    "min": "{name} không được nhỏ hơn {min} ký tự"
   },
-  "Wallets": {
-    "Wallets": "Ví",
-    "Create": "Tạo ví"
+  "wallets": {
+    "wallets": "Ví",
+    "create": "Tạo ví"
   },
-  "Icons": {
-    "Icons": "Icons",
-    "Wallet": "Icons Ví"
+  "icons": {
+    "icons": "Icons",
+    "wallet": "Icons Ví"
   }
 }

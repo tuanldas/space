@@ -24,6 +24,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             'group-[.toast]:rounded-md! group-[.toast]:bg-secondary group-[.toast]:text-secondary-foreground!',
         },
       }}
+      position={'top-right'}
       {...props}
     />
   );
