@@ -9,6 +9,7 @@ import {Button} from '@/components/ui/button.tsx';
 import {toast} from 'sonner';
 import {Alert, AlertIcon, AlertTitle} from '@/components/ui/alert';
 import {RiCheckboxCircleFill} from '@remixicon/react';
+import {ContentLoader} from '@/components/common/content-loader.tsx';
 
 interface IContentItem {
     iconId: string;
@@ -31,7 +32,7 @@ const WalletIcons = () => {
     const [items, setItems] = useState<IContentItems>([]);
     const [open, setOpen] = useState(false);
     const [walletIconId, setWalletIconId] = useState<string | null>(null);
-    const {data, isLoading, error, fetchNextPage, hasNextPage} = useInfiniteQuery({
+    const {data, isLoading, error, fetchNextPage, hasNextPage, isFetchingNextPage} = useInfiniteQuery({
         queryKey: queryKey,
         queryFn: callApiGetWalletIcons,
         initialPageParam: 1,
@@ -59,7 +60,7 @@ const WalletIcons = () => {
                 toast.custom(
                     (t) => (
                         <Alert
-                            variant="destructive"
+                            variant="success"
                             icon="success"
                             close={true}
                             appearance={'outline'}
@@ -79,6 +80,7 @@ const WalletIcons = () => {
                         </Alert>
                     )
                 );
+                setOpen(!open);
 
                 return {
                     ...oldData,
@@ -103,7 +105,7 @@ const WalletIcons = () => {
             queryClient.invalidateQueries({queryKey: queryKey});
         },
     });
-
+    console.log(isLoading);
     useEffect(() => {
         if (!isLoading && data) {
             let convertData: any[] = [];
@@ -171,12 +173,13 @@ const WalletIcons = () => {
                         open={open}
                         walletIconId={walletIconId}
                         onOpenChange={() => setOpen(!open)}
+                        isPendingDelete={deleteWalletIconMutation.isPending}
                         onDeleteWalletIcon={onDeleteWalletIcon}
                     />
                     : null
             }
 
-            {hasNextPage ? (
+            {hasNextPage && !isLoading && !isFetchingNextPage ? (
                 <div className="flex grow justify-center pt-5 lg:pt-7.5">
                     <Button
                         onClick={() => {
@@ -187,7 +190,17 @@ const WalletIcons = () => {
                         <FormattedMessage id={'common.showMore'}/>
                     </Button>
                 </div>
-            ) : null}
+            ) : null
+            }
+
+            {
+                isLoading || isFetchingNextPage
+                    ?
+                    <div className="flex grow justify-center pt-5 lg:pt-7.5">
+                        <ContentLoader/>
+                    </div>
+                    : null
+            }
         </Container>
     );
 };
