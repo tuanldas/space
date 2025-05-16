@@ -4,17 +4,22 @@ import {Card, CardContent} from '@/components/ui/card';
 import {ScrollArea} from '@/components/ui/scroll-area';
 import {Sheet, SheetBody, SheetContent, SheetFooter, SheetHeader, SheetTitle,} from '@/components/ui/sheet';
 import {FormattedMessage} from 'react-intl';
+import {Spinner} from '@/components/ui/spinners.tsx';
 
 interface IProps {
     open: boolean;
     walletIconId: string | null;
     onOpenChange: () => void;
+    isPendingDelete: boolean;
+    onDeleteWalletIcon: () => void;
 }
 
 export function StoreClientProductDetailsSheet({
                                                    open,
                                                    walletIconId,
                                                    onOpenChange,
+                                                   isPendingDelete,
+                                                   onDeleteWalletIcon
                                                }: IProps) {
     return (
         <Sheet open={open} onOpenChange={onOpenChange}>
@@ -44,8 +49,15 @@ export function StoreClientProductDetailsSheet({
                     <Button
                         className="grow"
                         variant="destructive"
+                        onClick={onDeleteWalletIcon}
+                        disabled={isPendingDelete}
                     >
-                        <FormattedMessage id={'DELETE'}/>
+                        {isPendingDelete ? (
+                            <span className="flex items-center gap-2"><Spinner
+                                className="h-4 w-4 animate-spin"/> <FormattedMessage id={'common.loading'}/>...</span>
+                        ) : (
+                            <FormattedMessage id={'common.delete'}/>
+                        )}
                     </Button>
                 </SheetFooter>
             </SheetContent>

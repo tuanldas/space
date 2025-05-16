@@ -14,26 +14,26 @@ import {Alert, AlertIcon, AlertTitle} from '@/components/ui/alert.tsx';
 
 const getLoginSchema = (intl: IntlShape) => {
     const emailFieldName = 'Email';
-    const passwordFieldName = intl.formatMessage({id: 'AUTH.PASSWORD'});
+    const passwordFieldName = intl.formatMessage({id: 'auth.password'});
 
     return z.object({
         email: z
             .string()
             .min(1, {
                 message: intl.formatMessage(
-                    {id: 'VALIDATE.REQUIRED'},
+                    {id: 'validate.required'},
                     {name: emailFieldName}
                 ),
             })
             .email({
                 message: intl.formatMessage(
-                    {id: 'VALIDATE.EMAIL'},
+                    {id: 'validate.email'},
                     {name: emailFieldName}
                 ),
             })
             .min(3, {
                 message: intl.formatMessage(
-                    {id: 'VALIDATE.MIN'},
+                    {id: 'validate.min'},
                     {name: emailFieldName, min: 3}
                 ),
             }),
@@ -42,19 +42,19 @@ const getLoginSchema = (intl: IntlShape) => {
             .string()
             .min(1, {
                 message: intl.formatMessage(
-                    {id: 'VALIDATE.REQUIRED'},
+                    {id: 'validate.required'},
                     {name: passwordFieldName}
                 ),
             })
             .min(3, {
                 message: intl.formatMessage(
-                    {id: 'VALIDATE.MIN'},
+                    {id: 'validate.min'},
                     {name: passwordFieldName, min: 3}
                 ),
             })
             .max(50, {
                 message: intl.formatMessage(
-                    {id: 'VALIDATE.MAX'},
+                    {id: 'validate.max'},
                     {name: passwordFieldName, max: 50}
                 ),
             }),
@@ -88,7 +88,7 @@ const Login = () => {
             const nextPath = searchParams.get('next') || '/';
             navigate(nextPath, {replace: true});
         } catch {
-            setSubmitError(intl.formatMessage({id: 'AUTH.THE_LOGIN_DETAILS_ARE_INCORRECT'}));
+            setSubmitError(intl.formatMessage({id: 'auth.the_login_details_are_incorrect'}));
         } finally {
             setIsProcessing(false);
         }
@@ -102,7 +102,7 @@ const Login = () => {
             >
                 <div className="text-center space-y-1 pb-3">
                     <h1 className="text-2xl font-semibold tracking-tight">
-                        <FormattedMessage id="AUTH.SIGN_IN"/>
+                        <FormattedMessage id="auth.sign_in"/>
                     </h1>
                 </div>
 
@@ -124,12 +124,12 @@ const Login = () => {
                     name="email"
                     render={({field}) => (
                         <FormItem>
-                            <FormLabel>{intl.formatMessage({id: 'AUTH.EMAIL'})}</FormLabel>
+                            <FormLabel>{intl.formatMessage({id: 'auth.email'})}</FormLabel>
                             <FormControl>
                                 <Input
                                     placeholder={intl.formatMessage(
-                                        {id: 'AUTH.ENTER'},
-                                        {name: intl.formatMessage({id: 'AUTH.EMAIL'})}
+                                        {id: 'auth.enter'},
+                                        {name: intl.formatMessage({id: 'auth.email'})}
                                     )}
                                     {...field} />
                             </FormControl>
@@ -144,13 +144,13 @@ const Login = () => {
                     render={({field}) => (
                         <FormItem>
                             <div className="flex justify-between items-center gap-2.5">
-                                <FormLabel>{intl.formatMessage({id: 'AUTH.PASSWORD'})}</FormLabel>
+                                <FormLabel>{intl.formatMessage({id: 'auth.password'})}</FormLabel>
                             </div>
                             <div className="relative">
                                 <Input
                                     placeholder={intl.formatMessage(
-                                        {id: 'AUTH.ENTER'},
-                                        {name: intl.formatMessage({id: 'AUTH.PASSWORD'})}
+                                        {id: 'auth.enter'},
+                                        {name: intl.formatMessage({id: 'auth.password'})}
                                     )}
                                     type={passwordVisible ? 'text' : 'password'}
                                     {...field}
@@ -177,9 +177,9 @@ const Login = () => {
                 <Button type="submit" className="w-full" disabled={isProcessing}>
                     {isProcessing ? (
                         <span className="flex items-center gap-2"><Spinner
-                            className="h-4 w-4 animate-spin"/> <FormattedMessage id={'LOADING'}/>...</span>
+                            className="h-4 w-4 animate-spin"/> <FormattedMessage id={'common.loading'}/>...</span>
                     ) : (
-                        <FormattedMessage id="AUTH.SIGN_IN"/>
+                        <FormattedMessage id="auth.sign_in"/>
                     )}
                 </Button>
             </form>

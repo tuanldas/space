@@ -3,9 +3,13 @@ import {Container} from '@/components/common/container.tsx';
 import {FormattedMessage} from 'react-intl';
 import {StoreClientProductDetailsSheet} from '@/pages/WalletIcons/sheets/wallet-icon-details.tsx';
 import {useEffect, useState} from 'react';
-import {useInfiniteQuery} from '@tanstack/react-query';
-import {callApiGetWalletIcons} from '@/api/icon.tsx';
+import {InfiniteData, useInfiniteQuery, useMutation, useQueryClient} from '@tanstack/react-query';
+import {callApiDeleteWalletIcons, callApiGetWalletIcons} from '@/api/icon.tsx';
 import {Button} from '@/components/ui/button.tsx';
+import {toast} from 'sonner';
+import {Alert, AlertIcon, AlertTitle} from '@/components/ui/alert';
+import {RiCheckboxCircleFill} from '@remixicon/react';
+import {ContentLoader} from '@/components/common/content-loader.tsx';
 
 interface IContentItem {
     iconId: string;
@@ -13,12 +17,23 @@ interface IContentItem {
 
 type IContentItems = Array<IContentItem>;
 
+interface WalletIconPageResponse {
+    data: any;
+    current_page: number;
+    last_page: number;
+}
+
+type InfiniteWalletIconData = InfiniteData<WalletIconPageResponse>;
+
 const WalletIcons = () => {
+    const queryClient = useQueryClient();
+    const queryKey = ['wallets'];
+
     const [items, setItems] = useState<IContentItems>([]);
     const [open, setOpen] = useState(false);
     const [walletIconId, setWalletIconId] = useState<string | null>(null);
-    const {data, isLoading, error, fetchNextPage, hasNextPage} = useInfiniteQuery({
-        queryKey: ['wallets'],
+    const {data, isLoading, error, fetchNextPage, hasNextPage, isFetchingNextPage} = useInfiniteQuery({
+        queryKey: queryKey,
         queryFn: callApiGetWalletIcons,
         initialPageParam: 1,
         getNextPageParam: (data) => {
@@ -26,6 +41,69 @@ const WalletIcons = () => {
                 return data.current_page + 1;
             }
         }
+    });
+
+    const deleteWalletIconMutation = useMutation<
+        any,
+        Error,
+        string,
+        { previousWallets?: InfiniteWalletIconData }
+    >({
+        mutationFn: (idToDelete) => callApiDeleteWalletIcons(idToDelete),
+        onMutate: async (idToDelete) => {
+            await queryClient.cancelQueries({queryKey: queryKey});
+            const previousWallets = queryClient.getQueryData<InfiniteWalletIconData>(queryKey);
+
+            queryClient.setQueryData<InfiniteWalletIconData>(queryKey, (oldData) => {
+                if (!oldData) return undefined;
+
+                toast.custom(
+                    (t) => (
+                        <Alert
+                            variant="success"
+                            icon="success"
+                            close={true}
+                            appearance={'outline'}
+                            onClose={() => toast.dismiss(t)}
+                        >
+                            <AlertIcon>
+                                <RiCheckboxCircleFill/>
+                            </AlertIcon>
+                            <AlertTitle>
+                                <FormattedMessage
+                                    id={'common.deleteSuccess'}
+                                    values={{
+                                        'item': <FormattedMessage id={'icons.wallet'}/>
+                                    }}
+                                />
+                            </AlertTitle>
+                        </Alert>
+                    )
+                );
+                setOpen(!open);
+
+                return {
+                    ...oldData,
+                    pages: oldData.pages.map(page => ({
+                        ...page,
+                        data: page.data.filter((icon: { id: string }) => icon.id !== idToDelete),
+                    })),
+                };
+            });
+
+            return {previousWallets};
+        },
+        onError: (err, idToDelete, context) => {
+            if (context?.previousWallets) {
+                queryClient.setQueryData(queryKey, context.previousWallets);
+                setOpen(!open);
+                setWalletIconId(null);
+            }
+            console.error(`Lỗi khi xóa Wallet Icon ID ${idToDelete}:`, err.message);
+        },
+        onSettled: () => {
+            queryClient.invalidateQueries({queryKey: queryKey});
+        },
     });
 
     useEffect(() => {
@@ -48,13 +126,21 @@ const WalletIcons = () => {
     }, [error]);
 
     const renderItem = (item: IContentItem, index: number) => {
-        return <div onClick={() => {
-            setOpen(true);
-            setWalletIconId(item.iconId);
-        }}>
+        return <div
+            key={item.iconId}
+            onClick={() => {
+                setOpen(true);
+                setWalletIconId(item.iconId);
+            }}>
             <IconCard key={index}
                       iconId={item.iconId}/>
         </div>;
+    };
+
+    const onDeleteWalletIcon = () => {
+        if (walletIconId) {
+            deleteWalletIconMutation.mutate(walletIconId);
+        }
     };
 
     return (
@@ -87,11 +173,13 @@ const WalletIcons = () => {
                         open={open}
                         walletIconId={walletIconId}
                         onOpenChange={() => setOpen(!open)}
+                        isPendingDelete={deleteWalletIconMutation.isPending}
+                        onDeleteWalletIcon={onDeleteWalletIcon}
                     />
                     : null
             }
 
-            {hasNextPage ? (
+            {hasNextPage && !isLoading && !isFetchingNextPage ? (
                 <div className="flex grow justify-center pt-5 lg:pt-7.5">
                     <Button
                         onClick={() => {
@@ -99,10 +187,20 @@ const WalletIcons = () => {
                         }}
                         mode="link" underlined="dashed"
                     >
-                        <FormattedMessage id={'SHOW_MORE'}/>
+                        <FormattedMessage id={'common.showMore'}/>
                     </Button>
                 </div>
-            ) : null}
+            ) : null
+            }
+
+            {
+                isLoading || isFetchingNextPage
+                    ?
+                    <div className="flex grow justify-center pt-5 lg:pt-7.5">
+                        <ContentLoader/>
+                    </div>
+                    : null
+            }
         </Container>
     );
 };

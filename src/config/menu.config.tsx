@@ -3,7 +3,7 @@ import {type MenuConfig} from './types';
 
 export const MENU_ROOT: MenuConfig = [
     {
-        title: 'Dashboards.Dashboards',
+        title: 'dashboards.dashboards',
         icon: LayoutGrid,
         rootPath: '/',
         path: '/',
@@ -12,21 +12,21 @@ export const MENU_ROOT: MenuConfig = [
 ];
 export const MENU_SIDEBAR_COMPACT: MenuConfig = [
     {
-        title: 'Dashboards.Dashboards',
+        title: 'dashboards.dashboards',
         icon: LayoutGrid,
         path: '/',
     },
     {
-        title: 'Wallets.Wallets',
+        title: 'wallets.wallets',
         icon: Wallet,
         path: '/wallets'
     },
     {
-        title: 'Icons.Icons',
+        title: 'icons.icons',
         icon: Image,
         children: [
             {
-                title: 'Icons.Wallet',
+                title: 'icons.wallet',
                 icon: Image,
                 path: '/icons/wallets',
             }
