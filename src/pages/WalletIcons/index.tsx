@@ -105,7 +105,7 @@ const WalletIcons = () => {
             queryClient.invalidateQueries({queryKey: queryKey});
         },
     });
-    console.log(isLoading);
+
     useEffect(() => {
         if (!isLoading && data) {
             let convertData: any[] = [];
