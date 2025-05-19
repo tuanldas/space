@@ -27,7 +27,7 @@ type InfiniteWalletIconData = InfiniteData<WalletIconPageResponse>;
 
 const WalletIcons = () => {
     const queryClient = useQueryClient();
-    const queryKey = ['wallets'];
+    const queryKey = ['wallet-icons'];
 
     const [items, setItems] = useState<IContentItems>([]);
     const [open, setOpen] = useState(false);
