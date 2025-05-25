@@ -3,6 +3,9 @@ import {toAbsoluteUrl, toBackendImageUrl} from '@/lib/helpers.ts';
 import {Card} from '@/components/ui/card';
 import {Link} from 'react-router';
 import {Badge} from '@/components/ui/badge';
+import {addDefaultImg} from '@/utils/data';
+import {ContentLoader} from '@/components/common/content-loader.tsx';
+import {ManagedImage} from '@/components/custom/managed-image.tsx';
 
 interface IWalletProps {
     icon: {
@@ -54,23 +57,17 @@ const WalletRow = ({
         );
     };
 
-    const addDefaultImg = (ev: any) => {
-        if (!ev.target.dataset.defaultLoaded && ev.target.src !== toAbsoluteUrl('/media/image.png')) {
-            ev.target.src = toAbsoluteUrl('/media/image.png');
-            ev.target.dataset.defaultLoaded = 'true';
-            ev.target.style.display = 'none';
-        }
-    };
     return (
         <Card className="p-5 lg:p-7.5">
             <div className="flex items-center flex-wrap justify-between gap-5">
                 <div className="flex items-center gap-3.5">
                     <div className="flex items-center justify-center w-[50px]">
                         {icon !== null ? (
-                            <img
+                            <ManagedImage
                                 src={toBackendImageUrl(icon?.id)}
-                                className={`size-[${iconSize}] shrink-0`}
-                                alt=""
+                                alt={icon ? `Icon ${icon?.id}` : 'Hình ảnh mặc định'}
+                                imgClassName={`size-[${iconSize}] shrink-0`}
+                                loadingComponent={<ContentLoader/>}
                                 onError={addDefaultImg}
                             />
                         ) : (
