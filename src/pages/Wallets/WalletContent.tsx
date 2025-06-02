@@ -89,9 +89,6 @@ const WalletContent = () => {
 
                 <div className={''} id="campaigns_list">
                     <div className="flex flex-col gap-5 lg:gap-7.5">
-                        {/*{Array.from({ length: 10 }).map((_, index) => {*/}
-                        {/*  return <CardCampaignRowLoading key={index} />;*/}
-                        {/*})}*/}
                     </div>
                 </div>
             </div>

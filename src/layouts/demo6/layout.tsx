@@ -39,12 +39,11 @@ const Demo6Layout = () => {
 
     const intl = useIntl();
 
-    let pageTitle = intl.formatMessage({id: 'default.page.title'}); // Tiêu đề mặc định
+    let pageTitle = intl.formatMessage({id: 'default.page.title'});
 
     if (item?.title) {
         pageTitle = intl.formatMessage({id: item.title});
     }
-
     return (
         <>
             <title>{pageTitle}</title>
