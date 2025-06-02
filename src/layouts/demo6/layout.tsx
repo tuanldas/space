@@ -14,6 +14,7 @@ import {useIntl} from 'react-intl';
 
 interface ToolbarContextType {
     setToolbarActionContent: (content: ReactNode | null) => void;
+    setToolbarTitle: (title: string) => void;
 }
 
 const Demo6Layout = () => {
@@ -22,6 +23,7 @@ const Demo6Layout = () => {
     const {pathname} = useLocation();
     const {getCurrentItem} = useMenu(pathname);
     const item = getCurrentItem(MENU_SIDEBAR_COMPACT);
+    const [toolbarTitle, setToolbarTitle] = useState('');
     const [toolbarActionContent, setToolbarActionContent] = useState<ReactNode | null>(null);
 
     useBodyClass(`
@@ -57,13 +59,14 @@ const Demo6Layout = () => {
                         <div className="flex flex-col grow kt-scrollable-y-auto [--kt-scrollbar-width:auto] pt-5">
                             <main className="grow" role="content">
                                 <Toolbar>
-                                    <ToolbarHeading/>
+                                    <ToolbarHeading title={toolbarTitle}/>
                                     <ToolbarActions>
                                         {toolbarActionContent}
                                     </ToolbarActions>
                                 </Toolbar>
 
-                                <Outlet context={{setToolbarActionContent} satisfies ToolbarContextType}/>
+                                <Outlet
+                                    context={{setToolbarActionContent, setToolbarTitle} satisfies ToolbarContextType}/>
                             </main>
 
                             <Footer/>
