@@ -2,7 +2,6 @@ import React, { ComponentType } from 'react';
 import { Navigate, To } from 'react-router-dom';
 import { ScreenLoader } from '@/components/common/screen-loader';
 import { usePermission } from './hooks/use-permission';
-import { PermissionCode } from './lib/permission';
 
 interface WithPermissionProps {
     permission?: string | string[];

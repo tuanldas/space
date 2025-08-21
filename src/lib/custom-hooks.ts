@@ -13,7 +13,7 @@ export function useMessage() {
             try {
                 if (!id) return '';
                 return intl.formatMessage({ id }, values);
-            } catch (error) {
+            } catch {
                 console.warn(`[i18n] Missing translation key: ${id}`);
                 return id;
             }

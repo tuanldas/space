@@ -70,26 +70,26 @@ export default class ApiCaller {
         this.requestOptions.headers['Accept-Language'] = ApiCaller.currentLanguage;
     }
 
-    async get(options?: ApiCallMethodGet): Promise<AxiosResponse<any>> {
+    async get(options?: ApiCallMethodGet): Promise<AxiosResponse<unknown>> {
         this.prepareRequest(options);
         return await axios.get(this.backendUrl + this.endpoint, this.requestOptions).catch(ApiCaller.handleError);
     }
 
-    async post(options?: ApiCallMethodPost): Promise<AxiosResponse<any>> {
+    async post(options?: ApiCallMethodPost): Promise<AxiosResponse<unknown>> {
         this.prepareRequest(options);
         return await axios
             .post(this.backendUrl + this.endpoint, options?.data, this.requestOptions)
             .catch(ApiCaller.handleError);
     }
 
-    async put(options?: ApiCallMethodPost): Promise<AxiosResponse<any>> {
+    async put(options?: ApiCallMethodPost): Promise<AxiosResponse<unknown>> {
         this.prepareRequest(options);
         return await axios
             .put(this.backendUrl + this.endpoint, options?.data, this.requestOptions)
             .catch(ApiCaller.handleError);
     }
 
-    async delete(options?: ApiCallMethodGet): Promise<AxiosResponse<any>> {
+    async delete(options?: ApiCallMethodGet): Promise<AxiosResponse<unknown>> {
         this.prepareRequest(options);
         return await axios.delete(this.backendUrl + this.endpoint, this.requestOptions).catch(ApiCaller.handleError);
     }
