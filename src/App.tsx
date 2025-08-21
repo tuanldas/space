@@ -12,6 +12,7 @@ import { SettingsProvider } from "./providers/settings-provider";
 import { ThemeProvider } from "./providers/theme-provider";
 import { TooltipsProvider } from "./providers/tooltips-provider";
 import { PermissionProvider } from "@/auth/providers/permission-provider.tsx";
+import { ToolbarProvider } from "@/providers/toolbar-provider.tsx";
 
 const { BASE_URL } = import.meta.env;
 
@@ -27,16 +28,18 @@ function App() {
                             <I18nProvider>
                                 <HelmetProvider>
                                     <TooltipsProvider>
-                                        <QueryProvider>
-                                            <LoadingBarContainer>
-                                                <BrowserRouter basename={BASE_URL}>
-                                                    <Toaster />
-                                                    <ModulesProvider>
-                                                        <AppRouting />
-                                                    </ModulesProvider>
-                                                </BrowserRouter>
-                                            </LoadingBarContainer>
-                                        </QueryProvider>
+                                        <ToolbarProvider>
+                                            <QueryProvider>
+                                                <LoadingBarContainer>
+                                                    <BrowserRouter basename={BASE_URL}>
+                                                        <Toaster />
+                                                        <ModulesProvider>
+                                                            <AppRouting />
+                                                        </ModulesProvider>
+                                                    </BrowserRouter>
+                                                </LoadingBarContainer>
+                                            </QueryProvider>
+                                        </ToolbarProvider>
                                     </TooltipsProvider>
                                 </HelmetProvider>
                             </I18nProvider>
