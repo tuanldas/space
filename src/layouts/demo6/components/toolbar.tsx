@@ -15,6 +15,8 @@ export interface ToolbarHeadingProps {
 }
 
 function Toolbar({ children }: { children?: ReactNode }) {
+    const { isToolbarHidden } = useToolbar();
+    if (isToolbarHidden) return null;
     return (
         <div className="pb-5">
             <TooltipsProvider>

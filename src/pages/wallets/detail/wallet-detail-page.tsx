@@ -55,7 +55,7 @@ export const WalletDetailPage: FC = () => {
             <Helmet key={wallet?.name || 'wallet-detail-page'}>
                 <title>{wallet?.name || intl.formatMessage({ id: 'wallet.title' })}</title>
             </Helmet>
-            <Container className="pt-5">
+            <Container>
                 {isLoading || !wallet || !id ? (
                     <ContentLoader />
                 ) : (
