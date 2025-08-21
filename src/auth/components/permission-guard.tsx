@@ -8,7 +8,11 @@ interface PermissionGuardProps {
 }
 
 export const PermissionGuard: React.FC<PermissionGuardProps> = ({ permission, children, fallback = null }) => {
-    const { hasPermission } = usePermission();
+    const { hasPermission, isLoading } = usePermission();
+
+    if (isLoading) {
+        return <>{fallback}</>;
+    }
 
     if (!hasPermission(permission)) {
         return <>{fallback}</>;

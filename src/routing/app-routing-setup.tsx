@@ -2,6 +2,8 @@ import { AuthRouting } from '@/auth/auth-routing';
 import { RequireAuth } from '@/auth/require-auth';
 import { ErrorRouting } from '@/errors/error-routing';
 import { Demo6Layout } from '@/layouts/demo6/layout.tsx';
+import { DashboardPage } from '@/pages/dashboard';
+import { UserManagementPage } from '@/pages/users';
 import { Navigate, Route, Routes } from 'react-router';
 
 export function AppRoutingSetup() {
@@ -9,7 +11,9 @@ export function AppRoutingSetup() {
         <Routes>
             <Route element={<RequireAuth />}>
                 <Route element={<Demo6Layout />}>
-                    <Route path="/" element={<div />} />
+                    <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                    <Route path="/dashboard" element={<DashboardPage />} />
+                    <Route path="/users" element={<UserManagementPage />} />
                 </Route>
             </Route>
             <Route path="error/*" element={<ErrorRouting />} />

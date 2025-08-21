@@ -1,9 +1,10 @@
-import { toAbsoluteUrl } from "@/lib/helpers.ts";
+import { toAbsoluteUrl } from '@/lib/helpers.ts';
 
-export const addDefaultImg = (ev: any) => {
-    if (!ev.target.dataset.defaultLoaded && ev.target.src !== toAbsoluteUrl("/media/image.png")) {
-        ev.target.src = toAbsoluteUrl("/media/image.png");
-        ev.target.dataset.defaultLoaded = "true";
-        ev.target.style.display = "none";
+export const addDefaultImg = (ev: { target: HTMLImageElement }) => {
+    const target = ev.target;
+    if (!target.dataset.defaultLoaded && target.src !== toAbsoluteUrl('/media/image.png')) {
+        target.src = toAbsoluteUrl('/media/image.png');
+        target.dataset.defaultLoaded = 'true';
+        target.style.display = 'none';
     }
 };

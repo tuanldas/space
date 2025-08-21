@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
+
+Làm sạch:
+ - Xóa các comment
+ - Xóa các hàm không dùng
+ - Xóa các import không dùng
+ - Chạy npm run format
+ - Chạy eslint fix

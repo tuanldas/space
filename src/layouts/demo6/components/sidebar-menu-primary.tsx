@@ -1,10 +1,12 @@
 'use client';
 
-import { JSX, useCallback } from 'react';
+import { JSX, useCallback, useMemo } from 'react';
+import { useIntl } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
 import { MENU_SIDEBAR_COMPACT } from '@/config/menu.config';
 import { MenuConfig, MenuItem } from '@/config/types';
 import { cn } from '@/lib/utils';
+import { useMenuPermission } from '@/hooks/use-menu-permission.ts';
 import {
     AccordionMenu,
     AccordionMenuClassNames,
@@ -17,12 +19,21 @@ import {
 
 export function SidebarMenuPrimary() {
     const { pathname } = useLocation();
+    const intl = useIntl();
+
+    const t = (id?: string) => (id ? intl.formatMessage({ id, defaultMessage: id }) : '');
 
     // Memoize matchPath to prevent unnecessary re-renders
     const matchPath = useCallback(
         (path: string): boolean => path === pathname || (path.length > 1 && pathname.startsWith(path)),
         [pathname],
     );
+
+    const { filterMenuByPermission } = useMenuPermission();
+
+    const filteredMenu = useMemo(() => {
+        return filterMenuByPermission(MENU_SIDEBAR_COMPACT);
+    }, [filterMenuByPermission]);
 
     // Global classNames for consistent styling
     const classNames: AccordionMenuClassNames = {
@@ -54,7 +65,7 @@ export function SidebarMenuPrimary() {
                 <AccordionMenuSub key={index} value={item.path || `root-${index}`}>
                     <AccordionMenuSubTrigger className="text-sm font-medium">
                         {item.icon && <item.icon data-slot="accordion-menu-icon" />}
-                        <span data-slot="accordion-menu-title">{item.title}</span>
+                        <span data-slot="accordion-menu-title">{t(item.title as string)}</span>
                     </AccordionMenuSubTrigger>
                     <AccordionMenuSubContent
                         type="single"
@@ -71,7 +82,7 @@ export function SidebarMenuPrimary() {
                 <AccordionMenuItem key={index} value={item.path || ''} className="text-sm font-medium">
                     <Link to={item.path || '#'}>
                         {item.icon && <item.icon data-slot="accordion-menu-icon" />}
-                        <span data-slot="accordion-menu-title">{item.title}</span>
+                        <span data-slot="accordion-menu-title">{t(item.title as string)}</span>
                     </Link>
                 </AccordionMenuItem>
             );
@@ -95,11 +106,13 @@ export function SidebarMenuPrimary() {
                     <AccordionMenuSubTrigger className="text-[13px]">
                         {item.collapse ? (
                             <span className="text-muted-foreground">
-                                <span className="hidden [[data-state=open]>span>&]:inline">{item.collapseTitle}</span>
-                                <span className="inline [[data-state=open]>span>&]:hidden">{item.expandTitle}</span>
+                                <span className="hidden [[data-state=open]>span>&]:inline">
+                                    {t(item.collapseTitle)}
+                                </span>
+                                <span className="inline [[data-state=open]>span>&]:hidden">{t(item.expandTitle)}</span>
                             </span>
                         ) : (
-                            item.title
+                            t(item.title as string)
                         )}
                     </AccordionMenuSubTrigger>
                     <AccordionMenuSubContent
@@ -117,7 +130,7 @@ export function SidebarMenuPrimary() {
         } else {
             return (
                 <AccordionMenuItem key={index} value={item.path || ''} className="text-[13px]">
-                    <Link to={item.path || '#'}>{item.title}</Link>
+                    <Link to={item.path || '#'}>{t(item.title as string)}</Link>
                 </AccordionMenuItem>
             );
         }
@@ -125,7 +138,7 @@ export function SidebarMenuPrimary() {
 
     return (
         <AccordionMenu type="single" selectedValue={pathname} matchPath={matchPath} collapsible classNames={classNames}>
-            {buildMenu(MENU_SIDEBAR_COMPACT)}
+            {buildMenu(filteredMenu)}
         </AccordionMenu>
     );
 }

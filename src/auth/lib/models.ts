@@ -15,9 +15,7 @@ export interface UserModel {
     username: string;
     password?: string; // Optional as we don't always retrieve passwords
     email: string;
-    first_name: string;
-    last_name: string;
-    fullname?: string; // May be stored directly in metadata
+    name: string;
     email_verified?: boolean;
     occupation?: string;
     company_name?: string; // Using snake_case consistently

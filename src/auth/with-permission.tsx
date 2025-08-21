@@ -1,7 +1,7 @@
 import React, { ComponentType } from 'react';
 import { Navigate, To } from 'react-router-dom';
+import { ScreenLoader } from '@/components/common/screen-loader';
 import { usePermission } from './hooks/use-permission';
-import { PermissionCode } from './lib/permission';
 
 interface WithPermissionProps {
     permission?: string | string[];
@@ -35,7 +35,11 @@ export function withPermission<P extends object>(
                 ? permissionOrOptions.fallback
                 : null;
 
-        const { hasPermission, isAuthenticated } = usePermission();
+        const { hasPermission, isAuthenticated, isLoading } = usePermission();
+
+        if (isLoading) {
+            return <ScreenLoader />;
+        }
 
         // Nếu không cung cấp permission, chỉ kiểm tra đăng nhập
         if (!permission && !isAuthenticated) {

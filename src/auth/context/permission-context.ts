@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Permission, PermissionCode, Role } from '../lib/permission';
+import { Permission, Role } from '../lib/permission';
 
 export interface PermissionContextProps {
     isAuthenticated: boolean;

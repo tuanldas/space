@@ -1,14 +1,14 @@
 services:
-  web:
-    image: space-web:latest
-    pull_policy: always
-    environment:
-      - NODE_ENV=production
-    restart: unless-stopped
-    networks:
-      - proxy
+    web:
+        image: space-web:latest
+        pull_policy: always
+        environment:
+            - NODE_ENV=production
+        restart: unless-stopped
+        networks:
+            - proxy
 
 networks:
-  proxy:
-    external: true
-    name: ${PROXY_NETWORK:-proxy}
+    proxy:
+        external: true
+        name: ${PROXY_NETWORK:-proxy}

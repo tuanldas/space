@@ -1,9 +1,12 @@
 import { Fragment, ReactNode } from 'react';
+import { useIntl } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 import { MenuItem } from '@/config/types';
 import { cn } from '@/lib/utils';
 import { useMenu } from '@/hooks/use-menu';
+import { useToolbar } from '@/providers/toolbar-provider.tsx';
+import { TooltipsProvider } from '@/providers/tooltips-provider';
 import { Container } from '@/components/common/container';
 
 export interface ToolbarHeadingProps {
@@ -14,13 +17,16 @@ export interface ToolbarHeadingProps {
 function Toolbar({ children }: { children?: ReactNode }) {
     return (
         <div className="pb-5">
-            <Container className="flex items-center justify-between flex-wrap gap-3">{children}</Container>
+            <TooltipsProvider>
+                <Container className="flex items-center justify-between flex-wrap gap-3">{children}</Container>
+            </TooltipsProvider>
         </div>
     );
 }
 
 function ToolbarActions({ children }: { children?: ReactNode }) {
-    return <div className="flex items-center flex-wrap gap-1.5 lg:gap-3.5">{children}</div>;
+    const { toolbarActions } = useToolbar();
+    return <div className="flex items-center flex-wrap gap-1.5 lg:gap-3.5">{toolbarActions ?? children}</div>;
 }
 
 function ToolbarBreadcrumbs() {
@@ -62,14 +68,34 @@ function ToolbarBreadcrumbs() {
 }
 
 const ToolbarHeading = ({ title = '' }: ToolbarHeadingProps) => {
+    const intl = useIntl();
     const { pathname } = useLocation();
     const { getCurrentItem } = useMenu(pathname);
     const item = getCurrentItem(MENU_SIDEBAR);
+    const { toolbarTitle } = useToolbar();
+
+    const fmt = (id: string) => {
+        try {
+            return intl.formatMessage({ id, defaultMessage: id });
+        } catch {
+            return id;
+        }
+    };
+
+    const getTitle = () => {
+        if (toolbarTitle != null) {
+            return typeof toolbarTitle === 'string' ? fmt(toolbarTitle) : toolbarTitle;
+        }
+        if (title) {
+            return typeof title === 'string' ? fmt(title) : title;
+        }
+        if (!item?.title) return '';
+        return fmt(item.title);
+    };
 
     return (
         <div className="flex flex-col md:flex-row md:items-center flex-wrap gap-1 lg:gap-5">
-            <h1 className="font-medium text-lg text-mono">{title || item?.title}</h1>
-            <ToolbarBreadcrumbs />
+            <h1 className="font-medium text-lg text-mono">{getTitle()}</h1>
         </div>
     );
 };

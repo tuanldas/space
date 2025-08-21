@@ -7,7 +7,7 @@
  * @param prefix - Tiền tố cho key (được sử dụng trong quá trình đệ quy)
  * @returns Đối tượng phẳng với các key theo định dạng "parent.child.grandchild"
  */
-export function flattenMessages(nestedMessages: Record<string, any>, prefix = ''): Record<string, string> {
+export function flattenMessages(nestedMessages: Record<string, unknown>, prefix = ''): Record<string, string> {
     // Xử lý trường hợp object null
     if (nestedMessages === null) {
         return {};

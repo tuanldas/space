@@ -9,7 +9,7 @@ export function setCookie(
     value: string | object,
     options?: Cookies.CookieAttributes,
 ): string | undefined {
-    let valueToSet:  string;
+    let valueToSet: string;
 
     if (typeof value === 'string') {
         valueToSet = value;
