@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 **/src/*.js
 .env
+
+# Local-only docker compose override
+compose.override.yml

@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   web:
     build:
@@ -7,10 +6,10 @@ services:
     command: ["npm","run","dev","--","--host","0.0.0.0","--strictPort"]
     environment:
       - NODE_ENV=development
-      - VITE_PORT=5173
+      - VITE_PORT=3000
     ports:
-      - "5173:5173"
+      - "3001:3000"
     volumes:
       - .:/app
       - /app/node_modules
-    restart: unless-stopped 
+    restart: unless-stopped
