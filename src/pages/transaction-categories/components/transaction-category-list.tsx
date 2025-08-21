@@ -6,7 +6,12 @@ import { Loader2, SquarePen, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useMessage } from '@/lib/custom-hooks';
 import { useErrorHandler } from '@/hooks/use-error-handler';
-import { createGetNextPageParam, extractPaginatedData, getAllItems, useErrorMessage } from '@/hooks/use-paginated-query';
+import {
+    createGetNextPageParam,
+    extractPaginatedData,
+    getAllItems,
+    useErrorMessage,
+} from '@/hooks/use-paginated-query';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -101,7 +106,9 @@ const TransactionCategoryList = ({ onEdit }: TransactionCategoryListProps) => {
         deleteMutation.mutate(id);
     };
 
-    const getCategoryTypeColor = (type: string): 'primary' | 'secondary' | 'success' | 'warning' | 'info' | 'outline' | 'destructive' => {
+    const getCategoryTypeColor = (
+        type: string,
+    ): 'primary' | 'secondary' | 'success' | 'warning' | 'info' | 'outline' | 'destructive' => {
         switch (type) {
             case 'income':
                 return 'success';
@@ -172,7 +179,9 @@ const TransactionCategoryList = ({ onEdit }: TransactionCategoryListProps) => {
                     <div className="grid gap-5">
                         {categories.length === 0 ? (
                             <div className="text-center p-6">
-                                <p className="text-secondary-foreground">{t('transaction_category.messages.no_categories')}</p>
+                                <p className="text-secondary-foreground">
+                                    {t('transaction_category.messages.no_categories')}
+                                </p>
                             </div>
                         ) : (
                             <>
@@ -182,7 +191,9 @@ const TransactionCategoryList = ({ onEdit }: TransactionCategoryListProps) => {
                                     {isFetchingNextPage && (
                                         <div className="flex items-center justify-center">
                                             <Loader2 className="h-6 w-6 animate-spin text-primary" />
-                                            <span className="ml-2 text-sm text-muted-foreground">{t('common.loading_more')}</span>
+                                            <span className="ml-2 text-sm text-muted-foreground">
+                                                {t('common.loading_more')}
+                                            </span>
                                         </div>
                                     )}
                                 </div>

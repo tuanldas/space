@@ -174,7 +174,9 @@ const TransactionCategoryTrashedList = () => {
         }
     };
 
-    const getCategoryTypeColor = (type: string): 'primary' | 'secondary' | 'success' | 'warning' | 'info' | 'outline' | 'destructive' => {
+    const getCategoryTypeColor = (
+        type: string,
+    ): 'primary' | 'secondary' | 'success' | 'warning' | 'info' | 'outline' | 'destructive' => {
         switch (type) {
             case 'income':
                 return 'success';
@@ -249,7 +251,9 @@ const TransactionCategoryTrashedList = () => {
                     <div className="grid gap-5">
                         {trashedCategories.length === 0 ? (
                             <div className="text-center p-6">
-                                <p className="text-secondary-foreground">{t('transaction_category.messages.no_trashed_categories')}</p>
+                                <p className="text-secondary-foreground">
+                                    {t('transaction_category.messages.no_trashed_categories')}
+                                </p>
                             </div>
                         ) : (
                             <>
@@ -259,7 +263,9 @@ const TransactionCategoryTrashedList = () => {
                                     {isFetchingNextPage && (
                                         <div className="flex items-center justify-center">
                                             <Loader2 className="h-6 w-6 animate-spin text-primary" />
-                                            <span className="ml-2 text-sm text-muted-foreground">{t('common.loading_more')}</span>
+                                            <span className="ml-2 text-sm text-muted-foreground">
+                                                {t('common.loading_more')}
+                                            </span>
                                         </div>
                                     )}
                                 </div>
