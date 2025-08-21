@@ -1,0 +1,60 @@
+{
+    "printWidth": 120,
+    "tabWidth": 4,
+    "useTabs": false,
+    "endOfLine": "lf",
+    "singleQuote": false,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "semi": true,
+    "bracketSameLine": false,
+    "jsxSingleQuote": false,
+    "arrowParens": "always",
+    "importOrder": [
+        "<BUILTIN_MODULES>",
+        "^(react/(.*)$)|^(react$)",
+        "^(next/(.*)$)|^(next$)",
+        "<THIRD_PARTY_MODULES>",
+        "^types$",
+        "^@/types/(.*)$",
+        "^@/config/(.*)$",
+        "^@/lib/(.*)$",
+        "^@/hooks/(.*)$",
+        "^@/providers/(.*)$",
+        "^@/services/(.*)$",
+        "^@/components/ui/(.*)$",
+        "^@/components/(.*)$",
+        "^@/app/(.*)$",
+        "^[./]",
+        "^@/styles/(.*)$"
+    ],
+    "importOrderCaseSensitive": false,
+    "importOrderParserPlugins": [
+        "typescript",
+        "jsx",
+        "decorators",
+        "decorators-legacy",
+        "importAssertions",
+        "importAttributes",
+        "dynamicImport",
+        "classProperties",
+        "classPrivateProperties",
+        "classPrivateMethods",
+        "topLevelAwait"
+    ],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "options": {
+                "singleQuote": true
+            }
+        },
+        {
+            "files": ["*.css", "*.scss", "*.sass", "*.less"],
+            "options": {
+                "singleQuote": false
+            }
+        }
+    ],
+    "plugins": ["prettier-plugin-tailwindcss", "@ianvs/prettier-plugin-sort-imports"]
+}
