@@ -4,6 +4,7 @@ import { ErrorRouting } from '@/errors/error-routing';
 import { Demo6Layout } from '@/layouts/demo6/layout.tsx';
 import { Navigate, Route, Routes } from 'react-router';
 import { DashboardPage } from "@/pages/dashboard";
+import { UserManagementPage } from "@/pages/users";
 
 export function AppRoutingSetup() {
     return (
@@ -12,6 +13,7 @@ export function AppRoutingSetup() {
                 <Route element={<Demo6Layout />}>
                     <Route path="/" element={<Navigate to="/dashboard" replace />} />
                     <Route path="/dashboard" element={<DashboardPage />} />
+                    <Route path="/users" element={<UserManagementPage />} />
                 </Route>
             </Route>
             <Route path="error/*" element={<ErrorRouting />} />
