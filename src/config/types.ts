@@ -1,4 +1,4 @@
-import { type LucideIcon } from 'lucide-react';
+import { type LucideIcon } from "lucide-react";
 
 export interface MenuItem {
     title?: string;
@@ -14,17 +14,18 @@ export interface MenuItem {
     expandTitle?: string;
     badge?: string;
     separator?: boolean;
+    permissions?: string[];
 }
 
 export type MenuConfig = MenuItem[];
 
 export interface Settings {
-    container: 'fixed' | 'fluid';
+    container: "fixed" | "fluid";
     layout: string;
     layouts: {
         demo1: {
             sidebarCollapse: boolean;
-            sidebarTheme: 'light' | 'dark';
+            sidebarTheme: "light" | "dark";
         };
         demo2: {
             headerSticky: boolean;
