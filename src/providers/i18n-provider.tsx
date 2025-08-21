@@ -1,18 +1,18 @@
-import { createContext, type PropsWithChildren, useContext, useEffect, useState } from "react";
-import { I18N_CONFIG_KEY, I18N_DEFAULT_LANGUAGE, I18N_LANGUAGES, I18N_MESSAGES } from "@/i18n/config";
-import { I18nProviderProps, type Language } from "@/i18n/types";
-import { DirectionProvider as RadixDirectionProvider } from "@radix-ui/react-direction";
-import { IntlProvider } from "react-intl";
-import { flattenMessages } from "@/lib/i18n-helpers";
-import { getData, setData } from "@/lib/storage";
-import "@formatjs/intl-relativetimeformat/polyfill";
-import "@formatjs/intl-relativetimeformat/locale-data/en";
-import "@formatjs/intl-relativetimeformat/locale-data/vi";
-import ApiCaller from "@/api/apiCaller";
+import { createContext, useContext, useEffect, useState, type PropsWithChildren } from 'react';
+import { I18N_CONFIG_KEY, I18N_DEFAULT_LANGUAGE, I18N_LANGUAGES, I18N_MESSAGES } from '@/i18n/config';
+import { I18nProviderProps, type Language } from '@/i18n/types';
+import { DirectionProvider as RadixDirectionProvider } from '@radix-ui/react-direction';
+import { IntlProvider } from 'react-intl';
+import { flattenMessages } from '@/lib/i18n-helpers';
+import { getData, setData } from '@/lib/storage';
+import '@formatjs/intl-relativetimeformat/polyfill';
+import '@formatjs/intl-relativetimeformat/locale-data/en';
+import '@formatjs/intl-relativetimeformat/locale-data/vi';
+import ApiCaller from '@/api/apiCaller';
 
 const getInitialLanguage = () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const langParam = urlParams.get("lang");
+    const langParam = urlParams.get('lang');
 
     // Check if langParam matches a supported language in I18N_LANGUAGES
     if (langParam) {
@@ -30,8 +30,7 @@ const getInitialLanguage = () => {
 const initialProps: I18nProviderProps = {
     currenLanguage: getInitialLanguage(),
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    changeLanguage: (_: Language) => {
-    },
+    changeLanguage: (_: Language) => {},
     isRTL: () => false,
 };
 
@@ -55,12 +54,12 @@ const I18nProvider = ({ children }: PropsWithChildren) => {
     };
 
     const isRTL = () => {
-        return currenLanguage.direction === "rtl";
+        return currenLanguage.direction === 'rtl';
     };
 
     useEffect(() => {
-        document.documentElement.setAttribute("dir", currenLanguage.direction);
-        document.documentElement.setAttribute("lang", currenLanguage.code);
+        document.documentElement.setAttribute('dir', currenLanguage.direction);
+        document.documentElement.setAttribute('lang', currenLanguage.code);
 
         // Cập nhật ngôn ngữ cho API calls khi component mount hoặc ngôn ngữ thay đổi
         ApiCaller.setLanguage(currenLanguage.code);

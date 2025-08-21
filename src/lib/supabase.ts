@@ -11,14 +11,10 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
  * This client can be imported and used throughout the application for
  * authentication and database operations.
  */
-export const supabase: SupabaseClient = createClient(
-  supabaseUrl,
-  supabaseAnonKey,
-  {
+export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseAnonKey, {
     auth: {
-      autoRefreshToken: true,
-      persistSession: true,
-      detectSessionInUrl: true,
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true,
     },
-  },
-);
+});
