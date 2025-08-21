@@ -1,14 +1,14 @@
-import { ReactNode } from "react";
-import { useAuth } from "@/auth/context/auth-context";
-import { I18N_LANGUAGES } from "@/i18n/config";
-import { Language } from "@/i18n/types";
-import { Globe, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
-import { Link } from "react-router";
-import { toAbsoluteUrl } from "@/lib/helpers";
-import { useLanguage } from "@/providers/i18n-provider";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { ReactNode } from 'react';
+import { useAuth } from '@/auth/context/auth-context';
+import { I18N_LANGUAGES } from '@/i18n/config';
+import { Language } from '@/i18n/types';
+import { Globe, Moon } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { Link } from 'react-router';
+import { toAbsoluteUrl } from '@/lib/helpers';
+import { useLanguage } from '@/providers/i18n-provider';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -20,26 +20,25 @@ import {
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Switch } from "@/components/ui/switch";
+} from '@/components/ui/dropdown-menu';
+import { Switch } from '@/components/ui/switch';
 
 export function UserDropdownMenu({ trigger }: { trigger: ReactNode }) {
     const { logout, user } = useAuth();
     const { currenLanguage, changeLanguage } = useLanguage();
     const { theme, setTheme } = useTheme();
 
-    const displayName =
-        user?.name || "";
+    const displayName = user?.name || '';
 
-    const displayEmail = user?.email || "";
-    const displayAvatar = toAbsoluteUrl("/media/avatars/300-2.png");
+    const displayEmail = user?.email || '';
+    const displayAvatar = toAbsoluteUrl('/media/avatars/300-2.png');
 
     const handleLanguage = (lang: Language) => {
         changeLanguage(lang);
     };
 
     const handleThemeToggle = (checked: boolean) => {
-        setTheme(checked ? "dark" : "light");
+        setTheme(checked ? 'dark' : 'light');
     };
 
     return (
@@ -58,8 +57,10 @@ export function UserDropdownMenu({ trigger }: { trigger: ReactNode }) {
                             <Link to="/dashboard" className="text-sm text-mono hover:text-primary font-semibold">
                                 {displayName}
                             </Link>
-                            <a href={`mailto:${displayEmail}`}
-                               className="text-xs text-muted-foreground hover:text-primary">
+                            <a
+                                href={`mailto:${displayEmail}`}
+                                className="text-xs text-muted-foreground hover:text-primary"
+                            >
                                 {displayEmail}
                             </a>
                         </div>
@@ -70,16 +71,19 @@ export function UserDropdownMenu({ trigger }: { trigger: ReactNode }) {
 
                 {/* Language Submenu with Radio Group */}
                 <DropdownMenuSub>
-                    <DropdownMenuSubTrigger
-                        className="flex items-center gap-2 [&_[data-slot=dropdown-menu-sub-trigger-indicator]]:hidden hover:[&_[data-slot=badge]]:border-input data-[state=open]:[&_[data-slot=badge]]:border-input">
+                    <DropdownMenuSubTrigger className="flex items-center gap-2 [&_[data-slot=dropdown-menu-sub-trigger-indicator]]:hidden hover:[&_[data-slot=badge]]:border-input data-[state=open]:[&_[data-slot=badge]]:border-input">
                         <Globe />
                         <span className="flex items-center justify-between gap-2 grow relative">
-              Language
-              <Badge variant="outline" className="absolute end-0 top-1/2 -translate-y-1/2">
-                {currenLanguage.label}
-                  <img src={currenLanguage.flag} className="w-3.5 h-3.5 rounded-full" alt={currenLanguage.label} />
-              </Badge>
-            </span>
+                            Language
+                            <Badge variant="outline" className="absolute end-0 top-1/2 -translate-y-1/2">
+                                {currenLanguage.label}
+                                <img
+                                    src={currenLanguage.flag}
+                                    className="w-3.5 h-3.5 rounded-full"
+                                    alt={currenLanguage.label}
+                                />
+                            </Badge>
+                        </span>
                     </DropdownMenuSubTrigger>
                     <DropdownMenuSubContent className="w-48">
                         <DropdownMenuRadioGroup
@@ -90,8 +94,11 @@ export function UserDropdownMenu({ trigger }: { trigger: ReactNode }) {
                             }}
                         >
                             {I18N_LANGUAGES.map((item) => (
-                                <DropdownMenuRadioItem key={item.code} value={item.code}
-                                                       className="flex items-center gap-2">
+                                <DropdownMenuRadioItem
+                                    key={item.code}
+                                    value={item.code}
+                                    className="flex items-center gap-2"
+                                >
                                     <img src={item.flag} className="w-4 h-4 rounded-full" alt={item.label} />
                                     <span>{item.label}</span>
                                 </DropdownMenuRadioItem>
@@ -107,7 +114,7 @@ export function UserDropdownMenu({ trigger }: { trigger: ReactNode }) {
                     <Moon />
                     <div className="flex items-center gap-2 justify-between grow">
                         Dark Mode
-                        <Switch size="sm" checked={theme === "dark"} onCheckedChange={handleThemeToggle} />
+                        <Switch size="sm" checked={theme === 'dark'} onCheckedChange={handleThemeToggle} />
                     </div>
                 </DropdownMenuItem>
                 <div className="p-2 mt-1">

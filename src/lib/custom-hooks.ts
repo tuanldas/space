@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useIntl } from 'react-intl';
 
 /**
@@ -7,23 +8,18 @@ import { useIntl } from 'react-intl';
 export function useMessage() {
     const intl = useIntl();
 
-    /**
-     * Format message theo key đã định nghĩa
-     * @param id - Message ID
-     * @param values - Optional replacement values
-     * @returns Translated message
-     */
-    const t = (id: string, values?: Record<string, string | number | boolean | Date | null | undefined>) => {
-        try {
-            if (!id) return '';
-
-            return intl.formatMessage({ id }, values);
-        } catch (error) {
-            // Log warning và trả về key để dễ debug
-            console.warn(`[i18n] Missing translation key: ${id}`);
-            return id;
-        }
-    };
+    const t = useCallback(
+        (id: string, values?: Record<string, string | number | boolean | Date | null | undefined>) => {
+            try {
+                if (!id) return '';
+                return intl.formatMessage({ id }, values);
+            } catch (error) {
+                console.warn(`[i18n] Missing translation key: ${id}`);
+                return id;
+            }
+        },
+        [intl],
+    );
 
     return { t };
 }

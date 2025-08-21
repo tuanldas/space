@@ -13,6 +13,8 @@ import {
     IUserRole,
     updateUser,
 } from '@/api/user';
+import { PermissionGuard } from '@/auth/components/permission-guard';
+import { PermissionCode } from '@/auth/lib/permission';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
@@ -32,6 +34,7 @@ import * as z from 'zod';
 import { useMessage } from '@/lib/custom-hooks';
 import { useToast } from '@/lib/hooks';
 import { useErrorHandler } from '@/hooks/use-error-handler';
+import { useToolbar } from '@/providers/toolbar-provider';
 import {
     AlertDialog,
     AlertDialogAction,
@@ -42,7 +45,7 @@ import {
     AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
-import { Card, CardFooter, CardHeader, CardHeading, CardTable } from '@/components/ui/card';
+import { Card, CardFooter, CardTable } from '@/components/ui/card';
 import { DataGrid } from '@/components/ui/data-grid';
 import { DataGridColumnHeader } from '@/components/ui/data-grid-column-header';
 import { DataGridPagination } from '@/components/ui/data-grid-pagination';
@@ -69,6 +72,7 @@ const Users = () => {
     const { toast } = useToast();
     const queryClient = useQueryClient();
     const { handleError } = useErrorHandler();
+    const { setToolbarActions } = useToolbar();
 
     const [pagination, setPagination] = useState<PaginationState>({
         pageIndex: 0,
@@ -371,6 +375,39 @@ const Users = () => {
         }
     };
 
+    useEffect(() => {
+        setToolbarActions(
+            <div className="flex items-center gap-2.5">
+                <div className="relative">
+                    <Search className="size-4 text-muted-foreground absolute start-3 top-1/2 -translate-y-1/2" />
+                    <Input
+                        placeholder={t('user.management.search_placeholder')}
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="ps-9 w-40"
+                    />
+                    {searchQuery.length > 0 && (
+                        <Button
+                            mode="icon"
+                            variant="ghost"
+                            className="absolute end-1.5 top-1/2 -translate-y-1/2 h-6 w-6"
+                            onClick={() => setSearchQuery('')}
+                        >
+                            <X />
+                        </Button>
+                    )}
+                </div>
+                <PermissionGuard permission={PermissionCode.CREATE_USERS}>
+                    <Button onClick={handleAddUser} mode="icon" variant="primary">
+                        <Plus className="h-4 w-4 text-white" />
+                    </Button>
+                </PermissionGuard>
+            </div>,
+        );
+        return () => setToolbarActions(null);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [searchQuery, t]);
+
     function ActionsCell({ user }: { user: IUser }) {
         return (
             <div className="flex items-center gap-2">
@@ -474,43 +511,16 @@ const Users = () => {
             <DataGrid
                 table={table}
                 recordCount={usersResponse?.data?.total || 0}
+                isLoading={isLoadingUsers}
                 tableLayout={{
+                    stripped: true,
+                    cellBorder: true,
+                    columnsVisibility: false,
                     columnsPinnable: false,
                     columnsMovable: false,
-                    columnsVisibility: false,
-                    cellBorder: true,
                 }}
             >
                 <Card>
-                    <CardHeader>
-                        <CardHeading>
-                            <div className="flex items-center gap-2.5">
-                                <div className="relative">
-                                    <Search className="size-4 text-muted-foreground absolute start-3 top-1/2 -translate-y-1/2" />
-                                    <Input
-                                        placeholder={t('user.management.search_placeholder')}
-                                        value={searchQuery}
-                                        onChange={(e) => setSearchQuery(e.target.value)}
-                                        className="ps-9 w-40"
-                                    />
-                                    {searchQuery.length > 0 && (
-                                        <Button
-                                            mode="icon"
-                                            variant="ghost"
-                                            className="absolute end-1.5 top-1/2 -translate-y-1/2 h-6 w-6"
-                                            onClick={() => setSearchQuery('')}
-                                        >
-                                            <X />
-                                        </Button>
-                                    )}
-                                </div>
-
-                                <Button onClick={handleAddUser}>
-                                    <Plus className="mr-2 h-4 w-4" /> {t('user.management.add_user')}
-                                </Button>
-                            </div>
-                        </CardHeading>
-                    </CardHeader>
                     <CardTable>
                         <ScrollArea>
                             {isLoadingUsers ? (

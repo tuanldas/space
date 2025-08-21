@@ -1,12 +1,12 @@
-import { Fragment, useEffect } from "react";
-import { Container } from "@/components/common/container";
-import { useToolbar } from "@/providers/toolbar-provider";
+import { Fragment, useEffect } from 'react';
+import { useToolbar } from '@/providers/toolbar-provider';
+import { Container } from '@/components/common/container';
 
 export function DashboardPage() {
     const { setToolbarTitle } = useToolbar();
 
     useEffect(() => {
-        setToolbarTitle("sidebar.home");
+        setToolbarTitle('sidebar.home');
     }, [setToolbarTitle]);
 
     return (

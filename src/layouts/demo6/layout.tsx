@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import { Helmet } from "@dr.pogodin/react-helmet";
-import { Outlet, useLocation } from "react-router-dom";
-import { MENU_SIDEBAR } from "@/config/menu.config";
-import { useBodyClass } from "@/hooks/use-body-class";
-import { useMenu } from "@/hooks/use-menu";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { useSettings } from "@/providers/settings-provider";
-import { Footer } from "./components/footer";
-import { Header } from "./components/header";
-import { Sidebar } from "./components/sidebar";
-import { Toolbar, ToolbarActions, ToolbarHeading } from "./components/toolbar";
+import { useEffect } from 'react';
+import { Helmet } from '@dr.pogodin/react-helmet';
+import { Outlet, useLocation } from 'react-router-dom';
+import { MENU_SIDEBAR } from '@/config/menu.config';
+import { useBodyClass } from '@/hooks/use-body-class';
+import { useMenu } from '@/hooks/use-menu';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { useSettings } from '@/providers/settings-provider';
+import { Footer } from './components/footer';
+import { Header } from './components/header';
+import { Sidebar } from './components/sidebar';
+import { Toolbar, ToolbarActions, ToolbarHeading } from './components/toolbar';
 
 const Demo6Layout = () => {
     const isMobile = useIsMobile();

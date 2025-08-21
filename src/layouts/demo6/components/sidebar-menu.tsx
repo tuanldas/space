@@ -1,5 +1,5 @@
-import { SidebarMenuPrimary } from "./sidebar-menu-primary";
-import { SidebarWallets } from "@/layouts/demo6/components/sidebar-wallets.tsx";
+import { SidebarWallets } from '@/layouts/demo6/components/sidebar-wallets.tsx';
+import { SidebarMenuPrimary } from './sidebar-menu-primary';
 
 export function SidebarMenu() {
     return (

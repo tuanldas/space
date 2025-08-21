@@ -1,13 +1,13 @@
-import { Fragment, ReactNode } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { MENU_SIDEBAR } from "@/config/menu.config";
-import { MenuItem } from "@/config/types";
-import { cn } from "@/lib/utils";
-import { useMenu } from "@/hooks/use-menu";
-import { Container } from "@/components/common/container";
-import { useToolbar } from "@/providers/toolbar-provider.tsx";
-import { useIntl } from "react-intl";
-import { TooltipsProvider } from "@/providers/tooltips-provider";
+import { Fragment, ReactNode } from 'react';
+import { useIntl } from 'react-intl';
+import { Link, useLocation } from 'react-router-dom';
+import { MENU_SIDEBAR } from '@/config/menu.config';
+import { MenuItem } from '@/config/types';
+import { cn } from '@/lib/utils';
+import { useMenu } from '@/hooks/use-menu';
+import { useToolbar } from '@/providers/toolbar-provider.tsx';
+import { TooltipsProvider } from '@/providers/tooltips-provider';
+import { Container } from '@/components/common/container';
 
 export interface ToolbarHeadingProps {
     title?: string | ReactNode;
@@ -50,14 +50,14 @@ function ToolbarBreadcrumbs() {
                             <Link
                                 to={item.path}
                                 className={cn(
-                                    "flex items-center gap-1",
-                                    active ? "text-mono" : "text-secondary-foreground hover:text-primary",
+                                    'flex items-center gap-1',
+                                    active ? 'text-mono' : 'text-secondary-foreground hover:text-primary',
                                 )}
                             >
                                 {item.title}
                             </Link>
                         ) : (
-                            <span className={cn(isLast ? "text-mono" : "text-secondary-foreground")}>{item.title}</span>
+                            <span className={cn(isLast ? 'text-mono' : 'text-secondary-foreground')}>{item.title}</span>
                         )}
                         {!isLast && <span className="text-muted-foreground">/</span>}
                     </Fragment>
@@ -67,7 +67,7 @@ function ToolbarBreadcrumbs() {
     );
 }
 
-const ToolbarHeading = ({ title = "" }: ToolbarHeadingProps) => {
+const ToolbarHeading = ({ title = '' }: ToolbarHeadingProps) => {
     const intl = useIntl();
     const { pathname } = useLocation();
     const { getCurrentItem } = useMenu(pathname);
@@ -84,12 +84,12 @@ const ToolbarHeading = ({ title = "" }: ToolbarHeadingProps) => {
 
     const getTitle = () => {
         if (toolbarTitle != null) {
-            return typeof toolbarTitle === "string" ? fmt(toolbarTitle) : toolbarTitle;
+            return typeof toolbarTitle === 'string' ? fmt(toolbarTitle) : toolbarTitle;
         }
         if (title) {
-            return typeof title === "string" ? fmt(title) : title;
+            return typeof title === 'string' ? fmt(title) : title;
         }
-        if (!item?.title) return "";
+        if (!item?.title) return '';
         return fmt(item.title);
     };
 

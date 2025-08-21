@@ -1,15 +1,15 @@
 services:
-  web:
-    build:
-      target: dev
-    image: space-web:dev
-    command: ["npm","run","dev","--","--host","0.0.0.0","--strictPort"]
-    environment:
-      - NODE_ENV=development
-      - VITE_PORT=3000
-    ports:
-      - "3001:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-    restart: unless-stopped
+    web:
+        build:
+            target: dev
+        image: space-web:dev
+        command: ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--strictPort"]
+        environment:
+            - NODE_ENV=development
+            - VITE_PORT=3000
+        ports:
+            - "3001:3000"
+        volumes:
+            - .:/app
+            - /app/node_modules
+        restart: unless-stopped

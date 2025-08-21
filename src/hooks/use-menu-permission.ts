@@ -1,5 +1,5 @@
-import { usePermission } from "@/auth/hooks/use-permission";
-import { MenuConfig, MenuItem } from "@/config/types";
+import { usePermission } from '@/auth/hooks/use-permission';
+import { MenuConfig, MenuItem } from '@/config/types';
 
 export const useMenuPermission = () => {
     const { hasPermission } = usePermission();

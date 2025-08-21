@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useState } from 'react';
+import { PropsWithChildren, useCallback, useEffect, useState } from 'react';
 import { callApiGetUserProfile, callApiLogout } from '@/api/auth';
 import { AuthAdapter } from '@/auth/adapters/auth-adapter';
 import { AuthContext } from '@/auth/context/auth-context';
@@ -17,58 +17,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
         setIsAdmin(currentUser?.is_admin === true);
     }, [currentUser]);
 
-    useEffect(() => {
-        const checkCookieAuth = () => {
-            verify().finally(() => {
-                setLoading(false);
-            });
-        };
-
-        checkCookieAuth();
-    }, []);
-
-    /**
-     * Xác minh phiên hiện tại và lấy thông tin người dùng
-     */
-    const verify = async () => {
-        const hasAuth = isAuthenticated();
-
-        if (hasAuth) {
-            try {
-                const user = await getUser();
-                if (user) {
-                    setCurrentUser(user);
-                    return;
-                }
-                setCurrentUser(undefined);
-            } catch (error) {
-                console.error('Verify error:', error);
-                setCurrentUser(undefined);
-            }
-        } else {
-            setCurrentUser(undefined);
-        }
-    };
-
-    /**
-     * Đăng nhập với email và mật khẩu
-     */
-    const login = async (email: string, password: string) => {
-        try {
-            await AuthAdapter.login(email, password);
-
-            const user = await getUser();
-            setCurrentUser(user || undefined);
-        } catch (error) {
-            console.error('Login error:', error);
-            throw error;
-        }
-    };
-
-    /**
-     * Lấy thông tin người dùng từ API
-     */
-    const getUser = async (): Promise<UserModel | null> => {
+    const getUser = useCallback(async (): Promise<UserModel | null> => {
         try {
             if (!isAuthenticated()) {
                 return null;
@@ -116,12 +65,50 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
             return null;
         }
-    };
+    }, []);
 
-    /**
-     * Đăng xuất người dùng hiện tại
-     */
-    const logout = async (): Promise<void> => {
+    const verify = useCallback(async () => {
+        const hasAuth = isAuthenticated();
+
+        if (hasAuth) {
+            try {
+                const user = await getUser();
+                if (user) {
+                    setCurrentUser(user);
+                    return;
+                }
+                setCurrentUser(undefined);
+            } catch (error) {
+                console.error('Verify error:', error);
+                setCurrentUser(undefined);
+            }
+        } else {
+            setCurrentUser(undefined);
+        }
+    }, [getUser]);
+
+    useEffect(() => {
+        verify().finally(() => {
+            setLoading(false);
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const login = useCallback(
+        async (email: string, password: string) => {
+            try {
+                await AuthAdapter.login(email, password);
+                const user = await getUser();
+                setCurrentUser(user || undefined);
+            } catch (error) {
+                console.error('Login error:', error);
+                throw error;
+            }
+        },
+        [getUser],
+    );
+
+    const logout = useCallback(async (): Promise<void> => {
         try {
             await callApiLogout();
         } catch (error) {
@@ -131,7 +118,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
             setCurrentUser(undefined);
             window.location.href = '/auth/signin';
         }
-    };
+    }, []);
 
     return (
         <AuthContext.Provider

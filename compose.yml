@@ -1,9 +1,9 @@
 services:
-  web:
-    build:
-      context: .
-      target: prod
-    image: space-web:latest
-    environment:
-      - NODE_ENV=production
-    restart: unless-stopped
+    web:
+        build:
+            context: .
+            target: prod
+        image: space-web:latest
+        environment:
+            - NODE_ENV=production
+        restart: unless-stopped

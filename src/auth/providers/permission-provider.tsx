@@ -1,10 +1,10 @@
-import { PropsWithChildren, useContext, useMemo } from "react";
-import { callApiGetUserProfile } from "@/api/auth";
-import { isAuthenticated } from "@/utils/cookies";
-import { useQuery } from "@tanstack/react-query";
-import { AuthContext } from "../context/auth-context";
-import { PermissionContext } from "../context/permission-context";
-import { Role } from "../lib/permission";
+import { PropsWithChildren, useContext, useMemo } from 'react';
+import { callApiGetUserProfile } from '@/api/auth';
+import { isAuthenticated } from '@/utils/cookies';
+import { useQuery } from '@tanstack/react-query';
+import { AuthContext } from '../context/auth-context';
+import { PermissionContext } from '../context/permission-context';
+import { Role } from '../lib/permission';
 
 export const PermissionProvider = ({ children }: PropsWithChildren) => {
     const { user } = useContext(AuthContext);
@@ -15,7 +15,7 @@ export const PermissionProvider = ({ children }: PropsWithChildren) => {
 
     // Sử dụng một query duy nhất để lấy profile, bao gồm cả roles và permissions
     const { data: profileData, isLoading: isLoadingProfile } = useQuery({
-        queryKey: ["user-profile"],
+        queryKey: ['user-profile'],
         queryFn: async () => {
             if (!isAuth) return null;
             const response = await callApiGetUserProfile();
