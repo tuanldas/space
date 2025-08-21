@@ -6,6 +6,10 @@ import { defineConfig } from 'vite';
 export default defineConfig({
     plugins: [react(), tailwindcss()],
     base: '/',
+    server: {
+        port: 3000,
+        host: true,
+    },
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
