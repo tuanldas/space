@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  web:
+    build:
+      target: dev
+    image: space-web:dev
+    command: ["npm","run","dev","--","--host","0.0.0.0","--strictPort"]
+    environment:
+      - NODE_ENV=development
+      - VITE_PORT=5173
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped 
