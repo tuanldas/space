@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+- Luôn viết message khi commit bằng tiếng việt
+- Hãy commit từng phần riêng lẻ theo tính năng khi có nhiều file thay đổi
+- Luôn tuân thủ git flow
+    - Feature branches: feature/
+    - Release branches: release/
+    - Hotfix branches: hotfix/
+    - Support branches: support/
+    - Bugfix branches: bugfix/
+- Khi xử lý tính năng mới thì bắt đầu với việc checkout nhánh mới
+- Luôn luôn dọn dẹp các file và xóa comment trước khi commit
+- Chỉ bật lệnh git khi được yêu cầu

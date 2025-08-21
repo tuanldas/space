@@ -1,0 +1,153 @@
+---
+alwaysApply: true
+---
+
+# Quy tắc code
+
+- Tài liệu này mô tả các quy tắc code của dự án. Các quy tắc này được thực thi bởi Cursor IDE.
+- Đảm bảo sử dụng style code theo file .editorconfig
+
+## Quy tắc định dạng code
+
+- **Mức độ**: Error
+- **Mô tả**: Tuân thủ quy tắc định dạng code theo `.editorconfig`
+- **Bỏ qua**: `node_modules/**`, `dist/**`, `build/**`
+
+## Quy tắc đặt tên
+
+- **Mức độ**: Warning
+- **Mô tả**: Tuân thủ quy tắc đặt tên biến, hàm và components
+
+### Quy ước đặt tên
+
+1. **Biến**: Sử dụng camelCase
+   - Mẫu: `^[a-z][a-zA-Z0-9]*$`
+   - Ví dụ: `userName`, `isLoading`
+
+2. **Hàm**: Sử dụng camelCase
+   - Mẫu: `^[a-z][a-zA-Z0-9]*$`
+   - Ví dụ: `getUserData()`, `calculateTotal()`
+
+3. **Component**: Sử dụng PascalCase
+   - Mẫu: `^[A-Z][a-zA-Z0-9]*$`
+   - Ví dụ: `UserProfile`, `LoginForm`
+
+## TypeScript
+
+### Tránh sử dụng any
+
+- **Mức độ**: Warning
+- **Mô tả**: Không sử dụng `any` trong TypeScript, luôn định nghĩa types rõ ràng
+- **Áp dụng cho**: `**/*.ts`, `**/*.tsx`
+- **Bỏ qua**: `node_modules/**`, `dist/**`, `build/**`, `**/types.ts`
+
+## Xử lý bất đồng bộ
+
+### Sử dụng async/await
+
+- **Mức độ**: Hint
+- **Mô tả**: Sử dụng async/await thay vì Promise chains
+- **Cảnh báo khi**: `.then(`
+- **Áp dụng cho**: `**/*.ts`, `**/*.tsx`, `**/*.js`, `**/*.jsx`
+- **Bỏ qua**: `node_modules/**`, `dist/**`, `build/**`
+
+### Sử dụng React Query
+
+- **Mức độ**: Warning
+- **Mô tả**: Ưu tiên sử dụng React Query (@tanstack/react-query) cho các API calls
+- **Cảnh báo khi**: `axios.get(`, `axios.post(`, `axios.put(`, `axios.delete(`
+- **Áp dụng cho**: `**/*.tsx`, `**/*.jsx`
+- **Bỏ qua**: `**/api/**`, `node_modules/**`, `dist/**`, `build/**`
+
+## Xử lý lỗi
+
+### Sử dụng useErrorHandler
+
+- **Mức độ**: Warning
+- **Mô tả**: Sử dụng hook useErrorHandler để xử lý lỗi thống nhất trong ứng dụng
+- **Cảnh báo khi**: `catch(`, `onError:`, `toast.error(`
+- **Áp dụng cho**: `**/*.tsx`, `**/*.jsx`
+- **Bỏ qua**: `src/hooks/use-error-handler.ts`, `src/api/apiCaller.tsx`, `node_modules/**`, `dist/**`, `build/**`
+
+## Logging
+
+### Không để console.log
+
+- **Mức độ**: Warning
+- **Mô tả**: Không để `console.log` trong code production
+- **Cảnh báo khi**: `console.log(`
+- **Áp dụng cho**: `**/*.ts`, `**/*.tsx`, `**/*.js`, `**/*.jsx`
+- **Bỏ qua**: `node_modules/**`, `dist/**`, `build/**`
+
+## Cấu trúc thư mục
+
+- **Mức độ**: Hint
+- **Mô tả**: Tuân thủ cấu trúc thư mục
+
+1. Components dùng chung đặt trong `/src/components`
+2. Các API services đặt trong `/src/api`
+3. Các utility functions đặt trong `/src/utils`
+4. Các hooks dùng chung đặt trong `/src/hooks`
+5. Các context dùng chung đặt trong `/src/providers`
+6. Pages đặt trong `/src/pages` theo route tương ứng
+7. Xử lý phân quyền đặt trong `/src/auth`
+8. Các comment cần được viết bằng tiếng việt
+
+## Quốc tế hóa (i18n)
+
+### Sử dụng i18n
+
+- **Mức độ**: Warning
+- **Mô tả**: Sử dụng các key i18n cho tất cả các text hiển thị
+- **Áp dụng cho**: `**/*.tsx`, `**/*.jsx`
+- **Bỏ qua**: `node_modules/**`, `dist/**`, `build/**`
+
+## Git
+
+### Commit bằng tiếng Việt
+
+- **Mức độ**: Info
+- **Mô tả**: Luôn viết message khi commit bằng tiếng Việt
+- **Áp dụng cho**: `.git/COMMIT_EDITMSG`
+
+### Quy tắc đặt tên nhánh
+
+- **Mức độ**: Warning
+- **Mô tả**: Tuân thủ git flow
+- **Mẫu**: `^(feature|release|hotfix|support|bugfix)/`
+- **Thông báo**: Nhánh phải bắt đầu bằng feature/, release/, hotfix/, support/ hoặc bugfix/
+- **Áp dụng cho**: `.git/HEAD`
+
+## Accessibility
+
+### Alt cho ảnh
+
+- **Mức độ**: Warning
+- **Mô tả**: Đảm bảo có thuộc tính alt cho images
+- **Áp dụng cho**: `**/*.tsx`, `**/*.jsx`, `**/*.html`
+- **Bỏ qua**: `node_modules/**`, `dist/**`, `build/**`
+
+## Bảo mật
+
+### Không commit API keys
+
+- **Mức độ**: Error
+- **Mô tả**: Không commit API keys, passwords, hoặc secrets khác vào repository
+- **Cảnh báo khi**:
+  - `(api|API)[_]?(key|KEY|Key|secret|SECRET|Secret)[\s]*=[\s]*['\"](\\w{16,})['"]`
+  - `(password|PASSWORD|Password)[\s]*=[\s]*['\"](\\w{8,})['"]`
+  - `(token|TOKEN|Token)[\s]*=[\s]*['\"](\\w{16,})['"]`
+- **Bỏ qua**: `node_modules/**`, `dist/**`, `build/**`, `.env.example`
+
+## Cursor Rules
+
+### Bảo vệ metadata trong file .mdc
+
+- **Mức độ**: Error
+- **Mô tả**: Không xóa hoặc sửa đổi phần metadata (---alwaysApply: true---) trong các file .mdc
+- **Cảnh báo khi**: Thiếu `---\nalwaysApply: true\n---` ở đầu file
+- **Áp dụng cho**: `**/*.mdc`
+- **Bỏ qua**: `node_modules/**`, `dist/**`, `build/**`
+  - `(password|PASSWORD|Password)[\s]*=[\s]*['\"](\\w{8,})['"]`
+  - `(token|TOKEN|Token)[\s]*=[\s]*['\"](\\w{16,})['"]`
+- **Bỏ qua**: `node_modules/**`, `dist/**`, `build/**`

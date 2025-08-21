@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Luôn chạy các lệnh bằng docker.
+- Định dạng file docker sử dụng là Compose V2.
+- Với các lệnh cần up -d thì luôn chạy `docker compose down` trước
+- Đừng chỉnh sửa các file docker khi không được yêu cầu

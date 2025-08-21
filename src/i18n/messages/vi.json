@@ -1,0 +1,227 @@
+{
+    "sidebar": {
+        "home": "Trang chủ",
+        "user_management": "Quản lý người dùng",
+        "transaction_categories": "Danh mục giao dịch",
+        "wallets": "Ví"
+    },
+    "dashboard": {
+        "title": "Bảng điều khiển"
+    },
+    "common": {
+        "pagination": {
+            "previous": "Trước",
+            "next": "Tiếp",
+            "page": "Trang",
+            "of": "của"
+        },
+        "loading_more": "Đang tải thêm...",
+        "loading": "Đang tải...",
+        "error_loading": "Đã xảy ra lỗi khi tải dữ liệu",
+        "no_data": "Không có dữ liệu",
+        "load_more": "Tải thêm",
+        "save": "Lưu",
+        "saving": "Đang lưu...",
+        "cancel": "Hủy",
+        "today": "Hôm nay"
+    },
+    "my": {
+        "wallets": "Ví của tôi"
+    },
+    "wallet": {
+        "title": "Ví",
+        "wallets": "Ví",
+        "add_new": "Thêm ví mới",
+        "view_more": "Xem thêm ví",
+        "balance": "Số dư",
+        "expense": "Chi tiêu",
+        "income": "Thu nhập",
+        "withdrawal": "Rút ra",
+        "total_investment": "Tổng đầu tư",
+        "actions": {
+            "edit": "Sửa",
+            "delete": "Xóa"
+        },
+        "edit": "Sửa ví",
+        "delete_success": "Xóa ví thành công",
+        "delete_error": "Lỗi khi xóa ví",
+        "delete_dialog": {
+            "title": "Xóa ví",
+            "description": "Bạn có chắc chắn muốn xóa ví \"{name}\"? Hành động này không thể hoàn tác và sẽ xóa tất cả dữ liệu liên quan đến ví này, bao gồm các giao dịch, báo cáo và thống kê.",
+            "confirm": "Có, xóa ví",
+            "cancel": "Hủy"
+        },
+        "status": {
+            "active": "Đang sử dụng",
+            "inactive": "Không sử dụng"
+        },
+        "form": {
+            "name": "Tên ví",
+            "name_placeholder": "Nhập tên ví",
+            "description": "Thêm ví mới để quản lý tài chính của bạn",
+            "edit_description": "Chỉnh sửa thông tin ví",
+            "description_label": "Mô tả",
+            "description_placeholder": "Nhập mô tả cho ví",
+            "initial_balance": "Số dư ban đầu",
+            "currency": "Đơn vị tiền tệ",
+            "currency_placeholder": "Chọn đơn vị tiền tệ",
+            "currency_search": "Tìm kiếm đơn vị tiền tệ...",
+            "currency_not_found": "Không tìm thấy đơn vị tiền tệ",
+            "type": "Loại ví",
+            "type_placeholder": "Tiền mặt, Ngân hàng, v.v.",
+            "success": "Thêm ví mới thành công",
+            "update_success": "Cập nhật ví thành công",
+            "error": "Đã xảy ra lỗi khi thêm ví mới",
+            "errors": {
+                "name_required": "Vui lòng nhập tên ví",
+                "initial_balance_required": "Vui lòng nhập số dư ban đầu",
+                "currency_required": "Vui lòng chọn đơn vị tiền tệ"
+            }
+        },
+        "errors": {
+            "id_required": "Thiếu mã ví (Wallet ID)"
+        },
+        "transaction": {
+            "default_title": "Giao dịch"
+        }
+    },
+    "user": {
+        "menu": {
+            "public_profile": "Hồ sơ công khai",
+            "my_profile": "Hồ sơ của tôi",
+            "my_account": "Tài khoản của tôi",
+            "get_started": "Bắt đầu",
+            "billing": "Thanh toán",
+            "security": "Bảo mật",
+            "members_roles": "Thành viên & Vai trò",
+            "integrations": "Tích hợp",
+            "notifications": "Thông báo",
+            "dev_forum": "Diễn đàn phát triển",
+            "payment_subscription_info": "Thông tin thanh toán & đăng ký",
+            "dark_mode": "Chế độ tối",
+            "logout": "Đăng xuất",
+            "language": "Ngôn ngữ"
+        },
+        "management": {
+            "search_placeholder": "Tìm kiếm người dùng...",
+            "add_user": "Thêm người dùng",
+            "edit_user": "Sửa",
+            "delete_user": "Xóa",
+            "confirm_delete": "Bạn có chắc chắn muốn xóa người dùng này không?",
+            "delete_description": "Việc xóa người dùng sẽ xóa vĩnh viễn tất cả dữ liệu liên quan đến tài khoản này khỏi hệ thống.",
+            "yes_delete": "Có, xóa",
+            "cancel": "Hủy",
+            "user_created": "Người dùng đã được tạo thành công",
+            "user_updated": "Người dùng đã được cập nhật thành công",
+            "user_deleted": "Người dùng đã bị xóa thành công",
+            "updated": "Thông tin người dùng đã được cập nhật thành công",
+            "role_updated": "Vai trò người dùng đã được cập nhật thành công",
+            "update_role": "Cập nhật vai trò",
+            "update_role_button": "Cập nhật vai trò",
+            "error_loading": "Đã xảy ra lỗi khi tải dữ liệu người dùng",
+            "error_creating": "Đã xảy ra lỗi khi tạo người dùng",
+            "error_updating": "Đã xảy ra lỗi khi cập nhật người dùng",
+            "error_deleting": "Đã xảy ra lỗi khi xóa người dùng",
+            "error_updating_role": "Đã xảy ra lỗi khi cập nhật vai trò người dùng",
+            "column": {
+                "member": "Thành viên",
+                "role": "Vai trò"
+            },
+            "form": {
+                "name": "Tên",
+                "email": "Email",
+                "password": "Mật khẩu",
+                "password_confirmation": "Xác nhận mật khẩu",
+                "password_hint": "Để trống nếu không muốn thay đổi mật khẩu",
+                "role": "Vai trò",
+                "select_role": "Chọn vai trò",
+                "submit": "Lưu",
+                "cancel": "Hủy"
+            }
+        }
+    },
+    "transaction_category": {
+        "title": "Danh mục giao dịch",
+        "list_title": "Danh sách danh mục",
+        "description": "Quản lý danh mục cho thu nhập, chi tiêu và chuyển khoản",
+        "add_new": "Thêm danh mục",
+        "edit": "Sửa danh mục",
+        "tabs": {
+            "active": "Hiện tại",
+            "trashed": "Thùng rác"
+        },
+        "types": {
+            "income": "Thu nhập",
+            "expense": "Chi tiêu",
+            "transfer": "Chuyển khoản"
+        },
+        "form": {
+            "name": "Tên",
+            "description": "Mô tả",
+            "type": "Loại",
+            "image": "Hình ảnh",
+            "submit": "Lưu",
+            "cancel": "Hủy"
+        },
+        "messages": {
+            "created": "Đã tạo danh mục thành công",
+            "updated": "Đã cập nhật danh mục thành công",
+            "deleted": "Đã xóa danh mục thành công",
+            "restored": "Đã khôi phục danh mục thành công",
+            "force_deleted": "Đã xóa vĩnh viễn danh mục",
+            "confirm_force_delete": "Bạn có chắc chắn muốn xóa vĩnh viễn danh mục này? Hành động này không thể hoàn tác.",
+            "error_loading": "Không thể tải danh sách danh mục",
+            "error_creating": "Không thể tạo danh mục",
+            "error_updating": "Không thể cập nhật danh mục",
+            "error_deleting": "Không thể xóa danh mục",
+            "error_restoring": "Không thể khôi phục danh mục",
+            "no_categories": "Không có danh mục nào trong thùng rác."
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Đăng nhập",
+            "description": "Chào mừng trở lại! Đăng nhập với thông tin tài khoản của bạn.",
+            "form": {
+                "email": "Email",
+                "email_placeholder": "Email của bạn",
+                "password": "Mật khẩu",
+                "password_placeholder": "Mật khẩu của bạn",
+                "submit": "Đăng nhập",
+                "loading": "Đang tải..."
+            },
+            "logging_attempt": "Đang cố gắng đăng nhập với email: {email}",
+            "success": "Đăng nhập thành công, token đã được lưu trong cookies",
+            "error": "Lỗi đăng nhập: {error}"
+        },
+        "error": {
+            "required_fields": "Email và mật khẩu là bắt buộc",
+            "unexpected": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.",
+            "invalid_credentials": "Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại email và mật khẩu.",
+            "account_locked": "Tài khoản của bạn đã bị khóa do đăng nhập sai nhiều lần. Vui lòng thử lại sau.",
+            "server_error": "Lỗi máy chủ. Vui lòng thử lại sau.",
+            "network_error": "Lỗi kết nối mạng. Vui lòng kiểm tra kết nối internet của bạn.",
+            "status_422": "Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại email và mật khẩu."
+        }
+    },
+    "validation": {
+        "name": {
+            "required": "Tên là trường bắt buộc",
+            "min_length": "Tên phải có ít nhất 2 ký tự",
+            "max_length": "Tên không được vượt quá 50 ký tự"
+        },
+        "email": {
+            "invalid": "Vui lòng nhập địa chỉ email hợp lệ",
+            "required": "Email là trường bắt buộc"
+        },
+        "password": {
+            "required": "Mật khẩu là trường bắt buộc",
+            "min_length": "Mật khẩu phải có ít nhất 8 ký tự",
+            "max_length": "Mật khẩu không được vượt quá 50 ký tự",
+            "must_match": "Mật khẩu không khớp"
+        },
+        "role": {
+            "required": "Vai trò là trường bắt buộc"
+        }
+    }
+}
